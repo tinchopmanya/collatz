@@ -1,0 +1,13 @@
+metric,value
+start,3
+limit,5000000
+total_transitions,2499999
+max_row_total_variation_to_uniform,0.000060799805
+max_cell_abs_diff_vs_uniform,0.000056799818
+max_stationary_abs_diff_vs_uniform,0.000009500401
+max_total_variation_to_uniform_after_1_steps,0.000060799805
+max_total_variation_to_uniform_after_2_steps,0.000015002180
+max_total_variation_to_uniform_after_3_steps,0.000015000447
+max_total_variation_to_uniform_after_4_steps,0.000015000447
+mechanical_recommendation,cool_m15_before_holdout
+scope_note,empirical exploratory local transitions on burned range; not a holdout and not a survival comparison
