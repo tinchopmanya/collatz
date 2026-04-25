@@ -5,6 +5,8 @@ Foco: Collatz Lab
 
 ## M0 - Higiene y auditoria
 
+Estado: en progreso.
+
 Objetivo: dejar claro que sabemos, que creemos y que falta verificar.
 
 Definition of done:
@@ -19,6 +21,8 @@ Salida esperada:
 - Una base bibliografica confiable para no construir sobre arena.
 
 ## M1 - Motor Collatz minimo
+
+Estado: completado en primera version.
 
 Objetivo: implementar funciones correctas y testeadas para generar datos.
 
@@ -37,6 +41,8 @@ Salida esperada:
 
 ## M2 - Dataset base y records
 
+Estado: completado en primera version.
+
 Objetivo: producir el primer dataset chico y una tabla de extremos.
 
 Definition of done:
@@ -51,6 +57,8 @@ Salida esperada:
 - Primer mapa propio de orbitas extremas.
 
 ## M3 - Paridad y modelo aleatorio
+
+Estado: pendiente.
 
 Objetivo: comparar orbitas reales contra una heuristica aleatoria simple.
 
@@ -67,6 +75,8 @@ Salida esperada:
 
 ## M4 - Residuos y familias anomalas
 
+Estado: en progreso.
+
 Objetivo: buscar clases modulares que concentren comportamientos extremos.
 
 Definition of done:
@@ -82,6 +92,8 @@ Salida esperada:
 
 ## M5 - Reporte de cuarta ola
 
+Estado: pendiente.
+
 Objetivo: cerrar un ciclo de investigacion con resultados propios.
 
 Definition of done:
@@ -96,6 +108,8 @@ Salida esperada:
 - Una cuarta ola seria: reproducible, autocritica y util para decidir si escalar.
 
 ## M6 - Escalado o cambio de estrategia
+
+Estado: pendiente.
 
 Objetivo: decidir con evidencia si conviene escalar computo o cambiar de enfoque.
 

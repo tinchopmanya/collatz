@@ -22,6 +22,31 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 4. Actualizar o reescribir [Conlusion.md](Conlusion.md).
 5. Hacer commit por ola cerrada.
 
+## Laboratorio computacional
+
+Ejecutar tests:
+
+```powershell
+python -m unittest discover -s tests
+```
+
+Generar records para un rango:
+
+```powershell
+python experiments\generate_records.py --limit 100000 --out reports\records_limit_100000.csv
+```
+
+Analizar residuos modulo `2^k`:
+
+```powershell
+python experiments\analyze_residues.py --limit 1000000 --power 9 --out reports\residue_mod_512_limit_1000000.csv
+```
+
+Primer patron candidato:
+
+- [records_limit_1000000.md](reports/records_limit_1000000.md)
+- [residue_mod_512_limit_1000000.md](reports/residue_mod_512_limit_1000000.md)
+
 ## Crear una nueva ola
 
 ```powershell
