@@ -381,6 +381,14 @@ Decision tras ClaudeSocioCritico:
 - Si la matriz muestra memoria modular lenta, se podra disenar un experimento confirmatorio sobre cadenas completas.
 - CodexHijo1 queda desbloqueado para `m15-qmod8-transition`; CodexHijo2 espera para replicar.
 
+Decision tras CodexHijo1 transicion `q mod 8`:
+
+- CodexHijo1 calculo la matriz `q_{i+1} mod 8 | q_i mod 8` para impares `3 <= n <= 5000000`.
+- La matriz es casi uniforme fila por fila; max TV contra uniforme en 1 paso `0.000060799805` y en 3 pasos `0.000015000447`.
+- M15 queda enfriado en su forma marginal `q mod 8` como memoria de supervivencia.
+- No se cierra definitivamente hasta replica/falsacion independiente de CodexHijo2.
+- CodexHijo2 queda desbloqueado para `m15-qmod8-transition-replica`.
+
 ## Prioridad
 
 Orden recomendado:

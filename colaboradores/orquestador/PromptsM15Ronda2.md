@@ -17,15 +17,15 @@ Orquestador: decision completada
 
 Para esta ronda:
 
-- Prompt 1 es bloqueante y puede empezar ahora.
-- Prompt 2 es bloqueante, pero no debe empezar hasta que termine Prompt 1.
+- Prompt 1 esta completado e integrado en `main`.
+- Prompt 2 es bloqueante y puede empezar ahora.
 
 ## Prompt 1 - CodexHijo1 transicion `q mod 8`
 
 Agente: CodexHijo1_PrincipalEjecutor
 Objetivo: calcular la matriz de transicion `q_{i+1} mod 8 | q_i mod 8` bajo el mapa odd-to-odd del proyecto y decidir si hay memoria modular suficiente para justificar M15.
 Bloqueante: si
-Puede empezar ahora: si
+Puede empezar ahora: completado
 Depende de: InvestigadorWeb integrado, ClaudeSocio integrado, decision del orquestador en `DecisionM15TrasClaudeSocio.md`
 Desbloquea a: CodexHijo2_ReplicaYFalsacion
 Rama sugerida: `codex-hijo/m15-qmod8-transition`
@@ -112,7 +112,7 @@ Entrega final:
 Agente: CodexHijo2_ReplicaYFalsacion
 Objetivo: replicar o falsificar la matriz de transicion de CodexHijo1.
 Bloqueante: si
-Puede empezar ahora: no
+Puede empezar ahora: si
 Depende de: Prompt 1 terminado
 Desbloquea a: decision del orquestador
 Rama sugerida: `codex-hijo/m15-qmod8-transition-replica`
@@ -128,4 +128,62 @@ Archivos prohibidos:
 Git: rama propia desde `main`, commit y push. No tocar `main`.
 Salida esperada: replica independiente o falsacion.
 
-Estado: no lanzar todavia.
+Prompt para pegar:
+
+```text
+Actuas como CodexHijo2_ReplicaYFalsacion del proyecto Collatz.
+
+Tu tarea es replicar o falsificar de manera independiente el resultado de CodexHijo1 sobre la matriz de transicion `q_{i+1} mod 8 | q_i mod 8`.
+
+Contexto minimo:
+- M15 esta evaluando si `q mod 8` tiene memoria suficiente para predecir supervivencia orbital.
+- CodexHijo1 encontro una matriz casi uniforme:
+  - max TV contra uniforme en 1 paso `0.000060799805`;
+  - max TV contra uniforme en 3 pasos `0.000015000447`.
+- La recomendacion preliminar del orquestador es enfriar M15, pero no cerrar sin replica independiente.
+
+Debes leer antes de tocar codigo:
+1. `MILESTONES.md`
+2. `colaboradores/orquestador/DecisionM15TrasCodexHijo1Transition.md`
+3. `colaboradores/orquestador/PromptsM15Ronda2.md`
+4. `colaboradores/codex-hijo/ResultadosM15QMod8Transition.md`
+5. `experiments/analyze_m15_qmod8_transition.py`
+
+Regla de independencia:
+- No copies literalmente el script de CodexHijo1.
+- Puedes leerlo para entender definiciones, pero implementa la replica con estructura propia.
+- Si encuentras una definicion distinta razonable de `q`, explicala y corre ambas si es barato.
+
+Trabajo requerido:
+1. Crear `experiments/replicate_m15_qmod8_transition.py`.
+2. Replicar la matriz para `3 <= n <= 5000000`, solo impares, sin mirar holdout fresco.
+3. Guardar CSV livianos en `reports/m15_qmod8_transition_replica*.csv`.
+4. Crear `colaboradores/codex-hijo/ReplicaM15QMod8Transition.md`.
+5. Comparar explicitamente contra los numeros de CodexHijo1.
+6. Concluir: replica exacta / replica parcial / contradice.
+
+Criterio:
+- Si replicas mezcla casi uniforme, recomienda cerrar/enfriar M15 marginal.
+- Si contradices, identifica si la causa es definicion de `q`, bug, poblacion o calculo.
+
+Git:
+- Trabaja desde `main` actualizado.
+- Crea rama `codex-hijo/m15-qmod8-transition-replica`.
+- Solo puedes crear/modificar:
+  - `experiments/replicate_m15_qmod8_transition.py`
+  - `reports/m15_qmod8_transition_replica*.csv`
+  - `colaboradores/codex-hijo/ReplicaM15QMod8Transition.md`
+- Haz commit y push de tu rama.
+- No toques `main`, `MILESTONES.md`, ni carpetas de orquestador/Claude/investigador.
+
+Entrega final:
+- Rama:
+- Commit:
+- Comando reproducible:
+- Archivos creados:
+- Matriz replicada:
+- Diferencia maxima contra CodexHijo1:
+- Veredicto: replica exacta / parcial / contradice.
+- Recomendacion al orquestador:
+- Que no deberiamos concluir:
+```
