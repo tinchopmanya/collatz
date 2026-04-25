@@ -1,6 +1,6 @@
 # Collatz
 
-Repositorio de investigacion sobre la conjetura de Collatz.
+Repositorio de investigacion y experimentacion computacional sobre la conjetura de Collatz.
 
 ## Estructura
 
@@ -9,6 +9,7 @@ Repositorio de investigacion sobre la conjetura de Collatz.
 - [Conlusion.md](Conlusion.md): conclusion dinamica vigente.
 - `InvestigacionSobre*.md`: investigaciones largas por ola.
 - `ResumenInvestigacionSobre*.md`: resumen fuerte de cada investigacion.
+- [RoadmapCollatz.md](RoadmapCollatz.md): plan de trabajo para convertir la investigacion en un laboratorio computacional.
 
 ## Flujo recomendado
 
