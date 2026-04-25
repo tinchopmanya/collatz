@@ -75,7 +75,7 @@ Salida esperada:
 
 ## M4 - Residuos y familias anomalas
 
-Estado: en progreso.
+Estado: completado en primera version.
 
 Objetivo: buscar clases modulares que concentren comportamientos extremos.
 

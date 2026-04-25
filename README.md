@@ -47,6 +47,8 @@ Primer patron candidato:
 
 - [records_limit_1000000.md](reports/records_limit_1000000.md)
 - [residue_mod_512_limit_1000000.md](reports/residue_mod_512_limit_1000000.md)
+- [parity_prefix_mod_512_limit_1000000.md](reports/parity_prefix_mod_512_limit_1000000.md)
+- [alternating_prefix_mod_512_limit_1000000.md](reports/alternating_prefix_mod_512_limit_1000000.md)
 
 ## Crear una nueva ola
 
