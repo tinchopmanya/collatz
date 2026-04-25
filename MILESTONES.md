@@ -373,6 +373,14 @@ Decision tras informe web:
 - ClaudeSocioCritico queda desbloqueado para auditar si la pregunta es valida, tautologica o debe reformularse.
 - CodexHijo1 y CodexHijo2 siguen bloqueados hasta decision posterior del orquestador.
 
+Decision tras ClaudeSocioCritico:
+
+- ClaudeSocio aprobo M15 con cambios y marco el riesgo principal: una mejora local en `next_tail` seria tautologica.
+- El siguiente paso no es holdout, sino calcular la matriz de transicion `q_{i+1} mod 8 | q_i mod 8`.
+- Si la matriz mezcla rapido a uniforme, M15 se descarta/enfria sin gastar holdout.
+- Si la matriz muestra memoria modular lenta, se podra disenar un experimento confirmatorio sobre cadenas completas.
+- CodexHijo1 queda desbloqueado para `m15-qmod8-transition`; CodexHijo2 espera para replicar.
+
 ## Prioridad
 
 Orden recomendado:
