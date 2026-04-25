@@ -1,28 +1,43 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-25 01:57:35 -03:00
-Tema activo: Collatz - Cuarta Ola cerrada
+Ultima actualizacion: 2026-04-25 02:12:23 -03:00
+Tema activo: Collatz - Quinta Ola cerrada
 
 ## Conlusion ejecutiva
 
-La cuarta ola convirtio el repo en un laboratorio computacional reproducible. Ya no estamos solo leyendo sobre Collatz: ahora hay codigo, tests, scripts de analisis y reportes.
+La quinta ola convirtio una medicion experimental en un lemma local exacto. Para todo impar positivo `n`, si `s = v2(n + 1)`, entonces la longitud exacta del prefijo alternante inicial bajo el mapa clasico de Collatz es:
 
-El laboratorio reprodujo records hasta `n <= 1000000`: `837799` tiene el mayor tiempo total, `626331` el mayor stopping time y `704511` la mayor altura maxima. Esto confirma que duracion, primer descenso y crecimiento maximo deben analizarse como metricas distintas.
+```text
+2s = 2 * v2(n + 1)
+```
 
-El analisis por residuos modulo `128`, `256` y `512` redetecto la familia `-1 mod 2^k` (`127`, `255`, `511`) como clase de promedio alto para pasos totales y stopping time. La auditoria mostro que esto no es un descubrimiento nuevo: esta alineado con Terras, Klee-Wagon, OEIS A324248 y literatura sobre clases residuales. El aporte propio es reproducirlo, cuantificarlo y conectarlo con paridad y excursion temprana.
+Escribiendo `n = 2^s q - 1`, con `q` impar, se obtiene la forma cerrada:
 
-El hallazgo operativo mas util es que `511 mod 512` tiene casi 20 pasos alternantes promedio y el mayor pico temprano promedio entre las clases comparadas. Eso sugiere el siguiente objetivo: formalizar un lemma pequeno sobre prefijos alternantes para `n == -1 mod 2^k`.
+```text
+C^(2j)(n) = 3^j 2^(s-j) q - 1
+C^(2j+1)(n) = 3^(j+1) 2^(s-j) q - 2
+```
+
+Esto explica por que las clases `127`, `255` y `511` tienen las longitudes alternantes observadas y por que `511 mod 512` promedia casi `20` pasos alternantes. Tambien da el pico temprano exacto del bloque:
+
+```text
+C^(2s-1)(n) = 2(3^s q - 1)
+```
 
 ## Veredicto
 
-No hay prueba de Collatz ni novedad revolucionaria todavia. Si hay un avance metodologico real: una base experimental honesta, actualizada y reproducible que permite separar senales conocidas, mediciones nuevas y posibles lemmas formalizables.
+No se probo Collatz. Pero se logro algo valioso: una observacion experimental ahora tiene formula, prueba, codigo y tests. La parte ya entendida es el bloque alternante. Lo desconocido empieza en la salida:
+
+```text
+C^(2s)(n) = 3^s q - 1
+```
 
 ## Siguiente paso
 
-Abrir una quinta ola teorica-computacional:
+Abrir una sexta ola sobre el mapa de salida:
 
-- formalizar el lemma de prefijo alternante para `2^k - 1`;
-- derivar una cota inferior de excursion temprana;
-- comparar formalmente contra `2^k - 2`;
-- revisar como esto se conecta con Terras, Klee-Wagon y Mersenne tails;
-- decidir si el resultado alcanza para una nota tecnica publicable.
+- estudiar `q -> 3^s q - 1`;
+- medir `v2(3^s q - 1)` para familias de `q`;
+- buscar si hay clases de salida no obvias;
+- comparar contra Mersenne tails y literatura reciente;
+- decidir si aparece una estructura menos conocida que merezca reporte tecnico.

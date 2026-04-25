@@ -3,7 +3,10 @@ from .core import (
     accelerated_step,
     classic_step,
     compute_metrics,
+    mersenne_tail_length,
+    odd_alternating_prefix_len,
     orbit,
+    two_adic_valuation,
 )
 
 __all__ = [
@@ -11,5 +14,8 @@ __all__ = [
     "accelerated_step",
     "classic_step",
     "compute_metrics",
+    "mersenne_tail_length",
+    "odd_alternating_prefix_len",
     "orbit",
+    "two_adic_valuation",
 ]

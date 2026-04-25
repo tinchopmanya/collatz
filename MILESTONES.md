@@ -109,7 +109,7 @@ Salida esperada:
 
 ## M6 - Escalado o cambio de estrategia
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: decidir con evidencia si conviene escalar computo o cambiar de enfoque.
 
@@ -122,6 +122,12 @@ Definition of done:
 Salida esperada:
 
 - Un camino tecnico claro para la siguiente fase.
+
+Decision tomada:
+
+- No escalar computo todavia.
+- Priorizar formalizacion local y estudio del mapa de salida del bloque alternante.
+- Reabrir escalado solo si aparece una pregunta que requiera rangos mayores.
 
 ## Prioridad
 

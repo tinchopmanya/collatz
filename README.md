@@ -14,6 +14,7 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - [AUTONOMIA.md](AUTONOMIA.md): reglas de trabajo autonomo y decisiones que requieren confirmacion.
 - [AuditoriaFuentesCollatz.md](AuditoriaFuentesCollatz.md): primera auditoria de claims y fuentes.
 - [EstadoActualidadYOriginalidadCollatz.md](EstadoActualidadYOriginalidadCollatz.md): verificacion de actualidad y originalidad del patron `-1 mod 2^k`.
+- [FormalizacionPrefijoAlternante.md](FormalizacionPrefijoAlternante.md): lemma local sobre la longitud exacta del prefijo alternante.
 
 ## Flujo recomendado
 

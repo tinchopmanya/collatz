@@ -29,15 +29,17 @@ Cada alta nueva tambien debe:
 | 2026-04-23 06:20:00 -03:00 | Collatz - Segunda Ola (8 subfrentes) | [InvestigacionSobreCollatzSegundaOla.md](InvestigacionSobreCollatzSegundaOla.md) | [ResumenInvestigacionSobreCollatzSegundaOla.md](ResumenInvestigacionSobreCollatzSegundaOla.md) | Segunda ola cerrada |
 | 2026-04-23 06:45:00 -03:00 | Collatz - Tercera Ola (mapa de competencia y propuesta) | [InvestigacionSobreCollatzTerceraOla.md](InvestigacionSobreCollatzTerceraOla.md) | [ResumenInvestigacionSobreCollatzTerceraOla.md](ResumenInvestigacionSobreCollatzTerceraOla.md) | Tercera ola cerrada |
 | 2026-04-25 01:57:35 -03:00 | Collatz - Cuarta Ola (laboratorio computacional y familias residuales) | [InvestigacionSobreCollatzCuartaOla.md](InvestigacionSobreCollatzCuartaOla.md) | [ResumenInvestigacionSobreCollatzCuartaOla.md](ResumenInvestigacionSobreCollatzCuartaOla.md) | Cuarta ola cerrada |
+| 2026-04-25 02:12:23 -03:00 | Collatz - Quinta Ola (formalizacion del prefijo alternante) | [InvestigacionSobreCollatzQuintaOla.md](InvestigacionSobreCollatzQuintaOla.md) | [ResumenInvestigacionSobreCollatzQuintaOla.md](ResumenInvestigacionSobreCollatzQuintaOla.md) | Quinta ola cerrada |
 
 ## Estado actual del repositorio de investigacion
 
-- Hay 4 investigaciones registradas.
+- Hay 5 investigaciones registradas.
 - La conclusion dinamica vigente es [Conlusion.md](Conlusion.md).
 - La primera ola cubrio un panorama amplio del problema de Collatz.
 - La segunda ola profundizo en 8 subfrentes tecnicos.
 - La tercera ola mapeo el ecosistema reciente y posibles rutas, pero varios claims de IA/startups deben tratarse como exploratorios hasta verificacion fuerte.
 - La cuarta ola construyo el primer laboratorio computacional reproducible, reprodujo records hasta `n <= 1000000`, redetecto la familia `-1 mod 2^k` como benchmark conocido y midio paridad/excursion temprana contra controles.
+- La quinta ola formalizo el lemma local: para impar `n`, la longitud exacta del prefijo alternante inicial es `2 * v2(n + 1)`.
 
 ## Siguiente uso esperado
 

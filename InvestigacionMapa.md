@@ -12,6 +12,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 01:57:35 -03:00 | Alta de cuarta ola: laboratorio computacional, records hasta un millon, residuos `-1 mod 2^k`, paridad y excursion temprana | Investigacion: [InvestigacionSobreCollatzCuartaOla.md](InvestigacionSobreCollatzCuartaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzCuartaOla.md](ResumenInvestigacionSobreCollatzCuartaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 02:12:23 -03:00 | Alta de quinta ola: formalizacion del prefijo alternante, formula exacta `2 * v2(n + 1)` y borde de salida `3^s q - 1` | Investigacion: [InvestigacionSobreCollatzQuintaOla.md](InvestigacionSobreCollatzQuintaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzQuintaOla.md](ResumenInvestigacionSobreCollatzQuintaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

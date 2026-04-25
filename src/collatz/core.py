@@ -27,6 +27,31 @@ def _require_positive_integer(n: int) -> None:
         raise ValueError("n must be a positive integer")
 
 
+def two_adic_valuation(n: int) -> int:
+    """Return v2(n), the exponent of the largest power of 2 dividing n."""
+    _require_positive_integer(n)
+
+    exponent = 0
+    current = n
+    while current % 2 == 0:
+        exponent += 1
+        current //= 2
+    return exponent
+
+
+def mersenne_tail_length(n: int) -> int:
+    """Return the length of the trailing run of ones in an odd positive integer."""
+    _require_positive_integer(n)
+    if n % 2 == 0:
+        raise ValueError("n must be odd")
+    return two_adic_valuation(n + 1)
+
+
+def odd_alternating_prefix_len(n: int) -> int:
+    """Return the exact initial odd/even alternating prefix length for odd n."""
+    return 2 * mersenne_tail_length(n)
+
+
 def classic_step(n: int) -> int:
     """Return the standard Collatz step for a positive integer."""
     _require_positive_integer(n)
