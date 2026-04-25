@@ -1,0 +1,11 @@
+classifier,k,modulus,class_count,classes_matching_geometric,classes_deviating_from_geometric,max_abs_diff_fraction,max_abs_diff,max_abs_diff_residue,max_abs_diff_next_tail,max_tail1_diff_fraction,max_tail1_diff,max_tail1_diff_residue,recommendation
+q_mod,2,4,2,2,0,0/1,0.000000000000,1,1,0/1,0.000000000000,1,matches_geometric
+q_mod,3,8,4,0,4,1/3,0.333333333333,1,1,1/3,0.333333333333,1,deviates_theoretically
+q_mod,4,16,8,0,8,13/30,0.433333333333,5,1,-13/30,-0.433333333333,5,deviates_theoretically
+q_mod,5,32,16,0,16,529/1020,0.518627450980,15,2,23/51,0.450980392157,1,deviates_theoretically
+q_mod,6,64,32,0,32,529/1020,0.518627450980,15,2,6319/13107,0.482108796826,1,deviates_theoretically
+n_mod,2,4,2,2,0,0/1,0.000000000000,1,1,0/1,0.000000000000,1,matches_geometric
+n_mod,3,8,4,4,0,0/1,0.000000000000,1,1,0/1,0.000000000000,1,matches_geometric
+n_mod,4,16,8,6,2,1/2,0.500000000000,1,1,1/2,0.500000000000,1,deviates_theoretically
+n_mod,5,32,16,8,8,3/4,0.750000000000,25,2,1/2,0.500000000000,1,deviates_theoretically
+n_mod,6,64,32,10,22,7/8,0.875000000000,9,3,1/2,0.500000000000,1,deviates_theoretically
