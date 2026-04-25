@@ -1,83 +1,73 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-25 09:45:21 -03:00
-Tema activo: Collatz - Undecima Ola cerrada
+Ultima actualizacion: 2026-04-25 10:00:03 -03:00
+Tema activo: Collatz - Duodecima Ola cerrada
 
 ## Preguntas antes de la iteracion
 
 ```text
 Estoy en algo virgen?
-No en el marco general. Bloques de Mersenne, salida r(x), mezcla y clases modulo potencias de 2 ya estan en el ecosistema reciente.
+No en el marco general. Stopping times, modelos probabilisticos, vectores de paridad, bloques de Mersenne y heterogeneidad modular ya estan estudiados.
 
 Puedo descubrir algo con esto?
-Si, pero probablemente como descarte: saber si `exit_v2 = 5` era una causa local o un efecto de seleccion.
+Si, pero como mecanismo experimental: distinguir seleccion global de dependencia aritmetica residual.
 
 Ya alguien estuvo buscando esto?
-Si a nivel de marco. Campbell 2025 ya propone estudiar dinamica residual y mezcla del mapa de bloques.
+Si a nivel amplio. Campbell 2025 y Bonacorsi/Bordoni 2026 trabajan ideas cercanas de bloques, mezcla y estructura modular.
 
 Que tan lejos estoy de descubrir algo?
-Muy lejos de probar Collatz. Cerca de limpiar una pista concreta y evitar sobreinterpretarla.
+Lejos de una prueba. Cerca de aislar una falla concreta del modelo independiente.
 ```
 
 ## Hallazgo principal
 
-La undecima ola comparo dos muestras para `prev_exit_v2 = 5` hasta `n <= 5000000`:
+La duodecima ola comparo cadenas reales hasta `n <= 5000000` contra un modelo geometrico independiente con la misma cantidad de cadenas.
 
-| Fuente | Pares | P siguiente expansion | Diff vs geometrico | Avg next_tail |
-| --- | ---: | ---: | ---: | ---: |
-| `local_all_starts` | 78124 | 0.28628846 | 0.00001396 | 2.00011520 |
-| `chain_before_descent` | 5385 | 0.25979573 | -0.02647877 | 1.92423398 |
+Resultado global:
 
-La senal de la decima ola no es una ley local de `exit_v2 = 5`. En todos los bloques locales, la clase vuelve al modelo geometrico. La diferencia aparece solo en cadenas condicionadas por seguir vivas antes del primer descenso.
+| Posicion | tail=1 real | tail=1 modelo | Diff | IC95 |
+| --- | ---: | ---: | ---: | --- |
+| `only_block` | 0.70054800 | 0.70110213 | -0.00055413 | [-0.00150428, 0.00039602] |
+| `interior_block` | 0.38646876 | 0.38606060 | 0.00040816 | [-0.00085247, 0.00166879] |
+| `final_block` | 0.68311110 | 0.68213098 | 0.00098012 | [-0.00054502, 0.00250526] |
 
-## Congruencia
+El modelo independiente explica casi perfectamente el sesgo global por posicion final/interior.
 
-Para:
+Pero queda un residuo:
 
-```text
-n = 2^s q - 1
-```
-
-se tiene:
-
-```text
-exit_v2 = 5
-<=> v2(3^s q - 1) = 5
-<=> 3^s q = 33 mod 64
-<=> q = 3^(-s) + 32 mod 64
-```
-
-Esto fija una clase residual, pero no fuerza por si sola menor expansion siguiente.
+| Condicion | tail=1 real | tail=1 modelo | Diff tail=1 | IC95 | Exp real | Exp modelo | Diff exp |
+| --- | ---: | ---: | ---: | --- | ---: | ---: | ---: |
+| `prev_exit_v2 = 5` + interior | 0.45271454 | 0.40614137 | 0.04657317 | [0.02320157, 0.06994477] | 0.40834793 | 0.44814600 | -0.03979807 |
 
 ## Preguntas despues de la iteracion
 
 ```text
 La originalidad cambio?
-Si, a la baja para esta pista. `exit_v2 = 5` no parece ser un mecanismo local nuevo.
+Si. El sesgo global no es una novedad; el residuo interior condicionado por `prev_exit_v2 = 5` es la parte interesante.
 
 La probabilidad de relevancia subio?
-Bajo para una nota sobre `exit_v2 = 5`; subio para estudiar sesgo de supervivencia orbital.
+Subio un poco: no todo se explico por bloques finales/interiores.
 
 Senal robusta o seleccion?
-Seleccion. La senal es real en cadenas antes del primer descenso, pero desaparece en la muestra local.
+Ambas. La seleccion global queda explicada por el modelo, pero queda una senal residual localizada.
 
 Que aprendimos?
-El modelo local estatico funciona muy bien. La brecha esta en como las orbitas largas seleccionan transiciones.
+La falla del modelo independiente no esta en la supervivencia global, sino en dependencias condicionadas mas finas.
 
 Seguir o abandonar?
-Abandonar `exit_v2 = 5` como lemma local candidato. Seguir con M13: sesgo de supervivencia orbital.
+Seguir, pero quirurgicamente: descomponer solo `prev_exit_v2 = 5` + interior por residuos, profundidad y margen.
 ```
 
 ## Siguiente paso
 
-Abrir M13:
+Abrir M14:
 
 ```text
-medir como cambia next_tail segun profundidad, duracion y supervivencia antes del primer descenso.
+Analizar `prev_exit_v2 = 5` + `interior_block` por clases residuales y margen.
 ```
 
-La pregunta nueva no es "que clase local es especial?", sino:
+La pregunta minima:
 
 ```text
-que filtro orbital hace que las cadenas largas no vean las transiciones locales como una muestra uniforme?
+que variable explica el exceso de next_tail = 1 en esa subpoblacion?
 ```

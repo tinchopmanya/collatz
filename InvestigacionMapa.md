@@ -26,6 +26,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 09:45:21 -03:00 | Alta de undecima ola: congruencia de `exit_v2 = 5`, comparacion local vs cadenas sobrevivientes y descarte de mecanismo local | Investigacion: [InvestigacionSobreCollatzUndecimaOla.md](InvestigacionSobreCollatzUndecimaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzUndecimaOla.md](ResumenInvestigacionSobreCollatzUndecimaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 10:00:03 -03:00 | Alta de duodecima ola: sesgo de supervivencia orbital, comparacion real/modelo por posicion, profundidad, margen y residuo `prev_exit_v2 = 5` interior | Investigacion: [InvestigacionSobreCollatzDuodecimaOla.md](InvestigacionSobreCollatzDuodecimaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzDuodecimaOla.md](ResumenInvestigacionSobreCollatzDuodecimaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

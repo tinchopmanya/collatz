@@ -36,10 +36,11 @@ Cada alta nueva tambien debe:
 | 2026-04-25 02:45:03 -03:00 | Collatz - Novena Ola (anti-persistencia entre bloques) | [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md) | [ResumenInvestigacionSobreCollatzNovenaOla.md](ResumenInvestigacionSobreCollatzNovenaOla.md) | Novena ola cerrada |
 | 2026-04-25 09:31:26 -03:00 | Collatz - Decima Ola (salidas con alta valuacion 2-adica) | [InvestigacionSobreCollatzDecimaOla.md](InvestigacionSobreCollatzDecimaOla.md) | [ResumenInvestigacionSobreCollatzDecimaOla.md](ResumenInvestigacionSobreCollatzDecimaOla.md) | Decima ola cerrada |
 | 2026-04-25 09:45:21 -03:00 | Collatz - Undecima Ola (seleccion de muestra en `exit_v2 = 5`) | [InvestigacionSobreCollatzUndecimaOla.md](InvestigacionSobreCollatzUndecimaOla.md) | [ResumenInvestigacionSobreCollatzUndecimaOla.md](ResumenInvestigacionSobreCollatzUndecimaOla.md) | Undecima ola cerrada |
+| 2026-04-25 10:00:03 -03:00 | Collatz - Duodecima Ola (sesgo de supervivencia orbital) | [InvestigacionSobreCollatzDuodecimaOla.md](InvestigacionSobreCollatzDuodecimaOla.md) | [ResumenInvestigacionSobreCollatzDuodecimaOla.md](ResumenInvestigacionSobreCollatzDuodecimaOla.md) | Duodecima ola cerrada |
 
 ## Estado actual del repositorio de investigacion
 
-- Hay 11 investigaciones registradas.
+- Hay 12 investigaciones registradas.
 - La conclusion dinamica vigente es [Conlusion.md](Conlusion.md).
 - La primera ola cubrio un panorama amplio del problema de Collatz.
 - La segunda ola profundizo en 8 subfrentes tecnicos.
@@ -52,6 +53,7 @@ Cada alta nueva tambien debe:
 - La novena ola no encontro anti-persistencia simple despues de bloques expansivos, pero detecto una posible senal condicionada por `exit_v2 >= 5`.
 - La decima ola escalo esa senal a `n <= 5000000`: `exit_v2 = 5` persiste como candidato, pero exige explicacion modular.
 - La undecima ola descarto `exit_v2 = 5` como mecanismo local: la senal aparece por seleccion de cadenas antes del primer descenso, no por la transicion local de todos los bloques.
+- La duodecima ola mostro que el modelo independiente explica la supervivencia global, pero queda una dependencia residual despues de `prev_exit_v2 = 5` en bloques interiores.
 
 ## Siguiente uso esperado
 

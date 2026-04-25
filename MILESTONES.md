@@ -275,7 +275,7 @@ Decision tomada:
 
 ## M13 - Sesgo de supervivencia orbital
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: explicar por que las cadenas que sobreviven antes del primer descenso no muestrean uniformemente las transiciones locales.
 
@@ -290,6 +290,33 @@ Definition of done:
 Salida esperada:
 
 - Un modelo de seleccion orbital que explique por que los extremos reales son menos frecuentes que en el modelo independiente.
+
+Decision tomada:
+
+- El modelo independiente explica casi perfectamente el sesgo global por posicion final/interior.
+- Bloques finales: `tail=1` real `0.68311110` vs modelo `0.68213098`.
+- Bloques interiores: `tail=1` real `0.38646876` vs modelo `0.38606060`.
+- Sin embargo, queda un residuo localizado en `prev_exit_v2 = 5` seguido de bloque interior: `tail=1` real `0.45271454` vs modelo `0.40614137`, con IC95 de la diferencia `[0.02320157, 0.06994477]`.
+- La siguiente linea debe descomponer esa condicion por residuos/margen/profundidad.
+
+## M14 - Residuo interior despues de `prev_exit_v2 = 5`
+
+Estado: pendiente.
+
+Objetivo: explicar la dependencia fina que queda despues de `prev_exit_v2 = 5` en bloques interiores.
+
+Definition of done:
+
+- Filtrar transiciones `prev_exit_v2 = 5` + `interior_block`.
+- Separar por margen logaritmico antes del bloque.
+- Separar por profundidad.
+- Separar por residuos de `q` y del siguiente impar modulo potencias de 2.
+- Comparar real/modelo con intervalos.
+- Decidir si la senal tiene causa modular o si es una mezcla de subpoblaciones.
+
+Salida esperada:
+
+- Confirmar una causa modular concreta o descartar el residuo como mezcla condicionada.
 
 ## Prioridad
 
@@ -309,6 +336,7 @@ Orden recomendado:
 12. M11 - Salidas con alta valuacion 2-adica.
 13. M12 - Congruencia de `exit_v2 = 5`.
 14. M13 - Sesgo de supervivencia orbital.
+15. M14 - Residuo interior despues de `prev_exit_v2 = 5`.
 
 ## Criterio de avance
 

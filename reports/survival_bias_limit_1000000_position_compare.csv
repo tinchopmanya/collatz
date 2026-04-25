@@ -1,0 +1,5 @@
+bucket,real_count,model_count,real_tail_one_fraction,model_tail_one_fraction,tail_one_diff_real_minus_model,tail_one_diff_se,tail_one_diff_ci95_low,tail_one_diff_ci95_high,tail_one_diff_z,real_expansive_fraction,model_expansive_fraction,expansive_diff_real_minus_model,expansive_diff_se,expansive_diff_ci95_low,expansive_diff_ci95_high,expansive_diff_z,real_avg_tail,model_avg_tail,avg_tail_diff_real_minus_model
+final_block,143134,143111,0.68285662,0.68121249,0.00164414,0.0017408187,-0.00176787,0.00505614,0.944463,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.47820224,1.48145146,-0.00324922
+first_block,143134,143111,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,3.29343133,3.29823005,-0.00479872
+interior_block,227942,229951,0.3869537,0.38653017,0.00042352,0.0014394103,-0.00239772,0.00324477,0.294235,0.46346439,0.46414236,-0.00067797,0.001473944,-0.0035669,0.00221096,-0.45997,2.32441147,2.32218603,0.00222544
+only_block,356865,356888,0.70054222,0.70060075,-5.853e-05,0.0010842485,-0.00218365,0.0020666,-0.053979,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.48120438,1.47994329,0.00126109
