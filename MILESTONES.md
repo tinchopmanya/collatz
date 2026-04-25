@@ -357,6 +357,14 @@ Decision de diseno:
 - Primera tarea delegada: Codex hijo debe analizar `P(next_tail | n mod 2^K)` o equivalente para `K <= 6` en rama `codex-hijo/m15-algebra`.
 - No se corre holdout hasta que la hipotesis quede pre-registrada.
 
+Decision tras algebra:
+
+- Codex hijo 1 calculo y Codex hijo 2 replico que `q mod 4` coincide con la geometrica, pero `q mod 8` predice `next_tail` clase por clase.
+- Predicciones: `q=1 mod 8 -> P(next_tail=1)=5/6`, `q=3 -> 2/3`, `q=5 -> 1/6`, `q=7 -> 1/3`.
+- Claude verifico que la algebra es correcta y esperable desde dinamica 2-adica.
+- No se testea esta identidad en holdout.
+- H1 se reformula como comparacion de modelos: el modelo modular `q mod 8` debe mejorar la prediccion de supervivencia orbital frente al modelo geometrico independiente.
+
 ## Prioridad
 
 Orden recomendado:
