@@ -14,6 +14,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 02:12:23 -03:00 | Alta de quinta ola: formalizacion del prefijo alternante, formula exacta `2 * v2(n + 1)` y borde de salida `3^s q - 1` | Investigacion: [InvestigacionSobreCollatzQuintaOla.md](InvestigacionSobreCollatzQuintaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzQuintaOla.md](ResumenInvestigacionSobreCollatzQuintaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 02:24:36 -03:00 | Alta de sexta ola: mapa de salida del bloque alternante, distribucion de `v2(3^s q - 1)` y siguiente impar odd-to-odd | Investigacion: [InvestigacionSobreCollatzSextaOla.md](InvestigacionSobreCollatzSextaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzSextaOla.md](ResumenInvestigacionSobreCollatzSextaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

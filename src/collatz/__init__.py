@@ -1,6 +1,8 @@
 from .core import (
+    AlternatingBlock,
     CollatzMetrics,
     accelerated_step,
+    alternating_block,
     classic_step,
     compute_metrics,
     mersenne_tail_length,
@@ -10,8 +12,10 @@ from .core import (
 )
 
 __all__ = [
+    "AlternatingBlock",
     "CollatzMetrics",
     "accelerated_step",
+    "alternating_block",
     "classic_step",
     "compute_metrics",
     "mersenne_tail_length",

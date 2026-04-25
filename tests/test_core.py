@@ -8,6 +8,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from collatz import (  # noqa: E402
     accelerated_step,
+    alternating_block,
     classic_step,
     compute_metrics,
     mersenne_tail_length,
@@ -28,6 +29,15 @@ def measured_alternating_prefix_len(n: int, max_len: int = 256) -> int:
         current = classic_step(current)
         expected = 1 - expected
     return length
+
+
+def iterate_exactly(n: int, steps: int) -> list[int]:
+    values = [n]
+    current = n
+    for _ in range(steps):
+        current = classic_step(current)
+        values.append(current)
+    return values
 
 
 class CollatzCoreTests(unittest.TestCase):
@@ -85,6 +95,31 @@ class CollatzCoreTests(unittest.TestCase):
                 msg=f"n={n}",
             )
 
+    def test_alternating_block_known_values(self) -> None:
+        seven = alternating_block(7)
+        self.assertEqual(seven.tail_length, 3)
+        self.assertEqual(seven.odd_factor, 1)
+        self.assertEqual(seven.alternating_length, 6)
+        self.assertEqual(seven.exit_even, 26)
+        self.assertEqual(seven.exit_v2, 1)
+        self.assertEqual(seven.next_odd, 13)
+        self.assertEqual(seven.block_peak, 52)
+        self.assertEqual(seven.block_steps_to_next_odd, 7)
+
+        three = alternating_block(3)
+        self.assertEqual(three.tail_length, 2)
+        self.assertEqual(three.exit_even, 8)
+        self.assertEqual(three.exit_v2, 3)
+        self.assertEqual(three.next_odd, 1)
+
+    def test_alternating_block_matches_iteration(self) -> None:
+        for n in range(1, 2_000, 2):
+            block = alternating_block(n)
+            values = iterate_exactly(n, block.block_steps_to_next_odd)
+            self.assertEqual(values[2 * block.tail_length], block.exit_even)
+            self.assertEqual(values[-1], block.next_odd)
+            self.assertEqual(max(values[: 2 * block.tail_length + 1]), block.block_peak)
+
     def test_rejects_invalid_inputs(self) -> None:
         for value in (0, -1):
             with self.assertRaises(ValueError):
@@ -97,6 +132,9 @@ class CollatzCoreTests(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             mersenne_tail_length(2)
+
+        with self.assertRaises(ValueError):
+            alternating_block(2)
 
 
 if __name__ == "__main__":

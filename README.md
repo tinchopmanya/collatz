@@ -15,6 +15,7 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - [AuditoriaFuentesCollatz.md](AuditoriaFuentesCollatz.md): primera auditoria de claims y fuentes.
 - [EstadoActualidadYOriginalidadCollatz.md](EstadoActualidadYOriginalidadCollatz.md): verificacion de actualidad y originalidad del patron `-1 mod 2^k`.
 - [FormalizacionPrefijoAlternante.md](FormalizacionPrefijoAlternante.md): lemma local sobre la longitud exacta del prefijo alternante.
+- [InvestigacionSobreCollatzSextaOla.md](InvestigacionSobreCollatzSextaOla.md): mapa de salida del bloque alternante y siguiente impar.
 
 ## Flujo recomendado
 
@@ -50,6 +51,13 @@ Primer patron candidato:
 - [residue_mod_512_limit_1000000.md](reports/residue_mod_512_limit_1000000.md)
 - [parity_prefix_mod_512_limit_1000000.md](reports/parity_prefix_mod_512_limit_1000000.md)
 - [alternating_prefix_mod_512_limit_1000000.md](reports/alternating_prefix_mod_512_limit_1000000.md)
+- [exit_map_limit_1000000.md](reports/exit_map_limit_1000000.md)
+
+Analizar la salida del bloque alternante:
+
+```powershell
+python experiments\analyze_exit_map.py --limit 1000000 --out-dir reports --prefix exit_map_limit_1000000
+```
 
 ## Crear una nueva ola
 

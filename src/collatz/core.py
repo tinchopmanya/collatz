@@ -20,6 +20,19 @@ class CollatzMetrics:
     terminal_value: int
 
 
+@dataclass(frozen=True)
+class AlternatingBlock:
+    n: int
+    tail_length: int
+    odd_factor: int
+    alternating_length: int
+    exit_even: int
+    exit_v2: int
+    next_odd: int
+    block_peak: int
+    block_steps_to_next_odd: int
+
+
 def _require_positive_integer(n: int) -> None:
     if not isinstance(n, int):
         raise TypeError("n must be an integer")
@@ -50,6 +63,32 @@ def mersenne_tail_length(n: int) -> int:
 def odd_alternating_prefix_len(n: int) -> int:
     """Return the exact initial odd/even alternating prefix length for odd n."""
     return 2 * mersenne_tail_length(n)
+
+
+def alternating_block(n: int) -> AlternatingBlock:
+    """Return the exact first alternating block decomposition for odd n."""
+    _require_positive_integer(n)
+    if n % 2 == 0:
+        raise ValueError("n must be odd")
+
+    tail_length = mersenne_tail_length(n)
+    odd_factor = (n + 1) >> tail_length
+    exit_even = (3**tail_length) * odd_factor - 1
+    exit_v2 = two_adic_valuation(exit_even)
+    next_odd = exit_even >> exit_v2
+    block_peak = 2 * exit_even
+
+    return AlternatingBlock(
+        n=n,
+        tail_length=tail_length,
+        odd_factor=odd_factor,
+        alternating_length=2 * tail_length,
+        exit_even=exit_even,
+        exit_v2=exit_v2,
+        next_odd=next_odd,
+        block_peak=block_peak,
+        block_steps_to_next_odd=2 * tail_length + exit_v2,
+    )
 
 
 def classic_step(n: int) -> int:

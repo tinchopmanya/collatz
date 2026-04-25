@@ -1,43 +1,67 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-25 02:12:23 -03:00
-Tema activo: Collatz - Quinta Ola cerrada
+Ultima actualizacion: 2026-04-25 02:24:36 -03:00
+Tema activo: Collatz - Sexta Ola cerrada
 
 ## Conlusion ejecutiva
 
-La quinta ola convirtio una medicion experimental en un lemma local exacto. Para todo impar positivo `n`, si `s = v2(n + 1)`, entonces la longitud exacta del prefijo alternante inicial bajo el mapa clasico de Collatz es:
+La sexta ola avanzo desde el prefijo alternante hacia su salida. Si `n` es impar y:
 
 ```text
-2s = 2 * v2(n + 1)
+n = 2^s q - 1
+s = v2(n + 1)
+q impar
 ```
 
-Escribiendo `n = 2^s q - 1`, con `q` impar, se obtiene la forma cerrada:
-
-```text
-C^(2j)(n) = 3^j 2^(s-j) q - 1
-C^(2j+1)(n) = 3^(j+1) 2^(s-j) q - 2
-```
-
-Esto explica por que las clases `127`, `255` y `511` tienen las longitudes alternantes observadas y por que `511 mod 512` promedia casi `20` pasos alternantes. Tambien da el pico temprano exacto del bloque:
-
-```text
-C^(2s-1)(n) = 2(3^s q - 1)
-```
-
-## Veredicto
-
-No se probo Collatz. Pero se logro algo valioso: una observacion experimental ahora tiene formula, prueba, codigo y tests. La parte ya entendida es el bloque alternante. Lo desconocido empieza en la salida:
+entonces la quinta ola habia mostrado que el bloque alternante termina en:
 
 ```text
 C^(2s)(n) = 3^s q - 1
 ```
 
+Ahora medimos y formalizamos el paso siguiente:
+
+```text
+r = v2(3^s q - 1)
+m = (3^s q - 1) / 2^r
+```
+
+donde `m` es el siguiente impar despues del bloque.
+
+## Hallazgo principal
+
+Hasta `n <= 1000000`, la distribucion de `r` fue casi exactamente geometrica:
+
+```text
+P(r = k) ~= 2^-k
+E[r] ~= 2
+```
+
+Esto tiene explicacion 2-adica: para `s` fijo, `3^s` es invertible modulo potencias de `2`, asi que la condicion `3^s q == 1 mod 2^k` selecciona una clase residual entre los `q` impares.
+
+La consecuencia dinamica es:
+
+```text
+E[m/n | s] ~= (3/2)^s / 3
+```
+
+Es decir: una cola larga de unos genera expansion local fuerte, y la division de salida normalmente no alcanza para cancelarla.
+
+## Veredicto
+
+No se probo Collatz. El avance es mecanico y local:
+
+- sabemos por que las colas largas expanden;
+- sabemos como se distribuye la division de salida;
+- observamos que la siguiente cola `v2(m + 1)` vuelve a promedio cercano a `2`;
+- el sistema parece mezclar despues de cada expansion local, pero eso todavia debe medirse por cadenas.
+
 ## Siguiente paso
 
-Abrir una sexta ola sobre el mapa de salida:
+Abrir una septima ola sobre la dinamica odd-to-odd:
 
-- estudiar `q -> 3^s q - 1`;
-- medir `v2(3^s q - 1)` para familias de `q`;
-- buscar si hay clases de salida no obvias;
-- comparar contra Mersenne tails y literatura reciente;
-- decidir si aparece una estructura menos conocida que merezca reporte tecnico.
+```text
+n_i -> n_{i+1}
+```
+
+y medir correlaciones entre colas consecutivas, productos locales, bloques expansivos encadenados y diferencias contra un modelo geometrico independiente.

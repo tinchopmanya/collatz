@@ -129,6 +129,47 @@ Decision tomada:
 - Priorizar formalizacion local y estudio del mapa de salida del bloque alternante.
 - Reabrir escalado solo si aparece una pregunta que requiera rangos mayores.
 
+## M7 - Mapa de salida del bloque alternante
+
+Estado: completado en primera version.
+
+Objetivo: entender que ocurre despues del prefijo alternante formalizado.
+
+Definition of done:
+
+- Representar el bloque alternante como una estructura calculable.
+- Medir `r = v2(3^s q - 1)` para impares hasta `n <= 1000000`.
+- Medir el siguiente impar `m = (3^s q - 1) / 2^r`.
+- Comparar la distribucion de `r` contra una geometrica `P(r = k) = 2^-k`.
+- Generar reporte tecnico y sexta ola.
+
+Salida esperada:
+
+- Un modelo local de expansion y salida que habilite estudiar cadenas odd-to-odd.
+
+Decision tomada:
+
+- No escalar por fuerza bruta todavia.
+- Pasar a modelar secuencias de bloques y correlaciones entre colas consecutivas.
+
+## M8 - Cadena odd-to-odd y correlaciones
+
+Estado: pendiente.
+
+Objetivo: estudiar si la salida de un bloque realmente "resetea" la cola binaria o si hay sesgos aprovechables.
+
+Definition of done:
+
+- Implementar iterador odd-to-odd basado en `alternating_block`.
+- Medir correlacion entre `s_i = v2(n_i + 1)` y `s_{i+1}`.
+- Medir productos locales `n_{i+1}/n_i`.
+- Buscar numeros con varias expansiones consecutivas antes del primer descenso.
+- Comparar contra un modelo independiente con colas geometricas.
+
+Salida esperada:
+
+- Evidencia para decidir si hay una estructura menos conocida que merezca reporte tecnico formal.
+
 ## Prioridad
 
 Orden recomendado:
@@ -140,6 +181,8 @@ Orden recomendado:
 5. M4 - Residuos y familias anomalas.
 6. M5 - Reporte de cuarta ola.
 7. M6 - Escalado o cambio de estrategia.
+8. M7 - Mapa de salida del bloque alternante.
+9. M8 - Cadena odd-to-odd y correlaciones.
 
 ## Criterio de avance
 
