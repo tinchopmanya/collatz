@@ -303,20 +303,21 @@ Decision tomada:
 
 Estado: pendiente.
 
-Objetivo: explicar la dependencia fina que queda despues de `prev_exit_v2 = 5` en bloques interiores.
+Objetivo: confirmar o destruir la dependencia fina que queda despues de `prev_exit_v2 = 5` en bloques interiores antes de seguir descomponiendola.
 
 Definition of done:
 
-- Filtrar transiciones `prev_exit_v2 = 5` + `interior_block`.
-- Separar por margen logaritmico antes del bloque.
-- Separar por profundidad.
-- Separar por residuos de `q` y del siguiente impar modulo potencias de 2.
-- Comparar real/modelo con intervalos.
-- Decidir si la senal tiene causa modular o si es una mezcla de subpoblaciones.
+- Registrar que la senal actual es exploratoria y post-hoc.
+- Contar subgrupos/metricas testeadas en M13 y en la descomposicion inicial del Codex hijo.
+- Aplicar correccion conservadora por comparaciones multiples.
+- Hacer permutation test o bootstrap robusto para `prev_exit_v2 = 5` + `interior_block`.
+- Revisar si existe explicacion algebraica directa de la relacion entre `prev_exit_v2 = 5` y `next_tail = 1`.
+- Solo si sobrevive, separar por margen, profundidad y residuos de `q` modulo potencias de 2.
+- Decidir si la senal pasa a confirmada, queda como exploratoria o se descarta.
 
 Salida esperada:
 
-- Confirmar una causa modular concreta o descartar el residuo como mezcla condicionada.
+- Confirmar robustez estadistica/algebraica del residuo o descartarlo como ruido post-hoc/mezcla condicionada.
 
 ## Prioridad
 

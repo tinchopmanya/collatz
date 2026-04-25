@@ -1,6 +1,6 @@
 # Forma de trabajo multiagente para Collatz
 
-Estado: propuesta v0.1, pendiente de revision de Claude
+Estado: v1.0, revisado despues de respuesta de Claude
 Fecha: 2026-04-25
 Repo: `collatz`
 
@@ -25,6 +25,8 @@ Codex actua como orquestador tecnico y custodio de `main`. Claude actua como rev
 5. `main` solo recibe trabajos cerrados, verificados y explicados.
 6. Los agentes no pisan archivos centrales sin coordinacion.
 7. La literatura externa se revisa antes de vender una idea como nueva.
+8. Las olas exploratorias y confirmatorias se separan cuando hay muchas comparaciones.
+9. Todo candidato post-hoc necesita una prueba de destruccion antes de convertirse en milestone fuerte.
 
 ## Roles
 
@@ -70,6 +72,7 @@ Rol recomendado: critico externo y estratega de investigacion.
 Responsabilidades:
 
 - Revisar si el protocolo multiagente es razonable.
+- Auditar rigor estadistico: comparaciones multiples, tamanio de muestra, correlacion intra-cadena y seleccion post-hoc.
 - Detectar sesgos, saltos logicos o sobreinterpretaciones.
 - Buscar si una idea ya existe en papers o preprints.
 - Proponer hipotesis alternativas.
@@ -206,6 +209,44 @@ Despues se actualizan:
 - reporte largo en `reports/`
 - resumen fuerte de la ola
 
+## Olas exploratorias y confirmatorias
+
+Una ola es exploratoria cuando:
+
+- busca senales en muchos subgrupos;
+- prueba varias particiones;
+- elige una celda despues de mirar los datos;
+- usa el mismo dataset para generar la hipotesis.
+
+Una ola es confirmatoria cuando:
+
+- pre-registra una hipotesis antes de correr el test;
+- define exito y abandono numericamente;
+- controla comparaciones multiples;
+- usa muestra independiente, permutation test o bootstrap/cluster robust;
+- no cambia la hipotesis durante el analisis.
+
+Regla:
+
+```text
+Una senal exploratoria no se integra como hallazgo fuerte hasta sobrevivir una ola confirmatoria.
+```
+
+## Prueba de destruccion
+
+Antes de escalar o formalizar una senal favorita, debe intentarse destruirla.
+
+Pruebas minimas:
+
+- comparar contra hipotesis nula agresiva;
+- contar subgrupos testeados;
+- aplicar correccion por comparaciones multiples;
+- revisar si hay correlacion intra-cadena;
+- buscar explicacion algebraica trivial;
+- buscar explicacion por mezcla de subpoblaciones.
+
+Si una senal no sobrevive, se documenta como descarte limpio.
+
 ## Protocolo para aportes de Claude
 
 Claude debe responder en:
@@ -300,6 +341,7 @@ Un aporte se integra si cumple al menos uno:
 - mejora reproducibilidad;
 - descarta una hipotesis;
 - encuentra una senal con control razonable;
+- confirma una senal exploratoria con correccion por comparaciones multiples o test pre-registrado;
 - mejora el protocolo;
 - conecta con literatura de forma verificable;
 - reduce riesgo de sobreinterpretacion.
@@ -310,6 +352,8 @@ Un aporte no se integra si:
 - no tiene comando reproducible;
 - duplica trabajo existente;
 - afirma novedad sin busqueda;
+- confirma una hipotesis con el mismo dataset que la genero sin advertirlo;
+- ignora comparaciones multiples cuando se exploraron muchos subgrupos;
 - mezcla demasiadas hipotesis;
 - modifica archivos centrales sin permiso.
 
@@ -330,6 +374,31 @@ Nivel 6: prueba formal revisada
 Por defecto, nuestras senales actuales estan en Nivel 2 o 3.
 
 Nada se llama "avance revolucionario" antes de Nivel 5, y nada se llama "demostracion" antes de Nivel 6.
+
+## Comparaciones multiples
+
+Todo reporte que busque senales en subgrupos debe incluir:
+
+```text
+Numero de subgrupos testeados:
+Numero de metricas testeadas:
+Correccion aplicada:
+P-valor crudo si corresponde:
+P-valor ajustado si corresponde:
+```
+
+Bonferroni es aceptable como criterio conservador inicial. Benjamini-Hochberg puede agregarse para exploracion, pero no reemplaza el criterio conservador cuando se decide avanzar de milestone.
+
+## Correlacion intra-cadena
+
+Las transiciones dentro de una misma orbita no deben tratarse automaticamente como independientes.
+
+Cuando una senal depende de muchas transiciones por cadena, se debe usar al menos uno:
+
+- permutation test a nivel de cadena;
+- bootstrap por cadena;
+- error estandar cluster-robust;
+- validacion en muestra independiente.
 
 ## Estado actual de la investigacion
 
@@ -368,12 +437,20 @@ Variables candidatas:
 
 ## Decision pendiente
 
-Este protocolo queda como propuesta hasta que Claude responda.
-
-Despues de la respuesta de Claude, Codex orquestador debe crear una version:
+Claude respondio en:
 
 ```text
-FormaDeTrabajoMultiagente.md v1.0
+colaboradores/revisor-claude/RespuestaFormaDeTrabajoMultiagente.md
 ```
 
-con cambios aceptados y registro de decisiones.
+Decision de Codex orquestador:
+
+```text
+Aceptar los cambios metodologicos principales: olas exploratorias vs confirmatorias, prueba de destruccion, comparaciones multiples y cautela por correlacion intra-cadena.
+```
+
+Registro especifico para M14:
+
+```text
+colaboradores/orquestador/DecisionM14TrasRevisionClaudeYCodexHijo.md
+```
