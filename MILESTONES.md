@@ -92,7 +92,7 @@ Salida esperada:
 
 ## M5 - Reporte de cuarta ola
 
-Estado: pendiente.
+Estado: completado.
 
 Objetivo: cerrar un ciclo de investigacion con resultados propios.
 
