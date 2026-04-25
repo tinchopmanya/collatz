@@ -168,6 +168,14 @@ Reglas de integracion:
 - Los datasets grandes no se versionan.
 - Los reportes livianos y scripts si se versionan.
 
+Regla practica:
+
+- El orquestador gestiona `main`.
+- Los hijos gestionan su propia rama, commit y push.
+- Si una tarea es solo conversacional y no modifica archivos, no necesita rama.
+- Si una tarea produce un informe que debe quedar en el repo, debe usar rama propia.
+- Si un hijo no sabe si debe commitear, debe escribir el archivo, mostrar `git status` y esperar instrucciones del usuario/orquestador.
+
 Plantilla minima de entrega:
 
 ```text
@@ -181,6 +189,29 @@ Que no se debe concluir:
 Riesgos o dudas:
 Siguiente paso recomendado:
 ```
+
+Formato obligatorio al entregar prompts:
+
+```text
+Agente:
+Objetivo:
+Bloqueante: si/no
+Puede empezar ahora: si/no
+Depende de:
+Desbloquea a:
+Rama sugerida:
+Archivos permitidos:
+Archivos prohibidos:
+Git:
+Salida esperada:
+```
+
+Definiciones:
+
+- `Bloqueante: si` significa que el orquestador no debe tomar la siguiente decision cientifica hasta leer esa salida.
+- `Bloqueante: no` significa que puede correr en paralelo sin frenar la decision actual.
+- `Puede empezar ahora: no` significa que el usuario no deberia lanzar ese hilo todavia.
+- `Desbloquea a` indica que otros agentes esperan ese resultado.
 
 Archivos de plantilla disponibles:
 
