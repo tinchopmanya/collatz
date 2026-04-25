@@ -28,6 +28,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 10:00:03 -03:00 | Alta de duodecima ola: sesgo de supervivencia orbital, comparacion real/modelo por posicion, profundidad, margen y residuo `prev_exit_v2 = 5` interior | Investigacion: [InvestigacionSobreCollatzDuodecimaOla.md](InvestigacionSobreCollatzDuodecimaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzDuodecimaOla.md](ResumenInvestigacionSobreCollatzDuodecimaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 10:57:05 -03:00 | Alta de decimotercera ola: prueba de destruccion M14, Bonferroni, permutacion/bootstrap por cadena y holdout independiente que descarta el residuo `prev_exit_v2 = 5` interior | Investigacion: [InvestigacionSobreCollatzDecimoterceraOla.md](InvestigacionSobreCollatzDecimoterceraOla.md) | Resumen: [ResumenInvestigacionSobreCollatzDecimoterceraOla.md](ResumenInvestigacionSobreCollatzDecimoterceraOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

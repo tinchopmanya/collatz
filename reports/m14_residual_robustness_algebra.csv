@@ -1,0 +1,7 @@
+modulus_power,modulus,s_period_used,classes_with_prev_exit,tail_one_classes,tail_one_fraction
+7,128,32,64,32,0.5
+8,256,64,256,128,0.5
+9,512,128,1024,512,0.5
+10,1024,256,4096,2048,0.5
+11,2048,512,16384,8192,0.5
+12,4096,1024,65536,32768,0.5

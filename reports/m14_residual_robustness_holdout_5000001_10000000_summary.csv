@@ -1,0 +1,23 @@
+metric,value,note
+start,5000001,first odd start is adjusted upward if needed
+limit,10000000,odd starts up to limit
+samples,2500000,independent model chains
+target_condition,prev_exit_v2=5; current position=interior_block,post-hoc candidate from M13
+real_target_count,3321,target transitions
+model_target_count,3452,target transitions
+real_tail_one_fraction,0.4155374887,target transitions
+model_tail_one_fraction,0.4061413673,target transitions
+diff_real_minus_model,0.0093961214,tail_one fraction difference
+normal_z,0.78574257,two-proportion normal approximation
+normal_two_sided_p,0.432018320093,unadjusted p-value
+m13_metric_tests,148,rows in M13 compare CSVs times two metrics
+extra_exploratory_tests,546,default is bucket count from codex-hijo/m14-residuos summary
+total_tests_conservative,694,M13 tests plus extra exploratory tests
+bonferroni_m13_p,1,normal p times M13 metric tests
+bonferroni_conservative_p,1,normal p times M13 plus extra exploratory tests
+source_chain_permutation_p,0.425057494251,permutes real/model labels among target-containing chains
+bootstrap_diff_ci95_low,-0.0142306975,cluster bootstrap over target-containing chains
+bootstrap_diff_ci95_high,0.0327249523,cluster bootstrap over target-containing chains
+real_internal_hypergeom_upper_p,0.000248151228798,P(X>=observed) among real interior transitions
+real_internal_hypergeom_two_sided_p,0.000496302457597,tests whether target is special inside real interior transitions
+algebra_local_tail_one_fraction_mod_128,0.5,unconditional local congruence prediction

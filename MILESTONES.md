@@ -301,7 +301,7 @@ Decision tomada:
 
 ## M14 - Residuo interior despues de `prev_exit_v2 = 5`
 
-Estado: pendiente.
+Estado: completado como descarte.
 
 Objetivo: confirmar o destruir la dependencia fina que queda despues de `prev_exit_v2 = 5` en bloques interiores antes de seguir descomponiendola.
 
@@ -318,6 +318,33 @@ Definition of done:
 Salida esperada:
 
 - Confirmar robustez estadistica/algebraica del residuo o descartarlo como ruido post-hoc/mezcla condicionada.
+
+Decision tomada:
+
+- En el rango original `n <= 5000000`, la senal sobrevive bootstrap/permutacion por cadena, pero no pasa el umbral estricto `p ajustado < 0.01` bajo Bonferroni.
+- Con tests M13: `p ajustado = 0.01390268`.
+- Con conteo conservador M13 + exploracion del Codex hijo: `p ajustado = 0.06519232`.
+- En holdout independiente `5000001 <= n <= 10000000`, la diferencia cae a `0.00939612`, con `p = 0.43201832` y bootstrap CI95 `[-0.01423070, 0.03272495]`.
+- La congruencia local para `prev_exit_v2 = 5` predice `P(next_tail = 1) = 0.5`, no una anomalia real-modelo.
+- Se abandona `prev_exit_v2 = 5` + interior como pista principal.
+
+## M15 - Busqueda confirmatoria con train/holdout desde el inicio
+
+Estado: pendiente.
+
+Objetivo: reemplazar barridos post-hoc por busquedas que separen descubrimiento y confirmacion desde el diseno.
+
+Definition of done:
+
+- Definir un rango train y un rango holdout antes de buscar senales.
+- Limitar la cantidad de hipotesis candidatas por ola.
+- Registrar numero de tests y correccion antes de interpretar.
+- Integrar a Claude como revisor del diseno antes de correr.
+- Usar Codex hijo solo para replicacion o ejecucion acotada despues del diseno.
+
+Salida esperada:
+
+- Una nueva pista o un descarte, pero sin repetir el error de confirmar con el mismo dataset que genero la hipotesis.
 
 ## Prioridad
 
@@ -338,6 +365,7 @@ Orden recomendado:
 13. M12 - Congruencia de `exit_v2 = 5`.
 14. M13 - Sesgo de supervivencia orbital.
 15. M14 - Residuo interior despues de `prev_exit_v2 = 5`.
+16. M15 - Busqueda confirmatoria con train/holdout desde el inicio.
 
 ## Criterio de avance
 

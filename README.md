@@ -63,6 +63,7 @@ Primer patron candidato:
 - [high_exit_v2_limit_5000000.md](reports/high_exit_v2_limit_5000000.md)
 - [exit_v2_selection_limit_5000000.md](reports/exit_v2_selection_limit_5000000.md)
 - [survival_bias_limit_5000000.md](reports/survival_bias_limit_5000000.md)
+- [m14_residual_robustness.md](reports/m14_residual_robustness.md)
 
 Analizar la salida del bloque alternante:
 
@@ -105,6 +106,13 @@ Analizar sesgo de supervivencia orbital:
 
 ```powershell
 python experiments\analyze_survival_bias.py --limit 5000000 --max-blocks 256 --seed 20260425 --out-dir reports --prefix survival_bias_limit_5000000
+```
+
+Probar robustez del residuo M14:
+
+```powershell
+python experiments\test_m14_residual_robustness.py --limit 5000000 --max-blocks 256 --permutations 10000 --seed 20260425 --extra-tests 546 --out-dir reports --prefix m14_residual_robustness
+python experiments\test_m14_residual_robustness.py --start 5000001 --limit 10000000 --max-blocks 256 --permutations 10000 --seed 20260425 --extra-tests 546 --out-dir reports --prefix m14_residual_robustness_holdout_5000001_10000000
 ```
 
 ## Crear una nueva ola

@@ -1,0 +1,8 @@
+source,file,rows,metric_tests
+m13_compare_csv,survival_bias_limit_5000000_depth_compare.csv,21,42
+m13_compare_csv,survival_bias_limit_5000000_duration_compare.csv,13,26
+m13_compare_csv,survival_bias_limit_5000000_margin_compare.csv,6,12
+m13_compare_csv,survival_bias_limit_5000000_position_compare.csv,4,8
+m13_compare_csv,survival_bias_limit_5000000_prev_exit_compare.csv,10,20
+m13_compare_csv,survival_bias_limit_5000000_prev_exit_position_compare.csv,20,40
+codex_hijo_branch_summary,codex-hijo/m14-residuos:reports/m14_residue_summary.csv,546,546
