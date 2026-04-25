@@ -336,15 +336,26 @@ Objetivo: reemplazar barridos post-hoc por busquedas que separen descubrimiento 
 
 Definition of done:
 
+- Registrar revision de Claude del diseno M15.
+- Hacer calculo algebraico previo para `P(next_tail | clase modular)` antes de correr datos nuevos.
 - Definir un rango train y un rango holdout antes de buscar senales.
-- Limitar la cantidad de hipotesis candidatas por ola.
+- Limitar la cantidad de hipotesis candidatas por ola, maximo inicial 6 tests.
 - Registrar numero de tests y correccion antes de interpretar.
+- Evitar el rango `5000001 <= n <= 10000000` como holdout de M15 porque fue usado en M14.
+- Usar holdout fresco, recomendado `15000001 <= n <= 25000000`.
 - Integrar a Claude como revisor del diseno antes de correr.
 - Usar Codex hijo solo para replicacion o ejecucion acotada despues del diseno.
 
 Salida esperada:
 
 - Una nueva pista o un descarte, pero sin repetir el error de confirmar con el mismo dataset que genero la hipotesis.
+
+Decision de diseno:
+
+- Claude propuso algebra antes que datos.
+- Codex orquestador acepta el orden: algebra previa, pre-registro, train, holdout, revision.
+- Primera tarea delegada: Codex hijo debe analizar `P(next_tail | n mod 2^K)` o equivalente para `K <= 6` en rama `codex-hijo/m15-algebra`.
+- No se corre holdout hasta que la hipotesis quede pre-registrada.
 
 ## Prioridad
 
