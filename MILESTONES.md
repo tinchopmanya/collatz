@@ -365,6 +365,14 @@ Decision tras algebra:
 - No se testea esta identidad en holdout.
 - H1 se reformula como comparacion de modelos: el modelo modular `q mod 8` debe mejorar la prediccion de supervivencia orbital frente al modelo geometrico independiente.
 
+Decision tras informe web:
+
+- CodexInvestigadorWeb encontro que la matematica local es conocida/implicita en parity vectors, clases modulo `2^k`, odd-to-odd maps y modelos geometricos de `ord_2(3n+1)`.
+- No encontro la comparacion exacta M15: `P(next_tail | q mod 8)` contra geometrico independiente para predecir supervivencia/stopping/blocks_to_descend.
+- M15 queda vivo solo como experimento de ablation predictiva, no como novedad teorica local.
+- ClaudeSocioCritico queda desbloqueado para auditar si la pregunta es valida, tautologica o debe reformularse.
+- CodexHijo1 y CodexHijo2 siguen bloqueados hasta decision posterior del orquestador.
+
 ## Prioridad
 
 Orden recomendado:

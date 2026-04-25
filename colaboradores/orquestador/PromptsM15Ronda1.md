@@ -16,8 +16,8 @@ CodexInvestigadorWeb
 
 Para esta ronda:
 
-- Prompt 1 es bloqueante y puede empezar ahora.
-- Prompt 2 es bloqueante, pero no debe empezar hasta que termine Prompt 1.
+- Prompt 1 esta completado e integrado en `main`.
+- Prompt 2 es bloqueante y puede empezar ahora.
 - Prompt 3 esta bloqueado por Prompt 1 + Prompt 2 + decision del orquestador.
 - Prompt 4 esta bloqueado por Prompt 3.
 
@@ -26,7 +26,7 @@ Para esta ronda:
 Agente: CodexInvestigadorWeb
 Objetivo: investigar literatura sobre si ya existe una comparacion modular tipo `q mod 8` contra modelo geometrico/aleatorio para supervivencia orbital, stopping time o cadenas odd-to-odd en Collatz.
 Bloqueante: si
-Puede empezar ahora: si
+Puede empezar ahora: completado
 Depende de: nadie
 Desbloquea a: ClaudeSocioCritico y decision del orquestador
 Rama sugerida: `codex-investigador/m15-modelo-modular-literatura`
@@ -84,7 +84,7 @@ Entrega final:
 Agente: ClaudeSocioCritico
 Objetivo: auditar la idea M15 despues de leer el informe de CodexInvestigadorWeb.
 Bloqueante: si
-Puede empezar ahora: no
+Puede empezar ahora: si
 Depende de: Prompt 1 terminado
 Desbloquea a: decision del orquestador
 Rama sugerida: `claude-socio/m15-critica-modelo-modular`
