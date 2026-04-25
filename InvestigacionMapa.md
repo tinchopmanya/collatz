@@ -20,6 +20,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 02:40:15 -03:00 | Alta de octava ola: modelo geometrico independiente, trazas de records y comparacion real/modelo en bloques odd-to-odd | Investigacion: [InvestigacionSobreCollatzOctavaOla.md](InvestigacionSobreCollatzOctavaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzOctavaOla.md](ResumenInvestigacionSobreCollatzOctavaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 02:45:03 -03:00 | Alta de novena ola: anti-persistencia entre bloques, rachas expansivas y condicionamiento por `exit_v2` alto | Investigacion: [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzNovenaOla.md](ResumenInvestigacionSobreCollatzNovenaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

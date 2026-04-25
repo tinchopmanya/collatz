@@ -33,10 +33,11 @@ Cada alta nueva tambien debe:
 | 2026-04-25 02:24:36 -03:00 | Collatz - Sexta Ola (mapa de salida del bloque alternante) | [InvestigacionSobreCollatzSextaOla.md](InvestigacionSobreCollatzSextaOla.md) | [ResumenInvestigacionSobreCollatzSextaOla.md](ResumenInvestigacionSobreCollatzSextaOla.md) | Sexta ola cerrada |
 | 2026-04-25 02:32:13 -03:00 | Collatz - Septima Ola (cadenas odd-to-odd y reseteo de cola) | [InvestigacionSobreCollatzSeptimaOla.md](InvestigacionSobreCollatzSeptimaOla.md) | [ResumenInvestigacionSobreCollatzSeptimaOla.md](ResumenInvestigacionSobreCollatzSeptimaOla.md) | Septima ola cerrada |
 | 2026-04-25 02:40:15 -03:00 | Collatz - Octava Ola (modelo geometrico independiente) | [InvestigacionSobreCollatzOctavaOla.md](InvestigacionSobreCollatzOctavaOla.md) | [ResumenInvestigacionSobreCollatzOctavaOla.md](ResumenInvestigacionSobreCollatzOctavaOla.md) | Octava ola cerrada |
+| 2026-04-25 02:45:03 -03:00 | Collatz - Novena Ola (anti-persistencia entre bloques) | [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md) | [ResumenInvestigacionSobreCollatzNovenaOla.md](ResumenInvestigacionSobreCollatzNovenaOla.md) | Novena ola cerrada |
 
 ## Estado actual del repositorio de investigacion
 
-- Hay 8 investigaciones registradas.
+- Hay 9 investigaciones registradas.
 - La conclusion dinamica vigente es [Conlusion.md](Conlusion.md).
 - La primera ola cubrio un panorama amplio del problema de Collatz.
 - La segunda ola profundizo en 8 subfrentes tecnicos.
@@ -46,6 +47,7 @@ Cada alta nueva tambien debe:
 - La sexta ola midio la salida `3^s q - 1`, verifico una distribucion geometrica para `v2(3^s q - 1)` y propuso estudiar cadenas odd-to-odd.
 - La septima ola encadeno bloques odd-to-odd, midio primer descenso hasta `n <= 1000000` y encontro evidencia fuerte de reseteo de cola.
 - La octava ola comparo cadenas reales contra un modelo geometrico independiente: el cuerpo de la distribucion coincide muy bien, pero el modelo sobreproduce extremos.
+- La novena ola no encontro anti-persistencia simple despues de bloques expansivos, pero detecto una posible senal condicionada por `exit_v2 >= 5`.
 
 ## Siguiente uso esperado
 

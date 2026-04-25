@@ -202,7 +202,7 @@ Decision tomada:
 
 ## M10 - Anti-persistencia entre bloques
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: medir si la dinamica real reduce la probabilidad de concatenar bloques favorables respecto del modelo independiente.
 
@@ -217,6 +217,30 @@ Definition of done:
 Salida esperada:
 
 - Decidir si la sobreproduccion extrema del modelo es ruido de rango/semilla o una senal aritmetica real.
+
+Decision tomada:
+
+- No aparece anti-persistencia simple despues de bloques expansivos.
+- Las rachas expansivas reales se parecen mucho al modelo.
+- La senal mas interesante esta condicionada por `exit_v2 >= 5`.
+
+## M11 - Salidas con alta valuacion 2-adica
+
+Estado: pendiente.
+
+Objetivo: estudiar si `exit_v2` alto deja congruencias que reducen la expansion siguiente.
+
+Definition of done:
+
+- Medir condiciones `exit_v2 >= k` para varios `k`.
+- Calcular intervalos de confianza de la diferencia real/modelo.
+- Comparar siguiente cola, siguiente `exit_v2` y siguiente log factor.
+- Derivar congruencias exactas para las clases de salida.
+- Decidir si hay un lemma local candidato.
+
+Salida esperada:
+
+- Confirmar o descartar que `exit_v2` alto produce un sesgo aritmetico real.
 
 ## Prioridad
 
@@ -233,6 +257,7 @@ Orden recomendado:
 9. M8 - Cadena odd-to-odd y correlaciones.
 10. M9 - Modelo estocastico y trazas de records.
 11. M10 - Anti-persistencia entre bloques.
+12. M11 - Salidas con alta valuacion 2-adica.
 
 ## Criterio de avance
 

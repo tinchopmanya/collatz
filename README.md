@@ -18,6 +18,7 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - [InvestigacionSobreCollatzSextaOla.md](InvestigacionSobreCollatzSextaOla.md): mapa de salida del bloque alternante y siguiente impar.
 - [InvestigacionSobreCollatzSeptimaOla.md](InvestigacionSobreCollatzSeptimaOla.md): cadenas odd-to-odd, primer descenso comprimido y reseteo de cola.
 - [InvestigacionSobreCollatzOctavaOla.md](InvestigacionSobreCollatzOctavaOla.md): modelo geometrico independiente y comparacion real/modelo.
+- [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md): anti-persistencia entre bloques y condicionamientos por salida.
 
 ## Flujo recomendado
 
@@ -56,6 +57,7 @@ Primer patron candidato:
 - [exit_map_limit_1000000.md](reports/exit_map_limit_1000000.md)
 - [odd_chain_limit_1000000.md](reports/odd_chain_limit_1000000.md)
 - [geometric_model_limit_1000000.md](reports/geometric_model_limit_1000000.md)
+- [antipersistence_limit_1000000.md](reports/antipersistence_limit_1000000.md)
 
 Analizar la salida del bloque alternante:
 
@@ -74,6 +76,12 @@ Comparar contra modelo geometrico independiente:
 ```powershell
 python experiments\trace_odd_records.py --max-blocks 256 --out-dir reports --prefix odd_record_traces
 python experiments\compare_geometric_model.py --limit 1000000 --max-blocks 256 --seed 20260425 --out-dir reports --prefix geometric_model_limit_1000000
+```
+
+Analizar anti-persistencia entre bloques:
+
+```powershell
+python experiments\analyze_antipersistence.py --limit 1000000 --max-blocks 256 --seed 20260425 --out-dir reports --prefix antipersistence_limit_1000000
 ```
 
 ## Crear una nueva ola
