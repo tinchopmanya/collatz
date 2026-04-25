@@ -1,59 +1,49 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-25 02:32:13 -03:00
-Tema activo: Collatz - Septima Ola cerrada
+Ultima actualizacion: 2026-04-25 02:40:15 -03:00
+Tema activo: Collatz - Octava Ola cerrada
 
 ## Conlusion ejecutiva
 
-La septima ola paso de bloques aislados a cadenas odd-to-odd. Para cada impar:
+La octava ola comparo las cadenas reales odd-to-odd contra un modelo geometrico independiente:
 
 ```text
-n_i = 2^s q - 1
-n_{i+1} = (3^s q - 1) / 2^r
-r = v2(3^s q - 1)
+s ~ Geom(1/2)
+r ~ Geom(1/2)
+log factor = s log(3/2) - r log(2)
 ```
 
-se itero hasta llegar a `1`, bajar por debajo del impar inicial o agotar `256` bloques.
-
-En todos los impares `3 <= n <= 1000000`, no hubo casos que agotaran el limite. El maximo observado fue:
-
-```text
-41 bloques odd-to-odd hasta bajar
-```
+El modelo ignora la aritmetica exacta y solo conserva la distribucion esperada de colas y divisiones de salida.
 
 ## Hallazgo principal
 
-La cola siguiente parece resetearse. Condicionado por la cola actual `v2(n_i + 1)`, el promedio de `v2(n_{i+1} + 1)` queda cerca de:
+El modelo explica muy bien el cuerpo de la distribucion:
 
-```text
-2
-```
+| Fuente | Media bloques | p90 | p99 | p999 | Max bloques |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Real | 1.742153 | 3 | 10 | 20 | 41 |
+| Modelo | 1.746125 | 3 | 10 | 21 | 54 |
 
-Esto refuerza la lectura central:
+Pero sobreproduce extremos:
 
-- una cola larga de unos genera expansion local;
-- la salida de ese bloque suele mezclar la informacion 2-adica;
-- no aparece, en esta escala, una fabricacion automatica de colas largas consecutivas.
+- `bloques >= 40`: real `3` casos, modelo `19`;
+- `max pico/n >= 100000`: real `1` caso, modelo `13`;
+- max pico real: `107860.689285`;
+- max pico modelo: `2429179.311905`.
 
 ## Veredicto
 
-No se probo Collatz. Pero ya tenemos una estructura de trabajo mas fina:
+No se probo Collatz. Pero tenemos una vara nueva y util:
 
-- bloque alternante exacto;
-- salida 2-adica casi geometrica;
-- cadena odd-to-odd con evidencia de reseteo;
-- separacion entre records de duracion y records de altura.
+> cualquier patron candidato debe explicar algo que el modelo geometrico independiente no explique.
 
-La pregunta publicable posible no es "encontramos una prueba", sino:
-
-> Se puede describir cuantitativamente la dinamica Collatz por bloques y demostrar que las colas largas se mezclan rapido?
+La direccion prometedora ya no es buscar numeros raros a ciegas, sino estudiar por que la dinamica real parece menos extrema que el modelo independiente en la cola muy rara.
 
 ## Siguiente paso
 
-Abrir una octava ola para comparar cadenas reales contra un modelo estocastico:
+Abrir una novena ola sobre anti-persistencia:
 
-- trazar records como `626331`, `159487`, `270271`;
-- medir productos logaritmicos de factores locales;
-- comparar contra colas geometricas independientes;
-- buscar correlaciones persistentes entre `s_i` y `s_{i+1}`;
-- decidir si hay un reporte tecnico formalizable.
+- medir correlacion entre factores logaritmicos consecutivos;
+- medir rachas de bloques expansivos reales contra modelo;
+- condicionar por `s >= 8` y ver que pasa despues;
+- buscar una desigualdad o sesgo aritmetico que limite concatenaciones favorables.

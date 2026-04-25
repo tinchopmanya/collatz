@@ -178,7 +178,7 @@ Decision tomada:
 
 ## M9 - Modelo estocastico y trazas de records
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: comparar cadenas reales contra una cadena artificial con colas geometricas independientes.
 
@@ -194,6 +194,30 @@ Salida esperada:
 
 - Un criterio claro para saber si hay estructura no capturada por el modelo geometrico.
 
+Decision tomada:
+
+- El modelo geometrico independiente explica muy bien el cuerpo de la distribucion.
+- El modelo sobreproduce extremos de bloques y altura.
+- La proxima pregunta es si hay anti-persistencia real entre bloques expansivos.
+
+## M10 - Anti-persistencia entre bloques
+
+Estado: pendiente.
+
+Objetivo: medir si la dinamica real reduce la probabilidad de concatenar bloques favorables respecto del modelo independiente.
+
+Definition of done:
+
+- Medir correlacion entre factores logaritmicos consecutivos.
+- Medir rachas de bloques expansivos reales y modeladas.
+- Condicionar por bloques con `s >= 8`.
+- Comparar la distribucion del factor siguiente despues de eventos extremos.
+- Buscar una afirmacion candidata formalizable.
+
+Salida esperada:
+
+- Decidir si la sobreproduccion extrema del modelo es ruido de rango/semilla o una senal aritmetica real.
+
 ## Prioridad
 
 Orden recomendado:
@@ -208,6 +232,7 @@ Orden recomendado:
 8. M7 - Mapa de salida del bloque alternante.
 9. M8 - Cadena odd-to-odd y correlaciones.
 10. M9 - Modelo estocastico y trazas de records.
+11. M10 - Anti-persistencia entre bloques.
 
 ## Criterio de avance
 

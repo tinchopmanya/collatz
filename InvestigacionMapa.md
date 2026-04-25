@@ -18,6 +18,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 02:32:13 -03:00 | Alta de septima ola: cadenas odd-to-odd, primer descenso comprimido, records de duracion/altura y reseteo de cola | Investigacion: [InvestigacionSobreCollatzSeptimaOla.md](InvestigacionSobreCollatzSeptimaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzSeptimaOla.md](ResumenInvestigacionSobreCollatzSeptimaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 02:40:15 -03:00 | Alta de octava ola: modelo geometrico independiente, trazas de records y comparacion real/modelo en bloques odd-to-odd | Investigacion: [InvestigacionSobreCollatzOctavaOla.md](InvestigacionSobreCollatzOctavaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzOctavaOla.md](ResumenInvestigacionSobreCollatzOctavaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.
