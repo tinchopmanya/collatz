@@ -250,7 +250,7 @@ Decision tomada:
 
 ## M12 - Congruencia de `exit_v2 = 5`
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: derivar la clase modular exacta asociada a `exit_v2 = 5` y estudiar su efecto sobre el bloque siguiente.
 
@@ -265,6 +265,31 @@ Definition of done:
 Salida esperada:
 
 - Una explicacion aritmetica o descarte de la senal `exit_v2 = 5`.
+
+Decision tomada:
+
+- La congruencia exacta es simple: para `n = 2^s q - 1`, `exit_v2 = 5` equivale a `3^s q = 33 mod 64`.
+- En la muestra local de todos los bloques hasta `n <= 5000000`, `exit_v2 = 5` vuelve al modelo geometrico: expansion siguiente `0.28628846` vs `0.28627450`.
+- La senal de la decima ola aparece por seleccion de cadenas antes del primer descenso, donde `next_tail = 1` queda sobre-representado.
+- Se abandona `exit_v2 = 5` como lemma local candidato.
+
+## M13 - Sesgo de supervivencia orbital
+
+Estado: pendiente.
+
+Objetivo: explicar por que las cadenas que sobreviven antes del primer descenso no muestrean uniformemente las transiciones locales.
+
+Definition of done:
+
+- Medir `next_tail` por profundidad de bloque antes del primer descenso.
+- Separar cadenas por duracion total y altura maxima.
+- Comparar distribuciones condicionadas por supervivencia contra el modelo geometrico independiente.
+- Identificar si la sobre-representacion de `next_tail = 1` explica la sobreproduccion de extremos del modelo.
+- Decidir si hay una formulacion de supervivencia formalizable.
+
+Salida esperada:
+
+- Un modelo de seleccion orbital que explique por que los extremos reales son menos frecuentes que en el modelo independiente.
 
 ## Prioridad
 
@@ -283,6 +308,7 @@ Orden recomendado:
 11. M10 - Anti-persistencia entre bloques.
 12. M11 - Salidas con alta valuacion 2-adica.
 13. M12 - Congruencia de `exit_v2 = 5`.
+14. M13 - Sesgo de supervivencia orbital.
 
 ## Criterio de avance
 

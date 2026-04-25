@@ -1,62 +1,83 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-25 09:31:26 -03:00
-Tema activo: Collatz - Decima Ola cerrada
+Ultima actualizacion: 2026-04-25 09:45:21 -03:00
+Tema activo: Collatz - Undecima Ola cerrada
 
 ## Preguntas antes de la iteracion
 
 ```text
 Estoy en algo virgen?
-No en el marco general. Bloques, salida y modelo geometrico ya existen.
+No en el marco general. Bloques de Mersenne, salida r(x), mezcla y clases modulo potencias de 2 ya estan en el ecosistema reciente.
 
 Puedo descubrir algo con esto?
-Quizas una desviacion fina del modelo, no una prueba.
+Si, pero probablemente como descarte: saber si `exit_v2 = 5` era una causa local o un efecto de seleccion.
 
 Ya alguien estuvo buscando esto?
-Si a nivel general: Campbell, Bonacorsi/Bordoni, Chang y literatura de modelos estocasticos.
+Si a nivel de marco. Campbell 2025 ya propone estudiar dinamica residual y mezcla del mapa de bloques.
 
 Que tan lejos estoy de descubrir algo?
-Muy lejos de probar Collatz; moderadamente cerca de una nota experimental si el sesgo se formaliza.
+Muy lejos de probar Collatz. Cerca de limpiar una pista concreta y evitar sobreinterpretarla.
 ```
 
 ## Hallazgo principal
 
-La decima ola midio `exit_v2 >= k` y `exit_v2 = k` hasta `n <= 5000000`.
+La undecima ola comparo dos muestras para `prev_exit_v2 = 5` hasta `n <= 5000000`:
 
-Resultado candidato:
+| Fuente | Pares | P siguiente expansion | Diff vs geometrico | Avg next_tail |
+| --- | ---: | ---: | ---: | ---: |
+| `local_all_starts` | 78124 | 0.28628846 | 0.00001396 | 2.00011520 |
+| `chain_before_descent` | 5385 | 0.25979573 | -0.02647877 | 1.92423398 |
 
-| Condicion previa | P exp real | P exp modelo | Diff | IC95 |
-| --- | ---: | ---: | ---: | --- |
-| `exit_v2 >= 5` | 0.25968013 | 0.28201954 | -0.02233940 | [-0.03685220, -0.00782660] |
-| `exit_v2 = 5` | 0.25979573 | 0.28127273 | -0.02147700 | [-0.03816197, -0.00479203] |
+La senal de la decima ola no es una ley local de `exit_v2 = 5`. En todos los bloques locales, la clase vuelve al modelo geometrico. La diferencia aparece solo en cadenas condicionadas por seguir vivas antes del primer descenso.
 
-La senal persiste al escalar desde un millon a cinco millones, pero no es monotona para todos los valores altos de `exit_v2`.
+## Congruencia
+
+Para:
+
+```text
+n = 2^s q - 1
+```
+
+se tiene:
+
+```text
+exit_v2 = 5
+<=> v2(3^s q - 1) = 5
+<=> 3^s q = 33 mod 64
+<=> q = 3^(-s) + 32 mod 64
+```
+
+Esto fija una clase residual, pero no fuerza por si sola menor expansion siguiente.
 
 ## Preguntas despues de la iteracion
 
 ```text
 La originalidad cambio?
-No mucho. Sigue siendo una extension fina de un marco existente.
+Si, a la baja para esta pista. `exit_v2 = 5` no parece ser un mecanismo local nuevo.
 
 La probabilidad de relevancia subio?
-Subio un poco: `exit_v2 = 5` sobrevivio al escalado.
+Bajo para una nota sobre `exit_v2 = 5`; subio para estudiar sesgo de supervivencia orbital.
 
-Senal robusta o ruido?
-Senal moderada para `exit_v2 = 5`; muestra insuficiente para valores mas altos.
+Senal robusta o seleccion?
+Seleccion. La senal es real en cadenas antes del primer descenso, pero desaparece en la muestra local.
 
 Que aprendimos?
-La variable correcta no es "bloque expansivo previo"; parece mas modular y ligada a ciertos exit_v2.
+El modelo local estatico funciona muy bien. La brecha esta en como las orbitas largas seleccionan transiciones.
 
 Seguir o abandonar?
-Seguir una iteracion mas, pero derivando congruencias. No fuerza bruta ciega.
+Abandonar `exit_v2 = 5` como lemma local candidato. Seguir con M13: sesgo de supervivencia orbital.
 ```
 
 ## Siguiente paso
 
-Derivar la congruencia exacta para:
+Abrir M13:
 
 ```text
-exit_v2 = 5
+medir como cambia next_tail segun profundidad, duracion y supervivencia antes del primer descenso.
 ```
 
-y medir si esa clase fuerza una menor cola siguiente o menor expansion. Si no aparece una explicacion modular, abandonar esta pista.
+La pregunta nueva no es "que clase local es especial?", sino:
+
+```text
+que filtro orbital hace que las cadenas largas no vean las transiciones locales como una muestra uniforme?
+```

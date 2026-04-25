@@ -24,6 +24,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 09:31:26 -03:00 | Alta de decima ola: filtro de relevancia, salidas `exit_v2 >= k`, intervalos real/modelo y candidato `exit_v2 = 5` | Investigacion: [InvestigacionSobreCollatzDecimaOla.md](InvestigacionSobreCollatzDecimaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzDecimaOla.md](ResumenInvestigacionSobreCollatzDecimaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 09:45:21 -03:00 | Alta de undecima ola: congruencia de `exit_v2 = 5`, comparacion local vs cadenas sobrevivientes y descarte de mecanismo local | Investigacion: [InvestigacionSobreCollatzUndecimaOla.md](InvestigacionSobreCollatzUndecimaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzUndecimaOla.md](ResumenInvestigacionSobreCollatzUndecimaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

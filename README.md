@@ -61,6 +61,7 @@ Primer patron candidato:
 - [geometric_model_limit_1000000.md](reports/geometric_model_limit_1000000.md)
 - [antipersistence_limit_1000000.md](reports/antipersistence_limit_1000000.md)
 - [high_exit_v2_limit_5000000.md](reports/high_exit_v2_limit_5000000.md)
+- [exit_v2_selection_limit_5000000.md](reports/exit_v2_selection_limit_5000000.md)
 
 Analizar la salida del bloque alternante:
 
@@ -91,6 +92,12 @@ Analizar salidas con `exit_v2` alto:
 
 ```powershell
 python experiments\analyze_high_exit_v2.py --limit 5000000 --max-blocks 256 --seed 20260425 --out-dir reports --prefix high_exit_v2_limit_5000000
+```
+
+Comparar transiciones locales contra cadenas sobrevivientes:
+
+```powershell
+python experiments\analyze_exit_v2_selection.py --limit 5000000 --max-blocks 256 --targets 1,2,3,4,5,6,7,8 --out-dir reports --prefix exit_v2_selection_limit_5000000
 ```
 
 ## Crear una nueva ola
