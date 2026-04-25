@@ -154,7 +154,7 @@ Decision tomada:
 
 ## M8 - Cadena odd-to-odd y correlaciones
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: estudiar si la salida de un bloque realmente "resetea" la cola binaria o si hay sesgos aprovechables.
 
@@ -170,6 +170,30 @@ Salida esperada:
 
 - Evidencia para decidir si hay una estructura menos conocida que merezca reporte tecnico formal.
 
+Decision tomada:
+
+- La cola siguiente parece volver a promedio cercano a `2`.
+- La duracion y la altura deben tratarse como metricas separadas.
+- El siguiente paso es comparar contra un modelo estocastico, no solo ampliar limite.
+
+## M9 - Modelo estocastico y trazas de records
+
+Estado: pendiente.
+
+Objetivo: comparar cadenas reales contra una cadena artificial con colas geometricas independientes.
+
+Definition of done:
+
+- Generar trazas legibles de records por duracion y altura.
+- Medir sumas de log factores locales.
+- Implementar simulador comparable con `P(s = k) = 2^-k`.
+- Comparar distribucion de bloques hasta bajar.
+- Buscar desviaciones sistematicas entre cadena real y modelo.
+
+Salida esperada:
+
+- Un criterio claro para saber si hay estructura no capturada por el modelo geometrico.
+
 ## Prioridad
 
 Orden recomendado:
@@ -183,6 +207,7 @@ Orden recomendado:
 7. M6 - Escalado o cambio de estrategia.
 8. M7 - Mapa de salida del bloque alternante.
 9. M8 - Cadena odd-to-odd y correlaciones.
+10. M9 - Modelo estocastico y trazas de records.
 
 ## Criterio de avance
 

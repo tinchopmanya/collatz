@@ -16,6 +16,7 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - [EstadoActualidadYOriginalidadCollatz.md](EstadoActualidadYOriginalidadCollatz.md): verificacion de actualidad y originalidad del patron `-1 mod 2^k`.
 - [FormalizacionPrefijoAlternante.md](FormalizacionPrefijoAlternante.md): lemma local sobre la longitud exacta del prefijo alternante.
 - [InvestigacionSobreCollatzSextaOla.md](InvestigacionSobreCollatzSextaOla.md): mapa de salida del bloque alternante y siguiente impar.
+- [InvestigacionSobreCollatzSeptimaOla.md](InvestigacionSobreCollatzSeptimaOla.md): cadenas odd-to-odd, primer descenso comprimido y reseteo de cola.
 
 ## Flujo recomendado
 
@@ -52,11 +53,18 @@ Primer patron candidato:
 - [parity_prefix_mod_512_limit_1000000.md](reports/parity_prefix_mod_512_limit_1000000.md)
 - [alternating_prefix_mod_512_limit_1000000.md](reports/alternating_prefix_mod_512_limit_1000000.md)
 - [exit_map_limit_1000000.md](reports/exit_map_limit_1000000.md)
+- [odd_chain_limit_1000000.md](reports/odd_chain_limit_1000000.md)
 
 Analizar la salida del bloque alternante:
 
 ```powershell
 python experiments\analyze_exit_map.py --limit 1000000 --out-dir reports --prefix exit_map_limit_1000000
+```
+
+Analizar cadenas odd-to-odd:
+
+```powershell
+python experiments\analyze_odd_chain.py --limit 1000000 --max-blocks 256 --out-dir reports --prefix odd_chain_limit_1000000
 ```
 
 ## Crear una nueva ola
