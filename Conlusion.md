@@ -9,7 +9,9 @@ La mejor forma de seguir no es intentar una prueba directa de la conjetura de Co
 
 Ya existe un motor Collatz minimo con tests y un primer script de records. Para `n <= 1000000`, los records iniciales muestran que las metricas no coinciden: el mayor tiempo total aparece en `837799`, el mayor stopping time en `626331` y la mayor altura maxima en `704511`. Eso confirma que conviene estudiar cada metrica por separado.
 
-El analisis por residuos modulo `128`, `256` y `512` para `n <= 1000000` muestra una senal candidata estable: la familia `-1 mod 2^k` queda primera por promedio de pasos totales y por promedio de stopping time en los tres niveles (`127`, `255`, `511`). Ademas, `511 mod 512` contiene el record de altura maxima del rango. Todavia es exploratorio, pero ya es el primer patron propio del laboratorio que merece una ola dedicada.
+El analisis por residuos modulo `128`, `256` y `512` para `n <= 1000000` muestra una senal candidata estable: la familia `-1 mod 2^k` queda primera por promedio de pasos totales y por promedio de stopping time en los tres niveles (`127`, `255`, `511`). La auditoria posterior muestra que este patron no debe presentarse como descubrimiento original: esta alineado con literatura previa sobre dropping time, stopping time y clases residuales modulo potencias de 2. El aporte del laboratorio pasa a ser reproducir, cuantificar y extender esa estructura de forma limpia.
+
+El primer analisis de prefijos de paridad confirma que las clases `2^k - 1` tienen un arranque alternante determinista `1,0,1,0...`. Para `511 mod 512`, la tasa impar promedio en los primeros 32 pasos es mayor que en controles cercanos, lo que da una explicacion computacional inicial del promedio alto.
 
 Antes de construir encima de las olas anteriores, conviene auditar las fuentes y separar afirmaciones fuertes de hipotesis o notas no verificadas. La base confiable inicial es: Lagarias para panorama, Tao para el avance teorico mayor, Barina para verificacion hasta `2^71`, Hercher para ciclos y el Collatz Conjecture Challenge como mapa de literatura/formalizacion.
 
@@ -18,6 +20,6 @@ Antes de construir encima de las olas anteriores, conviene auditar las fuentes y
 Arrancar el roadmap de [RoadmapCollatz.md](RoadmapCollatz.md):
 
 - agregar analisis de prefijos de paridad;
-- medir prefijos de paridad de la familia `-1 mod 2^k`;
+- medir longitud efectiva del prefijo alternante y primeras excursiones por clase;
 - completar la auditoria de fuentes de la tercera ola;
 - cerrar una cuarta ola con hallazgos, limites y proxima hipotesis.

@@ -58,7 +58,7 @@ Salida esperada:
 
 ## M3 - Paridad y modelo aleatorio
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: comparar orbitas reales contra una heuristica aleatoria simple.
 

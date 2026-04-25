@@ -13,6 +13,7 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - [MILESTONES.md](MILESTONES.md): milestones cerrables para avanzar por etapas.
 - [AUTONOMIA.md](AUTONOMIA.md): reglas de trabajo autonomo y decisiones que requieren confirmacion.
 - [AuditoriaFuentesCollatz.md](AuditoriaFuentesCollatz.md): primera auditoria de claims y fuentes.
+- [EstadoActualidadYOriginalidadCollatz.md](EstadoActualidadYOriginalidadCollatz.md): verificacion de actualidad y originalidad del patron `-1 mod 2^k`.
 
 ## Flujo recomendado
 
