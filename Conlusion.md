@@ -1,50 +1,62 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-25 02:45:03 -03:00
-Tema activo: Collatz - Novena Ola cerrada
+Ultima actualizacion: 2026-04-25 09:31:26 -03:00
+Tema activo: Collatz - Decima Ola cerrada
 
-## Conlusion ejecutiva
-
-La novena ola testeo si la dinamica real tiene anti-persistencia simple entre bloques expansivos.
-
-Resultado:
-
-| Fuente | Corr log_i, log_{i+1} | P exp despues de exp | Max racha expansiva |
-| --- | ---: | ---: | ---: |
-| Real | 0.003178993200 | 0.28551273 | 10 |
-| Modelo | -0.002183105526 | 0.28606594 | 11 |
-
-La hipotesis simple no se sostiene. Despues de un bloque expansivo, Collatz real no muestra una reduccion clara de la expansion siguiente frente al modelo independiente.
-
-## Hallazgo nuevo
-
-La senal mas interesante aparece condicionando por salida muy divisible:
+## Preguntas antes de la iteracion
 
 ```text
-exit_v2 previo >= 5
+Estoy en algo virgen?
+No en el marco general. Bloques, salida y modelo geometrico ya existen.
+
+Puedo descubrir algo con esto?
+Quizas una desviacion fina del modelo, no una prueba.
+
+Ya alguien estuvo buscando esto?
+Si a nivel general: Campbell, Bonacorsi/Bordoni, Chang y literatura de modelos estocasticos.
+
+Que tan lejos estoy de descubrir algo?
+Muy lejos de probar Collatz; moderadamente cerca de una nota experimental si el sesgo se formaliza.
 ```
 
-| Fuente | Conteo | P siguiente expansivo | Promedio siguiente cola |
-| --- | ---: | ---: | ---: |
-| Real | 1458 | 0.23662551 | 1.89574760 |
-| Modelo | 1425 | 0.28140351 | 2.00491228 |
+## Hallazgo principal
 
-Esto podria indicar un sesgo aritmetico despues de salidas con alta valuacion 2-adica. Todavia es muestra chica.
+La decima ola midio `exit_v2 >= k` y `exit_v2 = k` hasta `n <= 5000000`.
 
-## Veredicto
+Resultado candidato:
 
-No se probo Collatz. Y, mas importante, se descarto una explicacion demasiado simple.
+| Condicion previa | P exp real | P exp modelo | Diff | IC95 |
+| --- | ---: | ---: | ---: | --- |
+| `exit_v2 >= 5` | 0.25968013 | 0.28201954 | -0.02233940 | [-0.03685220, -0.00782660] |
+| `exit_v2 = 5` | 0.25979573 | 0.28127273 | -0.02147700 | [-0.03816197, -0.00479203] |
 
-La direccion prometedora ahora es:
+La senal persiste al escalar desde un millon a cinco millones, pero no es monotona para todos los valores altos de `exit_v2`.
 
-> estudiar congruencias dejadas por `exit_v2` alto y comprobar si reducen la cola o expansion siguiente.
+## Preguntas despues de la iteracion
+
+```text
+La originalidad cambio?
+No mucho. Sigue siendo una extension fina de un marco existente.
+
+La probabilidad de relevancia subio?
+Subio un poco: `exit_v2 = 5` sobrevivio al escalado.
+
+Senal robusta o ruido?
+Senal moderada para `exit_v2 = 5`; muestra insuficiente para valores mas altos.
+
+Que aprendimos?
+La variable correcta no es "bloque expansivo previo"; parece mas modular y ligada a ciertos exit_v2.
+
+Seguir o abandonar?
+Seguir una iteracion mas, pero derivando congruencias. No fuerza bruta ciega.
+```
 
 ## Siguiente paso
 
-Abrir una decima ola especializada en `exit_v2` alto:
+Derivar la congruencia exacta para:
 
-- medir umbrales `exit_v2 >= k`;
-- escalar o muestrear mas cadenas;
-- calcular intervalos de confianza;
-- derivar congruencias exactas de salida;
-- buscar una afirmacion formalizable.
+```text
+exit_v2 = 5
+```
+
+y medir si esa clase fuerza una menor cola siguiente o menor expansion. Si no aparece una explicacion modular, abandonar esta pista.

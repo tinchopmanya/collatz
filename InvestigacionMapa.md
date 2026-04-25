@@ -22,6 +22,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 02:45:03 -03:00 | Alta de novena ola: anti-persistencia entre bloques, rachas expansivas y condicionamiento por `exit_v2` alto | Investigacion: [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzNovenaOla.md](ResumenInvestigacionSobreCollatzNovenaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-25 09:31:26 -03:00 | Alta de decima ola: filtro de relevancia, salidas `exit_v2 >= k`, intervalos real/modelo y candidato `exit_v2 = 5` | Investigacion: [InvestigacionSobreCollatzDecimaOla.md](InvestigacionSobreCollatzDecimaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzDecimaOla.md](ResumenInvestigacionSobreCollatzDecimaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

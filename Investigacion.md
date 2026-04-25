@@ -34,10 +34,11 @@ Cada alta nueva tambien debe:
 | 2026-04-25 02:32:13 -03:00 | Collatz - Septima Ola (cadenas odd-to-odd y reseteo de cola) | [InvestigacionSobreCollatzSeptimaOla.md](InvestigacionSobreCollatzSeptimaOla.md) | [ResumenInvestigacionSobreCollatzSeptimaOla.md](ResumenInvestigacionSobreCollatzSeptimaOla.md) | Septima ola cerrada |
 | 2026-04-25 02:40:15 -03:00 | Collatz - Octava Ola (modelo geometrico independiente) | [InvestigacionSobreCollatzOctavaOla.md](InvestigacionSobreCollatzOctavaOla.md) | [ResumenInvestigacionSobreCollatzOctavaOla.md](ResumenInvestigacionSobreCollatzOctavaOla.md) | Octava ola cerrada |
 | 2026-04-25 02:45:03 -03:00 | Collatz - Novena Ola (anti-persistencia entre bloques) | [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md) | [ResumenInvestigacionSobreCollatzNovenaOla.md](ResumenInvestigacionSobreCollatzNovenaOla.md) | Novena ola cerrada |
+| 2026-04-25 09:31:26 -03:00 | Collatz - Decima Ola (salidas con alta valuacion 2-adica) | [InvestigacionSobreCollatzDecimaOla.md](InvestigacionSobreCollatzDecimaOla.md) | [ResumenInvestigacionSobreCollatzDecimaOla.md](ResumenInvestigacionSobreCollatzDecimaOla.md) | Decima ola cerrada |
 
 ## Estado actual del repositorio de investigacion
 
-- Hay 9 investigaciones registradas.
+- Hay 10 investigaciones registradas.
 - La conclusion dinamica vigente es [Conlusion.md](Conlusion.md).
 - La primera ola cubrio un panorama amplio del problema de Collatz.
 - La segunda ola profundizo en 8 subfrentes tecnicos.
@@ -48,6 +49,7 @@ Cada alta nueva tambien debe:
 - La septima ola encadeno bloques odd-to-odd, midio primer descenso hasta `n <= 1000000` y encontro evidencia fuerte de reseteo de cola.
 - La octava ola comparo cadenas reales contra un modelo geometrico independiente: el cuerpo de la distribucion coincide muy bien, pero el modelo sobreproduce extremos.
 - La novena ola no encontro anti-persistencia simple despues de bloques expansivos, pero detecto una posible senal condicionada por `exit_v2 >= 5`.
+- La decima ola escalo esa senal a `n <= 5000000`: `exit_v2 = 5` persiste como candidato, pero exige explicacion modular.
 
 ## Siguiente uso esperado
 

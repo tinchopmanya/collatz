@@ -226,7 +226,7 @@ Decision tomada:
 
 ## M11 - Salidas con alta valuacion 2-adica
 
-Estado: pendiente.
+Estado: completado en primera version.
 
 Objetivo: estudiar si `exit_v2` alto deja congruencias que reducen la expansion siguiente.
 
@@ -241,6 +241,30 @@ Definition of done:
 Salida esperada:
 
 - Confirmar o descartar que `exit_v2` alto produce un sesgo aritmetico real.
+
+Decision tomada:
+
+- `exit_v2 >= 5` y `exit_v2 = 5` muestran menor expansion siguiente real que el modelo hasta `n <= 5000000`.
+- La senal no es monotona para todos los `exit_v2` altos.
+- El siguiente paso debe ser modular/formal, no solamente mas computo.
+
+## M12 - Congruencia de `exit_v2 = 5`
+
+Estado: pendiente.
+
+Objetivo: derivar la clase modular exacta asociada a `exit_v2 = 5` y estudiar su efecto sobre el bloque siguiente.
+
+Definition of done:
+
+- Expresar `exit_v2 = 5` como congruencia sobre `s` y `q`.
+- Traducir esa congruencia al siguiente impar.
+- Medir la distribucion de `v2(next_odd + 1)` condicionada por esa clase.
+- Comparar contra modelo y contra clases vecinas `exit_v2 = 4, 6, 7`.
+- Decidir si hay lemma local candidato.
+
+Salida esperada:
+
+- Una explicacion aritmetica o descarte de la senal `exit_v2 = 5`.
 
 ## Prioridad
 
@@ -258,6 +282,7 @@ Orden recomendado:
 10. M9 - Modelo estocastico y trazas de records.
 11. M10 - Anti-persistencia entre bloques.
 12. M11 - Salidas con alta valuacion 2-adica.
+13. M12 - Congruencia de `exit_v2 = 5`.
 
 ## Criterio de avance
 

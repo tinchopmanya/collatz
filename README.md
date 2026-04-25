@@ -19,6 +19,8 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - [InvestigacionSobreCollatzSeptimaOla.md](InvestigacionSobreCollatzSeptimaOla.md): cadenas odd-to-odd, primer descenso comprimido y reseteo de cola.
 - [InvestigacionSobreCollatzOctavaOla.md](InvestigacionSobreCollatzOctavaOla.md): modelo geometrico independiente y comparacion real/modelo.
 - [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md): anti-persistencia entre bloques y condicionamientos por salida.
+- [InvestigacionSobreCollatzDecimaOla.md](InvestigacionSobreCollatzDecimaOla.md): salidas con alta valuacion 2-adica y candidato `exit_v2 = 5`.
+- [CriterioDeRelevancia.md](CriterioDeRelevancia.md): preguntas obligatorias antes y despues de cada iteracion.
 
 ## Flujo recomendado
 
@@ -58,6 +60,7 @@ Primer patron candidato:
 - [odd_chain_limit_1000000.md](reports/odd_chain_limit_1000000.md)
 - [geometric_model_limit_1000000.md](reports/geometric_model_limit_1000000.md)
 - [antipersistence_limit_1000000.md](reports/antipersistence_limit_1000000.md)
+- [high_exit_v2_limit_5000000.md](reports/high_exit_v2_limit_5000000.md)
 
 Analizar la salida del bloque alternante:
 
@@ -82,6 +85,12 @@ Analizar anti-persistencia entre bloques:
 
 ```powershell
 python experiments\analyze_antipersistence.py --limit 1000000 --max-blocks 256 --seed 20260425 --out-dir reports --prefix antipersistence_limit_1000000
+```
+
+Analizar salidas con `exit_v2` alto:
+
+```powershell
+python experiments\analyze_high_exit_v2.py --limit 5000000 --max-blocks 256 --seed 20260425 --out-dir reports --prefix high_exit_v2_limit_5000000
 ```
 
 ## Crear una nueva ola
