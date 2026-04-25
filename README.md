@@ -10,6 +10,9 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - `InvestigacionSobre*.md`: investigaciones largas por ola.
 - `ResumenInvestigacionSobre*.md`: resumen fuerte de cada investigacion.
 - [RoadmapCollatz.md](RoadmapCollatz.md): plan de trabajo para convertir la investigacion en un laboratorio computacional.
+- [MILESTONES.md](MILESTONES.md): milestones cerrables para avanzar por etapas.
+- [AUTONOMIA.md](AUTONOMIA.md): reglas de trabajo autonomo y decisiones que requieren confirmacion.
+- [AuditoriaFuentesCollatz.md](AuditoriaFuentesCollatz.md): primera auditoria de claims y fuentes.
 
 ## Flujo recomendado
 

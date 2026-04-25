@@ -172,4 +172,4 @@ Si me siento varias horas ahora, haria esto:
 
 ## Veredicto
 
-Seguir investigando si, pero ya con laboratorio. El aporte razonable no es prometer una prueba: es construir una base experimental confiable, descubrir estructura en los extremos y separar señales reales de ruido.
+Seguir investigando si, pero ya con laboratorio. El aporte razonable no es prometer una prueba: es construir una base experimental confiable, descubrir estructura en los extremos y separar senales reales de ruido.
