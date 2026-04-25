@@ -330,7 +330,7 @@ Decision tomada:
 
 ## M15 - Busqueda confirmatoria con train/holdout desde el inicio
 
-Estado: pendiente.
+Estado: completado como descarte limpio de la H1 modular marginal `q mod 8`.
 
 Objetivo: reemplazar barridos post-hoc por busquedas que separen descubrimiento y confirmacion desde el diseno.
 
@@ -388,6 +388,14 @@ Decision tras CodexHijo1 transicion `q mod 8`:
 - M15 queda enfriado en su forma marginal `q mod 8` como memoria de supervivencia.
 - No se cierra definitivamente hasta replica/falsacion independiente de CodexHijo2.
 - CodexHijo2 queda desbloqueado para `m15-qmod8-transition-replica`.
+
+Decision final tras replica de CodexHijo2:
+
+- CodexHijo2 replico exactamente la matriz con implementacion independiente directa de la formula, sin importar `collatz.alternating_block`.
+- Diferencia maxima de conteos contra CodexHijo1: `0`; diferencia maxima de probabilidad: `0.000000000000`.
+- Se cierra/enfria M15 en la forma `q mod 8` como estado marginal de memoria suficiente para supervivencia orbital.
+- No se gasta holdout fresco en esta H1.
+- No se abre `q mod 16` sin una razon teorica nueva.
 
 ## Prioridad
 

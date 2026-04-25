@@ -18,7 +18,8 @@ Orquestador: decision completada
 Para esta ronda:
 
 - Prompt 1 esta completado e integrado en `main`.
-- Prompt 2 es bloqueante y puede empezar ahora.
+- Prompt 2 esta completado e integrado en `main`.
+- No hay prompt activo para M15 marginal `q mod 8`.
 
 ## Prompt 1 - CodexHijo1 transicion `q mod 8`
 
@@ -112,7 +113,7 @@ Entrega final:
 Agente: CodexHijo2_ReplicaYFalsacion
 Objetivo: replicar o falsificar la matriz de transicion de CodexHijo1.
 Bloqueante: si
-Puede empezar ahora: si
+Puede empezar ahora: completado
 Depende de: Prompt 1 terminado
 Desbloquea a: decision del orquestador
 Rama sugerida: `codex-hijo/m15-qmod8-transition-replica`
