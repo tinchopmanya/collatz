@@ -1,6 +1,6 @@
 # Milestones
 
-Fecha: 2026-04-25
+Fecha: 2026-04-26
 Foco: Collatz Lab
 
 ## M0 - Higiene y auditoria
@@ -500,3 +500,28 @@ Conclusion: el sesgo de profundidad se observa en el rango de calibracion pero e
 Nota: el mecanismo "condicionamiento por supervivencia cambia el drift" es conocido en random walks; lo propio del proyecto fue medirlo en Collatz concreto, no encontrarlo como descomposicion drift-por-profundidad en la busqueda web realizada (lo cual no equivale a que nadie lo haya hecho).
 
 Recomendacion: cerrar arco de modelos estocasticos (M12-M17). Opciones futuras: investigar tendencia gap~log(n) con mas rangos, cambio de direccion total, o cierre de proyecto.
+
+## M18 - Ratio por rango de n y cierre del proyecto
+
+Estado: completado. Resultado: cierre.
+
+Objetivo: resolver el hilo suelto de M17 (cambio de signo del gap) y decidir si cerrar el proyecto.
+
+Agente: ClaudeSocio.
+
+Experimento: medir ratio modelo_iid/real en 10 bins de 2.5M (n=3 hasta 25M), para k=10,15,20,25.
+
+Resultado:
+
+- El unico efecto significativo es sobreproduccion del i.i.d. en n < 2.5M.
+  - k=10: ratio 1.025, CI [1.007, 1.043]
+  - k=15: ratio 1.066, CI [1.031, 1.101]
+  - k=20: ratio 1.114, CI [1.049, 1.178]
+- Para n > 2.5M: todos los CI contienen 1.0 en los 4 umbrales (40 tests, 0 significativos).
+- No hay cambio de signo. No hay tendencia con log(n). El modelo i.i.d. es indistinguible de la realidad para n > 2.5M.
+
+Busqueda web: 5 queries, evaluadas 5 direcciones alternativas. Ninguna tiene punto de entrada computacional con ceiling > 3 compatible con nuestra infraestructura.
+
+Decision: cerrar el proyecto. Ver DecisionM18CierreProyecto.md para justificacion completa.
+
+Nota sobre near-conjugacy (arXiv:2601.04289): verificada algebraica y computacionalmente. Es una reescritura trivial de log_6(2) + log_6(3) = 1. Descartada.
