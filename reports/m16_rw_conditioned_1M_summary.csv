@@ -1,0 +1,14 @@
+metric,value
+limit,1000000
+real_chains,499999
+sim_chains,500000
+total_steps,871075
+drift_empirical,-0.5772479599
+drift_theoretical,-0.5753641449
+variance,1.2913336766
+sigma,1.1363686359
+real_mean_blocks,1.742153
+sim_mean_blocks,1.744976
+real_max_blocks,41
+sim_max_blocks,65
+seed,20260425

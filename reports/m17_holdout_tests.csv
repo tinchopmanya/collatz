@@ -1,0 +1,4 @@
+k,ratio_iid,ci_iid,ratio_corr,ci_corr,gap_iid,gap_corr,iid_contains_1,corr_contains_1,overcompensates
+15,1.006497,"[0.9861, 1.0270]",0.981647,"[0.9619, 1.0021]",0.006497,0.018353,True,True,False
+20,0.966667,"[0.9332, 1.0009]",0.949447,"[0.9167, 0.9838]",0.033333,0.050553,True,False,False
+25,0.975303,"[0.9201, 1.0335]",0.973137,"[0.9185, 1.0321]",0.024697,0.026863,True,True,False

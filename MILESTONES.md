@@ -417,6 +417,7 @@ Orden recomendado:
 14. M13 - Sesgo de supervivencia orbital.
 15. M14 - Residuo interior despues de `prev_exit_v2 = 5`.
 16. M15 - Busqueda confirmatoria con train/holdout desde el inicio.
+17. M16 - Sobreproduccion de extremos y sesgo de supervivencia por profundidad.
 
 ## Criterio de avance
 
@@ -428,3 +429,74 @@ Puedo avanzar autonomamente dentro de estos milestones si:
 - no cambia la historia remota de git;
 - no afirma haber probado Collatz;
 - deja scripts, datos derivados y conclusiones reproducibles.
+
+## M16 - Sobreproduccion de extremos y sesgo de supervivencia por profundidad
+
+Estado: completado.
+
+Objetivo: explicar por que el modelo geometrico i.i.d. sobreproduce cadenas largas (`blocks_to_descend` altos) respecto de la dinamica real.
+
+Agente: ClaudeSocio (agente unico activo).
+
+Definition of done:
+
+- Confirmar estadisticamente que el gap modelo/real en colas es significativo.
+- Descomponer el gap en componentes: drift, correlacion, finitud, profundidad.
+- Medir distribucion de pasos por profundidad de bloque.
+- Decidir si un modelo corregido por profundidad cierra el gap en holdout.
+
+Salida esperada:
+
+- Una explicacion mecanica de la sobreproduccion de extremos, o descarte de la pregunta como efecto de finitud.
+
+Paso 1 (completado): busqueda web.
+
+- Bonacorsi-Bordoni (arXiv:2603.04479, marzo 2026) documentan el mismo fenomeno con otro modelo.
+- No se encontro una explicacion mecanica publicada del gap.
+
+Paso 2 (completado): algebra y diagnostico.
+
+- El gap es real y significativo (p < 0.001 en k=20 tras Bonferroni).
+- El gap crece con k: ratio modelo/real ~1.09 en k=20, ~1.20 en k=30.
+- Autocorrelacion lag 1-5 es ~0 (no hay dependencia paso-a-paso).
+- Los bloques tardios (profundidad 8-10) tienen drift ~0.013 mas negativo que el teorico.
+- Causa identificada cualitativamente: sesgo de supervivencia condicional por profundidad.
+- `E[exit_v2]` sube a ~2.012 en bloques tardios mientras `E[tail]` baja a ~1.98.
+
+Paso 3 (completado): modelo corregido por profundidad.
+
+- Modelo bootstrap por profundidad: reduce gap 82% en k=20 en train.
+- Split validation [2.5M, 5M]: sobrecompensa (ratio 0.922 en k=20).
+- Resultado: mecanismo cualitativo correcto, modelo cuantitativo crudo.
+
+Resultado final M16: sesgo de profundidad observable en rango train. Mecanismo conocido (condicionamiento por supervivencia en RW). Nivel 2.5/5.
+
+## M17 - Validacion holdout fresco
+
+Estado: completado. Resultado NEGATIVO.
+
+Objetivo: validar modelo depth-corrected en holdout [15M, 25M] nunca tocado.
+
+Agente: ClaudeSocio.
+
+Preregistro:
+
+- 3 tests (k=15,20,25), Bonferroni alfa=0.017
+- Criterio exito: al menos 1/3 mejora significativa
+- Criterio abandono: 0/3 significativo o sobrecompensacion
+
+Resultado:
+
+- Tests significativos: 0/3
+- Observacion: la tendencia de los ratios i.i.d. cambia entre rangos de n.
+  - Train (n<=5M): ratios > 1.0 (~1.04-1.08), sugiriendo sobreproduccion.
+  - Holdout (15M-25M): ratios < 1.0 (~0.93-0.97), sugiriendo subproduccion.
+  - Sin embargo, los CI del i.i.d. contienen 1.0 en los 3 tests: el cambio NO es significativo.
+- El modelo corregido tiene sesgo significativo de subproduccion en k=20 (CI no contiene 1.0).
+- El bootstrap calibrado en train no generaliza al holdout.
+
+Conclusion: el sesgo de profundidad se observa en el rango de calibracion pero el modelo cuantitativo no es transferible. Nivel de novedad: 2.5/5 (sin cambio).
+
+Nota: el mecanismo "condicionamiento por supervivencia cambia el drift" es conocido en random walks; lo propio del proyecto fue medirlo en Collatz concreto, no encontrarlo como descomposicion drift-por-profundidad en la busqueda web realizada (lo cual no equivale a que nadie lo haya hecho).
+
+Recomendacion: cerrar arco de modelos estocasticos (M12-M17). Opciones futuras: investigar tendencia gap~log(n) con mas rangos, cambio de direccion total, o cierre de proyecto.

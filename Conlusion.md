@@ -1,86 +1,84 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-25 10:57:05 -03:00
-Tema activo: Collatz - Decimotercera Ola cerrada
+Ultima actualizacion: 2026-04-25
+Tema activo: Collatz - M17 completado (resultado negativo), arco M12-M17 cerrado
+Revision: incorpora feedback del revisor critico externo
 
-## Preguntas antes de la iteracion
+## Preguntas antes de la iteracion (M17)
 
 ```text
 Estoy en algo virgen?
-No. Estamos en modelos probabilisticos, supervivencia orbital, bloques Mersenne y stopping times, todos cercanos a literatura existente.
+No. El hallazgo M16 (sesgo profundidad) es propio pero nivel 2.5/5. La busqueda web
+no encontro la descomposicion drift-por-profundidad como tal, pero el fenomeno subyacente
+(sobreproduccion de extremos) ya esta documentado por Bonacorsi-Bordoni (2026), y el
+mecanismo (condicionamiento por supervivencia cambia el drift) es conocido en random walks.
 
 Puedo descubrir algo con esto?
-Si: confirmar una dependencia fina o descartarla limpiamente.
+Solo si el modelo corregido funciona en holdout fresco [15M,25M].
 
 Ya alguien estuvo buscando esto?
-Si a nivel amplio. La parte propia era la celda post-hoc `prev_exit_v2 = 5` + interior.
+No encontrado en la busqueda realizada. Eso no equivale a "nadie lo hizo".
 
 Que tan lejos estoy de descubrir algo?
-Lejos de una prueba. Esta iteracion era metodologica: evitar perseguir una senal falsa.
+A un experimento de distancia: holdout fresco.
 ```
 
-## Hallazgo principal
+## Observacion principal de M17
 
-M14 fue sometido a prueba de destruccion.
+En holdout [15M,25M], la tendencia observada de los ratios i.i.d. apunta a subproduccion (ratios < 1.0 para k >= 20), mientras que en train (n <= 5M) apuntaba a sobreproduccion (ratios > 1.0).
 
-En el rango original:
+| Rango | ratio_iid k=20 | ratio_corr k=20 | Tendencia observada |
+| --- | --- | --- | --- |
+| Train (n <= 5M) | 1.041 | 1.023 | Sobreproduccion |
+| Holdout (15M-25M) | 0.967 | 0.949 | Subproduccion |
 
-| Medida | Valor |
-| --- | ---: |
-| Real | `1551 / 3426 = 0.45271454` |
-| Modelo | `1402 / 3452 = 0.40614137` |
-| Diff | `0.04657317` |
-| p crudo | `0.0000939371` |
-| Bonferroni M13 | `0.01390268` |
-| Bonferroni conservador | `0.06519232` |
-| bootstrap CI95 | `[0.02364649, 0.06933110]` |
+**Matiz importante:** en los tests preregistrados (k=15,20,25), los CI del modelo i.i.d. contienen 1.0 en los tres casos. Por lo tanto, el cambio de tendencia es sugestivo pero **no estadisticamente significativo**. No se puede afirmar como hecho robusto.
 
-En holdout independiente:
+El modelo depth-corrected tiene un sesgo significativo de subproduccion en k=20 (CI [0.917, 0.984] no contiene 1.0), lo que indica que la correccion bootstrap no generaliza al holdout.
 
-| Medida | Valor |
-| --- | ---: |
-| Rango | `5000001 <= n <= 10000000` |
-| Real | `1380 / 3321 = 0.41553749` |
-| Modelo | `1402 / 3452 = 0.40614137` |
-| Diff | `0.00939612` |
-| p crudo | `0.43201832` |
-| bootstrap CI95 | `[-0.01423070, 0.03272495]` |
+## M16 se reinterpreta
 
-Conclusion:
+El sesgo por profundidad observado en M16 (bloques tardios con drift mas negativo) es un fenomeno observable en el rango de calibracion. Pero no constituye una correccion universal. El mecanismo subyacente (condicionamiento por supervivencia) es conocido en la teoria de random walks; lo propio del proyecto fue medirlo en el contexto Collatz concreto.
 
-```text
-El residuo `prev_exit_v2 = 5` + interior no sobrevive confirmacion independiente.
-```
+## Arco completo M12-M17
 
-## Preguntas despues de la iteracion
+| Milestone | Hipotesis | Resultado |
+| --- | --- | --- |
+| M12 | exit_v2=5 congruencia | Algebra local, descartado |
+| M13 | Sesgo supervivencia posicional | Explicado por posicion, no memoria |
+| M14 | prev_exit_v2=5 + interior | Fallo holdout, descartado |
+| M15 | q mod 8 marginal como memoria | Mezcla en 1 paso, cerrado |
+| M16 | Sesgo profundidad explica gap | Observable en train, no universal |
+| M17 | Validacion holdout fresco | Negativo. Tendencia cambia, no significativa |
+
+## Preguntas despues de la iteracion (M17)
 
 ```text
 La originalidad cambio?
-Si, a la baja. La pista no queda como hallazgo.
+No. Se mantiene en 2.5/5. M17 es un resultado negativo limpio.
 
 La probabilidad de relevancia subio?
-Bajo. La senal exploratoria no se reprodujo.
+No. El modelo no generaliza.
 
 Senal robusta o descarte?
-Descarte limpio para la afirmacion real-modelo original.
+El sesgo de profundidad se observa en su rango. El modelo cuantitativo es descartable.
+La tendencia gap~log(n) es una observacion en dos puntos, no un hallazgo.
 
 Que aprendimos?
-Claude tenia razon: sin holdout, una celda post-hoc puede parecer mucho mas fuerte de lo que es.
+Que la relacion modelo/real parece depender del rango de n. Los ratios i.i.d. son > 1
+en train y < 1 en holdout, pero la diferencia no es significativa en holdout. Esto
+podria ser variabilidad muestral o un efecto real que requiere mas rangos para confirmar.
 
 Seguir o abandonar?
-Abandonar `prev_exit_v2 = 5` + interior como pista principal.
+Cerrar el arco estocastico. El proyecto puede continuar con direccion nueva o cerrarse.
 ```
 
-## Siguiente paso
+## Estado del proyecto
 
-M15 debe cambiar el metodo:
+El activo principal del proyecto es la metodologia de descarte disciplinado: preregistro, holdout separado, preguntas obligatorias, descarte limpio. 6 milestones de hipotesis testeadas y descartadas o limitadas, sin afirmaciones infladas.
 
-```text
-buscar senales con train/holdout desde el inicio.
-```
+## Opciones futuras
 
-Regla nueva:
-
-```text
-ninguna senal post-hoc pasa a milestone fuerte sin holdout o test pre-registrado.
-```
+1. Investigar tendencia gap~log(n) con mas rangos de n (requiere teoria, no solo datos).
+2. Cambio de direccion: inverse trees, 2-adicos, L-functions, potential cycles.
+3. Cierre de proyecto con documento metodologico.
