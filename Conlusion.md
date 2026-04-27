@@ -1,11 +1,23 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-26
-Tema: Collatz - PROYECTO CERRADO tras M18
+Ultima actualizacion: 2026-04-27
+Tema: Collatz - arco estadistico cerrado; M19 reabierto solo para busqueda high-ceiling
 
 ## Estado final
 
 El proyecto se cierra tras 18 milestones (M0-M17 + M18 de cierre). El arco estocastico M12-M17 queda cerrado como descarte disciplinado. M18 resolvio el ultimo hilo suelto y confirmo que no hay direccion computacional con ceiling suficiente para continuar.
+
+## Reapertura condicionada M19
+
+A pedido del usuario, se busco una posibilidad cientifica mas fuerte. La conclusion no reabre el arco estadistico: mas mediciones odd-to-odd tienen ceiling bajo. La unica via con potencial relativamente alto y compatible con trabajo computacional es cambiar de marco hacia sistemas de reescritura y pruebas automaticas de terminacion.
+
+Decision M19:
+
+```text
+Reabrir solo para auditar y reproducir mixed-base rewriting / SAT termination.
+```
+
+Esto no afirma una prueba de Collatz. El objetivo realista es reproducir pruebas automaticas de debilitamientos no triviales y evaluar si existe una extension pequena, verificable y nueva.
 
 ## Resultado principal
 
@@ -41,3 +53,9 @@ La unica desviacion significativa es un efecto de finitud en n < 2.5M donde el m
 ## Leccion principal
 
 El modelo geometrico i.i.d. es tan bueno como baseline que romperlo requiere teoria, no mas computacion. Las 6 hipotesis computacionales testeadas fueron todas absorbidas por el modelo o por efectos de finitud. El proyecto demostro que es posible hacer investigacion computacional disciplinada sobre un problema famoso sin inflar claims.
+
+## Proxima linea permitida
+
+M19 - Auditoria y reproduccion de mixed-base rewriting para Collatz.
+
+Condicion: primero reproducir resultados existentes. Solo despues buscar extensiones.

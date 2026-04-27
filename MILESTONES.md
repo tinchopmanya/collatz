@@ -501,6 +501,37 @@ Nota: el mecanismo "condicionamiento por supervivencia cambia el drift" es conoc
 
 Recomendacion: cerrar arco de modelos estocasticos (M12-M17). Opciones futuras: investigar tendencia gap~log(n) con mas rangos, cambio de direccion total, o cierre de proyecto.
 
+## M19 - Auditoria y reproduccion de mixed-base rewriting
+
+Estado: propuesto como reapertura condicionada.
+
+Objetivo: buscar una posibilidad cientifica de mayor ceiling saliendo del arco estadistico y entrando en sistemas de reescritura / pruebas automaticas de terminacion.
+
+Motivacion:
+
+- La linea estadistica M12-M18 quedo cerrada.
+- Formalizacion Lean tiene ceiling alto pero no esta disponible localmente.
+- Mixed-base rewriting de Yolcu-Aaronson-Heule tiene paper, codigo publico y encaja con trabajo computacional.
+
+Definition of done:
+
+- Reproducir al menos una prueba existente del repo `rewriting-collatz`.
+- Documentar dependencias y parametros exactos.
+- Auditar si las pruebas existentes son solo reproduccion o si hay espacio para una extension pequena.
+- No afirmar una prueba global de Collatz.
+
+Criterio de exito:
+
+- Reproduccion local limpia de una prueba no trivial, o extension pequena verificable de una clase/debilitamiento no listada.
+
+Criterio de abandono:
+
+- No reproducible localmente, o solo reproduccion sin posibilidad razonable de extension, o necesidad de busqueda SAT abierta sin principio de parada.
+
+Decision actual:
+
+- Avanzar a M19 paso 1: entorno minimo y reproduccion de prueba existente.
+
 ## M18 - Ratio por rango de n y cierre del proyecto
 
 Estado: completado. Resultado: cierre.
