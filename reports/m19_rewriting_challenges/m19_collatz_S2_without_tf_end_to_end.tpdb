@@ -1,0 +1,13 @@
+(RULES
+  a a d -> e d ,
+  b d -> g d ,
+  a e -> e a ,
+  a f -> e b ,
+  a g -> f a ,
+  b e -> f b ,
+  b f -> g a ,
+  b g -> g b ,
+  c e -> c b ,
+  c f -> c a a ,
+  c g -> c a b 
+)

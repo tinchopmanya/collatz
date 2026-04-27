@@ -1,0 +1,25 @@
+source,log_name,args,log_exists,has_sat,has_qed,variables,clauses,attempt,sat_seconds
+relative/zantema.srs,zantema.log,-i natural -d 2 -rw 4,True,True,True,1446,8537,1,0.012
+relative/farkas.srs,farkas.log,-i arctic  -d 5 -rw 8,True,True,True,61145,401782,1,23.001
+relative/collatz-T-01.srs,collatz-T-01.log,-i natural -d 3 -rw 4 -any,True,True,True,4224,25867,1,3.398
+relative/collatz-T-02.srs,collatz-T-02.log,-i natural -d 1 -rw 2 -any,True,True,True,77,267,1,0.001
+relative/collatz-T-03.srs,collatz-T-03.log,-i natural -d 4 -rw 2 -any,True,True,True,3023,12687,1,0.106
+relative/collatz-T-04.srs,collatz-T-04.log,-i natural -d 1 -rw 3 -any,True,True,True,151,684,1,0.001
+relative/collatz-T-05.srs,collatz-T-05.log,-i natural -d 1 -rw 2 -any,True,True,True,77,267,1,0.001
+relative/collatz-T-06.srs,collatz-T-06.log,-i arctic  -d 3 -rw 4 -any,True,True,True,4035,17384,1,0.575
+relative/collatz-T-07.srs,collatz-T-07.log,-i arctic  -d 4 -rw 3 -any,True,True,True,6043,22428,1,0.162
+relative/collatz-T-08.srs,collatz-T-08.log,-i arctic  -d 2 -rw 5 -any,True,True,True,1771,8606,1,0.013
+relative/collatz-T-09.srs,collatz-T-09.log,-i natural -d 2 -rw 2 -any,True,True,True,444,1745,1,0.003
+relative/collatz-T-10.srs,collatz-T-10.log,-i natural -d 3 -rw 3 -any,True,True,True,2690,14191,1,0.009
+relative/collatz-T-11.srs,collatz-T-11.log,-i arctic  -d 4 -rw 3 -any,True,True,True,6042,22388,1,3.536
+relative/collatz-S-3mod4.srs,collatz-S-3mod4.log,-i natural -d 2 -rw 5,True,True,True,2088,13928,1,0.095
+relative/collatz-C-0mod4.srs,collatz-C-0mod4.log,-i natural -d 3 -rw 4,True,True,True,4788,29510,1,0.069
+relative/collatz-C-2mod4.srs,collatz-C-2mod4.log,-i natural -d 2 -rw 4,True,True,True,1566,9308,1,0.009
+relative/collatz-T-1mod4.srs,collatz-T-1mod4.log,-i natural -d 2 -rw 4 -any,True,True,True,1568,9315,1,0.008
+relative/collatz-T-3mod4.srs,collatz-T-3mod4.log,-i natural -d 3 -rw 5 -any,True,True,True,6386,44207,1,5.411
+relative/collatz-C-2mod8.srs,collatz-C-2mod8.log,-i natural -d 3 -rw 4 -any,True,True,True,5737,35627,1,0.027
+relative/collatz-C-4mod8.srs,collatz-C-4mod8.log,-i natural -d 3 -rw 4 -any,True,True,True,5926,36833,1,0.029
+relative/collatz-C-6mod8.srs,collatz-C-6mod8.log,-i arctic  -d 3 -rw 12 -any,True,True,True,21025,186053,1,44.257
+relative/collatz-T-3mod8.srs,collatz-T-3mod8.log,-i natural -d 3 -rw 11 -any,True,True,True,21004,220377,1,0.26
+relative/collatz-T-1or5mod8.srs,collatz-T-1or5mod8.log,-i natural -d 2 -rw 4 -any,True,True,True,1809,10841,1,0.011
+relative/collatz-T-1or7mod8.srs,collatz-T-1or7mod8.log,-i natural -d 3 -rw 7 -any,True,True,True,11469,94483,1,0.066

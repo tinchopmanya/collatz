@@ -78,9 +78,10 @@ Objetivo:
 - clonar `rewriting-collatz` en el commit auditado;
 - instalar Python/NumPy;
 - construir CaDiCaL con commit pinneado `7b99c07f0bcab5824a5a3ce62c7066554017f641`;
-- reproducir `relative/zantema.srs`;
-- verificar que el log contiene `QED`;
-- subir el log como artifact.
+- reproducir `relative/zantema.srs` por defecto, o las 24 pruebas con input manual `proof_set=all`;
+- verificar que los logs contienen `QED`;
+- auditar los logs con `scripts/m19_audit_rewriting_proofs.py`;
+- subir logs e inventario como artifact.
 
 Este workflow no corre automaticamente en cada push. Solo corre con `workflow_dispatch`.
 

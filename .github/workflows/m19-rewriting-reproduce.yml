@@ -2,11 +2,20 @@ name: M19 rewriting reproduction
 
 on:
   workflow_dispatch:
+    inputs:
+      proof_set:
+        description: "Proof set to reproduce"
+        required: true
+        default: "zantema"
+        type: choice
+        options:
+          - zantema
+          - all
 
 jobs:
-  reproduce-zantema:
+  reproduce:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
 
     steps:
       - name: Checkout this repository
@@ -44,16 +53,42 @@ jobs:
           cd /tmp/rewriting-collatz
           ./cadical --version
 
-      - name: Reproduce zantema relative termination proof
+      - name: Reproduce selected proof set
         run: |
           cd /tmp/rewriting-collatz
           . .venv/bin/activate
-          python prover/main.py relative/zantema.srs -i natural -d 2 -rw 4 --printascii > zantema-reproduction.log 2>&1
-          grep -q "QED" zantema-reproduction.log
-          grep -q "Relatively top-terminating rules" zantema-reproduction.log
+          rm -f proofs/*.log
+          if [ "${{ inputs.proof_set }}" = "all" ]; then
+            ./proofs.sh
+            grep -L "QED" proofs/*.log && exit 1 || true
+          else
+            python prover/main.py relative/zantema.srs -i natural -d 2 -rw 4 --printascii > proofs/zantema.log 2>&1
+            grep -q "QED" proofs/zantema.log
+            grep -q "Relatively top-terminating rules" proofs/zantema.log
+          fi
 
-      - name: Upload reproduction log
+      - name: Audit proof logs
+        run: |
+          if [ "${{ inputs.proof_set }}" = "all" ]; then
+            python scripts/m19_audit_rewriting_proofs.py \
+              --repo /tmp/rewriting-collatz \
+              --repo-label rewriting-collatz@8a4dfda60f97a6d33ff0a24fdfa7a172d4bec340 \
+              --csv /tmp/m19_rewriting_proof_inventory.csv \
+              --md /tmp/m19_rewriting_proof_inventory.md
+          else
+            python scripts/m19_audit_rewriting_proofs.py \
+              --repo /tmp/rewriting-collatz \
+              --repo-label rewriting-collatz@8a4dfda60f97a6d33ff0a24fdfa7a172d4bec340 \
+              --only-source relative/zantema.srs \
+              --csv /tmp/m19_rewriting_proof_inventory.csv \
+              --md /tmp/m19_rewriting_proof_inventory.md
+          fi
+
+      - name: Upload reproduction artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: m19-zantema-reproduction-log
-          path: /tmp/rewriting-collatz/zantema-reproduction.log
+          name: m19-rewriting-reproduction-${{ inputs.proof_set }}
+          path: |
+            /tmp/rewriting-collatz/proofs/*.log
+            /tmp/m19_rewriting_proof_inventory.csv
+            /tmp/m19_rewriting_proof_inventory.md
