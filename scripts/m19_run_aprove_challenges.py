@@ -11,12 +11,20 @@ def classify_output(text: str, return_code: int | None, timed_out: bool) -> str:
     upper = text.upper()
     if timed_out:
         return "TIMEOUT"
-    if "YES" in upper:
-        return "YES"
-    if "NO" in upper:
-        return "NO"
-    if "MAYBE" in upper or "UNKNOWN" in upper:
-        return "MAYBE"
+
+    # AProVE's WST status normally appears as a standalone line. Internal
+    # subproofs can also contain YES, so do not classify by substring alone.
+    for raw_line in text.splitlines():
+        line = raw_line.strip().upper()
+        if line in {"YES", "NO", "MAYBE", "ERROR", "TIMEOUT", "KILLED"}:
+            return line
+
+    if "JAVA HEAP SPACE" in upper or "OUTOFMEMORYERROR" in upper:
+        return "OOM"
+    if "CANNOT RUN PROGRAM" in upper or "PLEASE INSTALL" in upper:
+        return "ENV_ERROR"
+    if "ERROR" in upper or "EXCEPTION" in upper:
+        return "ERROR"
     if return_code not in (0, None):
         return "ERROR"
     return "UNKNOWN"
@@ -103,6 +111,8 @@ def write_csv(rows: list[dict[str, object]], path: Path) -> None:
 
 def write_markdown(rows: list[dict[str, object]], path: Path) -> None:
     successes = [row for row in rows if row["status"] == "YES"]
+    killed = [row for row in rows if row["status"] == "KILLED"]
+    env_errors = [row for row in rows if row["status"] == "ENV_ERROR"]
     lines = [
         "# M19 AProVE challenge run",
         "",
@@ -110,6 +120,8 @@ def write_markdown(rows: list[dict[str, object]], path: Path) -> None:
         "",
         f"- Runs: {len(rows)}",
         f"- YES: {len(successes)}",
+        f"- KILLED: {len(killed)}",
+        f"- ENV_ERROR: {len(env_errors)}",
         "",
         "| Challenge | Status | Seconds | Log |",
         "| --- | --- | ---: | --- |",

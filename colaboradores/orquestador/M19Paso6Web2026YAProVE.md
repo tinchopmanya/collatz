@@ -130,7 +130,7 @@ El workflow:
 - usa Java 21;
 - descarga `aprove.jar` desde release `master_2026_02_15`;
 - corre AProVE en modo `wst`;
-- prueba S1, S2 o ambos;
+- prueba S1, S2 o ambos usando los archivos `.aprove.srs`;
 - guarda logs, CSV y Markdown.
 
 ## Secuencia recomendada

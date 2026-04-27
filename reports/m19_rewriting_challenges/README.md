@@ -18,11 +18,11 @@ These files materialize the two explicit S-system challenges from Yolcu-Aaronson
 
 ## Generated Files
 
-| Challenge | SRS | TPDB | Removed rule | Meaning |
-| --- | --- | --- | --- | --- |
-| `S_full` | `m19_collatz_S_full.srs` | `m19_collatz_S_full.tpdb` | `none` | full S |
-| `S1_without_ff_end_to_0_end` | `m19_collatz_S1_without_ff_end_to_0_end.srs` | `m19_collatz_S1_without_ff_end_to_0_end.tpdb` | `aad -> ed` | ff* -> 0* |
-| `S2_without_tf_end_to_end` | `m19_collatz_S2_without_tf_end_to_end.srs` | `m19_collatz_S2_without_tf_end_to_end.tpdb` | `bad -> d` | tf* -> * |
+| Challenge | Prover SRS | TPDB | AProVE SRS | Removed rule | Meaning |
+| --- | --- | --- | --- | --- | --- |
+| `S_full` | `m19_collatz_S_full.srs` | `m19_collatz_S_full.tpdb` | `m19_collatz_S_full.aprove.srs` | `none` | full S |
+| `S1_without_ff_end_to_0_end` | `m19_collatz_S1_without_ff_end_to_0_end.srs` | `m19_collatz_S1_without_ff_end_to_0_end.tpdb` | `m19_collatz_S1_without_ff_end_to_0_end.aprove.srs` | `aad -> ed` | ff* -> 0* |
+| `S2_without_tf_end_to_end` | `m19_collatz_S2_without_tf_end_to_end.srs` | `m19_collatz_S2_without_tf_end_to_end.tpdb` | `m19_collatz_S2_without_tf_end_to_end.aprove.srs` | `bad -> d` | tf* -> * |
 
 ## Rule Inventory
 

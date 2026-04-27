@@ -40,6 +40,16 @@ jobs:
 
       - name: Download pinned AProVE release
         run: |
+          sudo apt-get update
+          sudo apt-get install -y curl minisat
+          sudo ln -sf /usr/bin/minisat /usr/local/bin/minisat2
+          mkdir -p /tmp/yices
+          curl -L \
+            https://yices.csl.sri.com/releases/2.6.4/yices-2.6.4-x86_64-pc-linux-gnu.tar.gz \
+            -o /tmp/yices/yices.tgz
+          tar -xzf /tmp/yices/yices.tgz -C /tmp/yices --strip-components=1
+          sudo ln -sf /tmp/yices/bin/yices /usr/local/bin/yices
+          yices --version
           mkdir -p /tmp/aprove
           curl -L \
             https://github.com/aprove-developers/aprove-releases/releases/download/master_2026_02_15/aprove.jar \
@@ -47,13 +57,15 @@ jobs:
           test -s /tmp/aprove/aprove.jar
 
       - name: Run AProVE on selected challenge files
+        env:
+          JAVA_TOOL_OPTIONS: -Xmx6g
         run: |
           challenge_args=()
           if [ "${{ inputs.challenge }}" = "S1" ] || [ "${{ inputs.challenge }}" = "both" ]; then
-            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.tpdb)
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.aprove.srs)
           fi
           if [ "${{ inputs.challenge }}" = "S2" ] || [ "${{ inputs.challenge }}" = "both" ]; then
-            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.tpdb)
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.aprove.srs)
           fi
           python scripts/m19_run_aprove_challenges.py \
             --jar /tmp/aprove/aprove.jar \

@@ -59,10 +59,13 @@ Archivos principales:
 
 - `m19_collatz_S_full.srs`
 - `m19_collatz_S_full.tpdb`
+- `m19_collatz_S_full.aprove.srs`
 - `m19_collatz_S1_without_ff_end_to_0_end.srs`
 - `m19_collatz_S1_without_ff_end_to_0_end.tpdb`
+- `m19_collatz_S1_without_ff_end_to_0_end.aprove.srs`
 - `m19_collatz_S2_without_tf_end_to_end.srs`
 - `m19_collatz_S2_without_tf_end_to_end.tpdb`
+- `m19_collatz_S2_without_tf_end_to_end.aprove.srs`
 - `README.md`
 
 ## Importancia

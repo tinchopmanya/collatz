@@ -61,20 +61,28 @@ def spaced(word: str) -> str:
     return " ".join(word)
 
 
+def write_text_lf(path: Path, text: str) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(text)
+
+
 def write_srs(rules: list[Rule], path: Path) -> None:
-    path.write_text("\n".join(f"{rule.lhs} -> {rule.rhs}" for rule in rules) + "\n", encoding="utf-8")
+    write_text_lf(path, "\n".join(f"{rule.lhs} -> {rule.rhs}" for rule in rules) + "\n")
 
 
 def write_tpdb(rules: list[Rule], path: Path) -> None:
     lines = ["(RULES"]
     for index, rule in enumerate(rules):
-        comma = "," if index < len(rules) - 1 else ""
-        lines.append(f"  {spaced(rule.lhs)} -> {spaced(rule.rhs)} {comma}")
+        comma = " ," if index < len(rules) - 1 else ""
+        lines.append(f"  {spaced(rule.lhs)} -> {spaced(rule.rhs)}{comma}")
     lines.append(")")
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    write_text_lf(path, "\n".join(lines) + "\n")
 
 
-def write_manifest(output_dir: Path, generated: list[tuple[str, Path, Path, list[Rule], Rule | None]]) -> None:
+def write_manifest(
+    output_dir: Path,
+    generated: list[tuple[str, Path, Path, Path, list[Rule], Rule | None]],
+) -> None:
     lines = [
         "# M19 rewriting challenge files",
         "",
@@ -95,15 +103,15 @@ def write_manifest(output_dir: Path, generated: list[tuple[str, Path, Path, list
             "",
             "## Generated Files",
             "",
-            "| Challenge | SRS | TPDB | Removed rule | Meaning |",
-            "| --- | --- | --- | --- | --- |",
+            "| Challenge | Prover SRS | TPDB | AProVE SRS | Removed rule | Meaning |",
+            "| --- | --- | --- | --- | --- | --- |",
         ]
     )
-    for name, srs_path, tpdb_path, _rules, removed in generated:
+    for name, srs_path, tpdb_path, aprove_path, _rules, removed in generated:
         removed_text = "`none`" if removed is None else f"`{removed.lhs} -> {removed.rhs}`"
         meaning = "full S" if removed is None else removed.paper
         lines.append(
-            f"| `{name}` | `{srs_path.name}` | `{tpdb_path.name}` | {removed_text} | {meaning} |"
+            f"| `{name}` | `{srs_path.name}` | `{tpdb_path.name}` | `{aprove_path.name}` | {removed_text} | {meaning} |"
         )
 
     lines.extend(
@@ -128,7 +136,7 @@ def write_manifest(output_dir: Path, generated: list[tuple[str, Path, Path, list
             "- Next step: run established termination tools against the TPDB files before inventing custom search.",
         ]
     )
-    (output_dir / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    write_text_lf(output_dir / "README.md", "\n".join(lines) + "\n")
 
 
 def main() -> int:
@@ -139,7 +147,7 @@ def main() -> int:
     args = parser.parse_args()
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    generated: list[tuple[str, Path, Path, list[Rule], Rule | None]] = []
+    generated: list[tuple[str, Path, Path, Path, list[Rule], Rule | None]] = []
 
     for name, config in CHALLENGES.items():
         removed_lhs = config["removed"]
@@ -147,14 +155,17 @@ def main() -> int:
         removed = next((rule for rule in COLLATZ_S_RULES if rule.lhs == removed_lhs), None)
         srs_path = args.out_dir / config["filename"]
         tpdb_path = srs_path.with_suffix(".tpdb")
+        aprove_path = srs_path.with_suffix(".aprove.srs")
         write_srs(rules, srs_path)
         write_tpdb(rules, tpdb_path)
-        generated.append((name, srs_path, tpdb_path, rules, removed))
+        write_tpdb(rules, aprove_path)
+        generated.append((name, srs_path, tpdb_path, aprove_path, rules, removed))
 
     write_manifest(args.out_dir, generated)
-    for _name, srs_path, tpdb_path, rules, _removed in generated:
+    for _name, srs_path, tpdb_path, aprove_path, rules, _removed in generated:
         print(f"{srs_path} rules={len(rules)}")
         print(f"{tpdb_path} rules={len(rules)}")
+        print(f"{aprove_path} rules={len(rules)}")
     print(args.out_dir / "README.md")
     return 0
 
