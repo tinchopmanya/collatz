@@ -1,0 +1,69 @@
+name: M19 AProVE challenge search
+
+on:
+  workflow_dispatch:
+    inputs:
+      challenge:
+        description: "Challenge to run through AProVE"
+        required: true
+        default: "both"
+        type: choice
+        options:
+          - S1
+          - S2
+          - both
+      timeout:
+        description: "AProVE timeout in seconds"
+        required: true
+        default: "120"
+        type: string
+      wall_timeout:
+        description: "Outer wall timeout per challenge in seconds"
+        required: true
+        default: "180"
+        type: string
+
+jobs:
+  aprove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Download pinned AProVE release
+        run: |
+          mkdir -p /tmp/aprove
+          curl -L \
+            https://github.com/aprove-developers/aprove-releases/releases/download/master_2026_02_15/aprove.jar \
+            -o /tmp/aprove/aprove.jar
+          test -s /tmp/aprove/aprove.jar
+
+      - name: Run AProVE on selected challenge files
+        run: |
+          challenge_args=()
+          if [ "${{ inputs.challenge }}" = "S1" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.tpdb)
+          fi
+          if [ "${{ inputs.challenge }}" = "S2" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.tpdb)
+          fi
+          python scripts/m19_run_aprove_challenges.py \
+            --jar /tmp/aprove/aprove.jar \
+            "${challenge_args[@]}" \
+            --out-dir /tmp/m19_aprove_challenges \
+            --timeout "${{ inputs.timeout }}" \
+            --wall-timeout "${{ inputs.wall_timeout }}"
+
+      - name: Upload AProVE artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-aprove-challenge-search-${{ inputs.challenge }}
+          path: /tmp/m19_aprove_challenges
