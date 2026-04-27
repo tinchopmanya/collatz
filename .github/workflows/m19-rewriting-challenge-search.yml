@@ -1,0 +1,128 @@
+name: M19 rewriting challenge search
+
+on:
+  workflow_dispatch:
+    inputs:
+      challenge:
+        description: "Challenge to search"
+        required: true
+        default: "both"
+        type: choice
+        options:
+          - S1
+          - S2
+          - both
+      interpretations:
+        description: "Comma-separated interpretations"
+        required: true
+        default: "natural,arctic"
+        type: string
+      dimensions:
+        description: "Dimension range/list, e.g. 1-3 or 1,2,3"
+        required: true
+        default: "1-3"
+        type: string
+      result_widths:
+        description: "Result width range/list, e.g. 2-5 or 3,4"
+        required: true
+        default: "2-5"
+        type: string
+      solver_timeout:
+        description: "SAT timeout per attempt, seconds"
+        required: true
+        default: "30"
+        type: string
+      wall_timeout:
+        description: "Wall timeout per grid cell, seconds"
+        required: true
+        default: "60"
+        type: string
+      workers:
+        description: "Parallel solver workers per cell"
+        required: true
+        default: "4"
+        type: string
+      tries:
+        description: "Solver tries per cell"
+        required: true
+        default: "1"
+        type: string
+      remove_any:
+        description: "Use prover -any rule removal"
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential git python3 python3-venv
+
+      - name: Clone rewriting-collatz at audited commit
+        run: |
+          git clone https://github.com/emreyolcu/rewriting-collatz.git /tmp/rewriting-collatz
+          cd /tmp/rewriting-collatz
+          git checkout 8a4dfda60f97a6d33ff0a24fdfa7a172d4bec340
+
+      - name: Install Python dependencies
+        run: |
+          cd /tmp/rewriting-collatz
+          python3 -m venv .venv
+          . .venv/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install "numpy>=1.19"
+
+      - name: Build CaDiCaL
+        run: |
+          cd /tmp/rewriting-collatz
+          mkdir -p tools
+          git clone https://github.com/arminbiere/cadical.git tools/cadical
+          cd tools/cadical
+          git checkout 7b99c07f0bcab5824a5a3ce62c7066554017f641
+          ./configure
+          make -j2
+          ln -sf "$PWD/build/cadical" /tmp/rewriting-collatz/cadical
+          cd /tmp/rewriting-collatz
+          ./cadical --version
+
+      - name: Run bounded S1/S2 search grid
+        run: |
+          challenge_args=()
+          if [ "${{ inputs.challenge }}" = "S1" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.srs)
+          fi
+          if [ "${{ inputs.challenge }}" = "S2" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.srs)
+          fi
+          remove_any=()
+          if [ "${{ inputs.remove_any }}" = "true" ]; then
+            remove_any+=(--remove-any)
+          fi
+          python scripts/m19_run_rewriting_challenge_grid.py \
+            --rewriting-repo /tmp/rewriting-collatz \
+            "${challenge_args[@]}" \
+            --out-dir /tmp/m19_challenge_search \
+            --interpretations "${{ inputs.interpretations }}" \
+            --dimensions "${{ inputs.dimensions }}" \
+            --result-widths "${{ inputs.result_widths }}" \
+            --solver-timeout "${{ inputs.solver_timeout }}" \
+            --wall-timeout "${{ inputs.wall_timeout }}" \
+            --workers "${{ inputs.workers }}" \
+            --tries "${{ inputs.tries }}" \
+            --stop-on-success \
+            "${remove_any[@]}"
+
+      - name: Upload search artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-rewriting-challenge-search-${{ inputs.challenge }}
+          path: /tmp/m19_challenge_search
