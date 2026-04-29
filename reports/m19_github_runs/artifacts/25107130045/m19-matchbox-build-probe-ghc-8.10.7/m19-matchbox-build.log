@@ -675,4 +675,3 @@ with the verbosity flag -v3 to see the error messages.
 
 Error: cabal: Failed to build boolector-0.0.0.13 (which is required by
 exe:matchbox2015 from matchbox-4.4.0). See the build log above for details.
-
