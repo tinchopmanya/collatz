@@ -40,6 +40,26 @@ bd04a1c2f65ccda483901f23fdb5f2392b824ac5b2d7ab1011e66f18771bb210
 
 Ese complemento es ahora el objeto cientifico principal. Si muestra estructura explotable, puede volverse benchmark. Si no la muestra, M22 se enfria limpiamente.
 
+## Estado M22-C1/C2
+
+M22-C1 paso como rechecker independiente:
+
+- `branch_residue_count = 8192`;
+- `lowbit_certified_count = 7814`;
+- `uncovered_count = 378`;
+- hashes de certificados y complemento reproducidos;
+- `false_positives = 0`;
+- `affine_failures = 0`.
+
+M22-C2 paso como guarda computacional finita:
+
+- `65536` residuos evaluados;
+- `378` residuos del complemento aceptados;
+- `0` residuos fuera de S2 aceptados;
+- `0` residuos certificados reenviados al guardado.
+
+Pero C2 no probo todavia la equivalencia semantica entre la rama del SRS mixto `bad -> d` / `tf* -> *` y el predicado `r mod 8 = 5`. Por lo tanto, C3 queda bloqueado como experimento confirmatorio hasta completar M24.
+
 ## Estado de Matchbox/AProVE
 
 Matchbox/AProVE siguen siendo herramientas instrumentales, no la hipotesis central. Los intentos de build historico muestran fallos sucesivos de ecosistema:
@@ -62,8 +82,8 @@ Decision provisoria: permitir como maximo uno o dos parches acotados mas si el r
 
 ## Proxima decision
 
-Esperar los resultados de los cinco hijos en worktrees separados y decidir:
+Ejecutar M24:
 
-- si M19 se mantiene solo como herramienta o se enfria;
-- si M22 pasa a milestone principal;
-- que experimento confirmatorio se corre primero sobre el complemento S2-k16.
+- auditar reglas oficiales YA-Heule;
+- derivar, refutar o dejar no decidida la equivalencia SRS -> `r mod 8 = 5`;
+- permitir C3 solo si la brecha semantica se cierra.

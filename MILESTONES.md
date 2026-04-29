@@ -559,7 +559,7 @@ Criterio de no sobreinterpretacion:
 
 ## M22 - Puente low-bit/descent hacia guarded rewriting
 
-Estado: linea principal activa.
+Estado: linea principal activa, bloqueada por brecha semantica M24 antes de C3 confirmatorio.
 
 Objetivo: usar certificados low-bit/descent para reducir familias residuales de rewriting y dejar complementos verificables que herramientas de terminacion puedan atacar.
 
@@ -568,22 +568,52 @@ Resultado actual:
 - En S2-k16, de `8192` clases de rama, `7814` quedan descargadas por low-bit/descent.
 - Complemento congelado: `378` residuos.
 - SHA del complemento: `bd04a1c2f65ccda483901f23fdb5f2392b824ac5b2d7ab1011e66f18771bb210`.
+- M22-C1 paso con rechecker independiente, `false_positives = 0` y `affine_failures = 0`.
+- M22-C2 paso la guarda computacional finita, pero dejo `semantic_translation_status = gap_unproven`.
 
 Proximos criterios:
 
-- M22-C1: rechecker independiente de S2-k16.
-- M22-C2: validador semantico del puente S2.
-- M22-C3: benchmark guarded S2-k16 contra S2 base solo si C1/C2 pasan.
+- M24: auditoria semantica SRS para derivar/refutar/no decidir `bad -> d` / `tf* -> *` como `r mod 8 = 5`.
+- M22-C3: benchmark guarded S2-k16 contra S2 base solo si M24 cierra la brecha.
 
 Criterio de exito:
 
-- C1 y C2 pasan con `0` discrepancias, y C3 obtiene un `YES` nuevo o reduccion robusta pre-registrada.
+- M24 prueba la traduccion semantica, y C3 obtiene un `YES` nuevo o reduccion robusta pre-registrada.
 
 Criterio de abandono:
 
 - Cualquier falso positivo low-bit.
 - Brecha semantica no cerrable entre residuos y SRS.
 - Complemento residual sin estructura o peor que S2 base para provers.
+
+## M23 - Frontera web/papers rewriting + low-bit
+
+Estado: completado como investigacion de frontera.
+
+Resultado:
+
+- No se encontro combinacion publica exacta de certificados low-bit/descent con familias residuales guarded rewriting tipo M22.
+- Novedad plausible: media-alta solo para un benchmark guarded semanticamente auditado y certificable.
+- Novedad baja para repetir rewriting, low-bit/descent o AProVE/Matchbox por separado.
+
+Decision:
+
+- Mantener novedad como tentativa, no como claim fuerte.
+- Cerrar M22 como exploratorio si M24 no prueba la traduccion semantica.
+
+## M24 - Auditoria semantica SRS
+
+Estado: activo.
+
+Objetivo: determinar si la etiqueta local `bad -> d` / `tf* -> *` corresponde realmente, desde las reglas del SRS mixto, al predicado aritmetico `r mod 8 = 5`.
+
+Criterio de exito:
+
+- Derivacion local y auditada de la equivalencia operacional SRS -> residuo.
+
+Criterio de abandono:
+
+- La equivalencia queda solo como etiqueta local sin prueba, o se refuta por una regla/alcanzabilidad concreta.
 
 ## M18 - Ratio por rango de n y cierre del proyecto
 
