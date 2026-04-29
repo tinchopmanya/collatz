@@ -572,10 +572,13 @@ Resultado actual:
 - M22-C2 paso la guarda computacional finita, pero dejo `semantic_translation_status = gap_unproven`.
 - M24 probo que `bad -> d` / `tf* -> *` corresponde a `n % 8 == 5` para la rama dinamica operacional de `S`.
 - M24 microguard preparo `r mod 2^13 = 8189` como microfamilia exacta de 8 residuos dentro de `U_16`.
+- M25 preregistro C3 minimo antes de cualquier prover.
+- M25 checker de C3 minimo paso las implicaciones finitas, pero no genero SRS: `c3_build_status = blocked`.
 
 Proximos criterios:
 
-- M22-C3 minimo: benchmark/checker guardado para `r mod 2^13 = 8189` antes de intentar todo `U_16`.
+- M26: residue-state threading por reglas auxiliares antes de materializar un SRS guardado.
+- M22-C3 minimo: solo despues de M26.
 - M22-C3 amplio: solo despues de medir inflacion y utilidad del microbenchmark.
 
 Criterio de exito:
@@ -587,6 +590,37 @@ Criterio de abandono:
 - Cualquier falso positivo low-bit.
 - Brecha semantica no cerrable entre residuos y SRS.
 - Complemento residual sin estructura o peor que S2 base para provers.
+- No poder propagar residuos por reglas auxiliares sin cambiar el problema o inflar el SRS.
+
+## M25 - C3 minimo preregistrado y checker bloqueado
+
+Estado: completado como bloqueo honesto.
+
+Resultado:
+
+- Preregistro `M25-C3-minimo-r8189-v1` integrado antes de cualquier prover.
+- Checker confirma `G_8189 = U_16 intersection {r | r mod 2^13 = 8189}`.
+- `G_8189` tiene 8 residuos, no intersecta certificados y esta dentro de la rama `bad -> d`.
+- No se genero SRS guardado; `c3_build_status = blocked`.
+
+Decision:
+
+- No correr Matchbox/AProVE sobre C3.
+- Abrir M26 para especificar residue-state threading.
+
+## M26 - Residue-state threading through auxiliary rules
+
+Estado: proximo.
+
+Objetivo: construir una especificacion/checker que transporte estado residual modulo `2^13` o `2^16` a traves de las reglas auxiliares `X`, de modo que una guarda sobre `bad -> d` conserve exactamente un subproblema de S2.
+
+Criterio de exito:
+
+- Un checker prueba que toda transicion auxiliar preserva/actualiza correctamente el estado residual y que la contraccion guardada acepta exactamente la microfamilia `G_8189`.
+
+Criterio de abandono:
+
+- El producto de estados/reglas supera `2x` S2 base antes de prover, o la semantica de residuos no puede definirse localmente sin cambiar el problema.
 
 ## M23 - Frontera web/papers rewriting + low-bit
 

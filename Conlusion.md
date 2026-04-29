@@ -89,9 +89,24 @@ Decision provisoria: permitir como maximo uno o dos parches acotados mas si el r
 
 ## Proxima decision
 
-Ejecutar C3 minimo:
+M25 intento materializar C3 minimo de forma honesta. El checker de implicacion paso para la microfamilia:
 
-- usar microguarda `r mod 2^13 = 8189`;
-- generar artefacto/checker antes de correr provers;
-- comparar contra S2 base solo con parametros preregistrados;
-- exigir CPF/CeTA si aparece un `YES`.
+```text
+G_8189 = U_16 intersection {r | r mod 2^13 = 8189}
+```
+
+pero no se genero un SRS guardado. El estado queda:
+
+```text
+c3_build_status = blocked
+c3_blocked_reason = guarded_srs_semantics_missing
+```
+
+Esto significa que la siguiente pieza faltante no es un prover, sino una semantica local de propagacion de residuos a traves de las reglas auxiliares.
+
+Ejecutar M26:
+
+- especificar residue-state threading por las reglas auxiliares `X`;
+- fijar orientacion de bits;
+- probar que una guarda sobre `bad -> d` conserva exactamente un subproblema de S2;
+- no correr provers hasta que ese checker pase.
