@@ -67,6 +67,11 @@ on:
         required: true
         default: "3.2.4"
         type: string
+      patch_haskell_boolector:
+        description: "Use a local minimal patch for Hackage boolector-0.0.0.13 on newer GHC"
+        required: true
+        default: true
+        type: boolean
 
 jobs:
   matchbox:
@@ -165,6 +170,35 @@ jobs:
           index-state: hackage.haskell.org ${{ inputs.index_state }}
           allow-newer: false
           EOF
+          if [ "${{ inputs.patch_haskell_boolector }}" = "true" ]; then
+            rm -rf /tmp/m19-haskell-boolector
+            mkdir -p /tmp/m19-haskell-boolector
+            cabal get boolector-0.0.0.13 --destdir=/tmp/m19-haskell-boolector
+            python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("/tmp/m19-haskell-boolector/boolector-0.0.0.13/src/Boolector.hs")
+          old = '    _ -> fail "BUG: should really have the sort in the cache"'
+          new = '    _ -> error "BUG: should really have the sort in the cache"'
+          text = path.read_text(encoding="utf-8")
+          if old not in text:
+              raise SystemExit("expected Hackage boolector fail line not found")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          project = Path("cabal.project.local")
+          project_text = project.read_text(encoding="utf-8")
+          needle = "packages: ."
+          local_package = "/tmp/m19-haskell-boolector/boolector-0.0.0.13"
+          if needle not in project_text:
+              raise SystemExit("expected packages stanza not found in cabal.project.local")
+          project.write_text(project_text.replace(needle, f"{needle} {local_package}", 1), encoding="utf-8")
+          PY
+            if grep -n 'fail "BUG: should really have the sort' /tmp/m19-haskell-boolector/boolector-0.0.0.13/src/Boolector.hs; then
+              exit 1
+            fi
+            grep -n 'error "BUG: should really have the sort' /tmp/m19-haskell-boolector/boolector-0.0.0.13/src/Boolector.hs
+          fi
+          cat cabal.project.local
           ghc --version
           cabal --version
           cabal v2-build exe:matchbox2015 -w "$(command -v ghc)" --jobs=2 \

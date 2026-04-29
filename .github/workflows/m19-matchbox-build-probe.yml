@@ -38,6 +38,11 @@ on:
         required: true
         default: "3.2.4"
         type: string
+      patch_haskell_boolector:
+        description: "Use a local minimal patch for Hackage boolector-0.0.0.13 on newer GHC"
+        required: true
+        default: true
+        type: boolean
       actual_build:
         description: "After dependency dry-run, attempt the full build"
         required: true
@@ -57,7 +62,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            build-essential git ca-certificates pkg-config cmake curl \
+            build-essential git ca-certificates pkg-config cmake curl python3 \
             libgmp-dev libglpk-dev glpk-utils minisat zlib1g-dev boolector
           dpkg -L boolector | grep -E 'boolector\.(h|a|so)' || true
 
@@ -153,6 +158,39 @@ jobs:
           fi
           cat cabal.project.local
 
+      - name: Patch Haskell boolector binding
+        if: inputs.patch_haskell_boolector == true && inputs.actual_build == true
+        working-directory: /tmp/m19-matchbox-src
+        run: |
+          set -euxo pipefail
+          rm -rf /tmp/m19-haskell-boolector
+          mkdir -p /tmp/m19-haskell-boolector
+          cabal get boolector-0.0.0.13 --destdir=/tmp/m19-haskell-boolector
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("/tmp/m19-haskell-boolector/boolector-0.0.0.13/src/Boolector.hs")
+          old = '    _ -> fail "BUG: should really have the sort in the cache"'
+          new = '    _ -> error "BUG: should really have the sort in the cache"'
+          text = path.read_text(encoding="utf-8")
+          if old not in text:
+              raise SystemExit("expected Hackage boolector fail line not found")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          project = Path("cabal.project.local")
+          project_text = project.read_text(encoding="utf-8")
+          needle = "packages: ."
+          local_package = "/tmp/m19-haskell-boolector/boolector-0.0.0.13"
+          if needle not in project_text:
+              raise SystemExit("expected packages stanza not found in cabal.project.local")
+          project.write_text(project_text.replace(needle, f"{needle} {local_package}", 1), encoding="utf-8")
+          PY
+          if grep -n 'fail "BUG: should really have the sort' /tmp/m19-haskell-boolector/boolector-0.0.0.13/src/Boolector.hs; then
+            exit 1
+          fi
+          grep -n 'error "BUG: should really have the sort' /tmp/m19-haskell-boolector/boolector-0.0.0.13/src/Boolector.hs
+          cat cabal.project.local
+
       - name: Dependency solver dry-run
         id: dry-run
         continue-on-error: true
@@ -208,6 +246,7 @@ jobs:
             echo "use_source_deps=${{ inputs.use_source_deps }}"
             echo "build_boolector_c=${{ inputs.build_boolector_c }}"
             echo "boolector_ref=${{ inputs.boolector_ref }}"
+            echo "patch_haskell_boolector=${{ inputs.patch_haskell_boolector }}"
             echo "actual_build=${{ inputs.actual_build }}"
             echo "ghc=$(ghc --numeric-version 2>/dev/null || true)"
             echo "base=$(ghc-pkg field base version 2>/dev/null || true)"
