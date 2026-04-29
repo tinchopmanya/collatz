@@ -3,7 +3,7 @@
 ## Summary
 
 - Bundle classification: `uncertified_logs_only`
-- Candidate artifacts: 63
+- Candidate artifacts: 75
 - Missing roots: 0
 - Hash failures: 0
 
@@ -11,8 +11,8 @@
 
 | Type | Count |
 | --- | ---: |
-| `inventory_or_report` | 13 |
-| `tool_log` | 50 |
+| `inventory_or_report` | 21 |
+| `tool_log` | 54 |
 
 ## Highest-Signal Artifacts
 
@@ -23,6 +23,9 @@
 | `m19_github_runs/artifacts/25104952325/m19-aprove-challenge-search-both/logs/m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove.log` | `tool_log` | aprove | KILLED |  | `missing_sidecar` | versioned |
 | `m19_github_runs/artifacts/25104952325/m19-aprove-challenge-search-both/logs/m19_collatz_S2_without_tf_end_to_end.aprove.aprove.log` | `tool_log` | aprove | KILLED |  | `missing_sidecar` | versioned |
 | `m19_github_runs/artifacts/25104952325/m19-aprove-challenge-search-both/m19_aprove_challenges.csv` | `inventory_or_report` | aprove | KILLED |  | `missing_sidecar` |  |
+| `m19_github_runs/artifacts/25105347516/m19-aprove-environment-probe-both/logs/m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove-probe.log` | `tool_log` | aprove | KILLED |  | `missing_sidecar` | versioned |
+| `m19_github_runs/artifacts/25105347516/m19-aprove-environment-probe-both/logs/m19_collatz_S2_without_tf_end_to_end.aprove.aprove-probe.log` | `tool_log` | aprove | KILLED |  | `missing_sidecar` | versioned |
+| `m19_github_runs/artifacts/25105375622/m19-matchbox-challenge-search-both/m19_matchbox_challenges.csv` | `inventory_or_report` | matchbox | ERROR |  | `missing_sidecar` | contains-sha256 |
 | `m19_rewriting_official_proof_inventory.csv` | `inventory_or_report` | rewriting-collatz |  |  | `missing_sidecar` | qed |
 | `m19_rewriting_official_proof_inventory.md` | `inventory_or_report` | rewriting-collatz |  |  | `missing_sidecar` | qed,sat |
 | `m19_rewriting_zantema_inventory.csv` | `inventory_or_report` | rewriting-collatz |  |  | `missing_sidecar` | qed |

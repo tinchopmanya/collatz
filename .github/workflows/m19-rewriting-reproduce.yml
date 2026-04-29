@@ -65,7 +65,14 @@ jobs:
             ./proofs.sh
             grep -L "QED" proofs/*.log && exit 1 || true
           else
+            set +e
             python prover/main.py relative/zantema.srs -i natural -d 2 -rw 4 --printascii > proofs/zantema.log 2>&1
+            code=$?
+            set -e
+            if [ "$code" != "19" ]; then
+              cat proofs/zantema.log
+              exit "$code"
+            fi
             grep -q "QED" proofs/zantema.log
             grep -q "Relatively top-terminating rules" proofs/zantema.log
           fi
@@ -88,6 +95,7 @@ jobs:
           fi
 
       - name: Upload reproduction artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: m19-rewriting-reproduction-${{ inputs.proof_set }}

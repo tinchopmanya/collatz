@@ -1,5 +1,5 @@
 {
-  "artifact_count": 63,
+  "artifact_count": 75,
   "artifacts": [
     {
       "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25104952228\\m19-rewriting-challenge-search-both\\logs\\m19_collatz_S1_without_ff_end_to_0_end_arctic_d1_rw2.log",
@@ -658,6 +658,138 @@
       "top_level_status": ""
     },
     {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105347516\\m19-aprove-environment-probe-both\\logs\\m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove-probe.log",
+      "artifact_type": "tool_log",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105347516/m19-aprove-environment-probe-both/logs/m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove-probe.log",
+      "sha256": "2f7bb73daec31c5cc3d17a4b00bcf238986f890107fd0365b23549520477e097",
+      "signals": [
+        "versioned"
+      ],
+      "size_bytes": 514076,
+      "tool": "aprove",
+      "top_level_status": "KILLED"
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105347516\\m19-aprove-environment-probe-both\\logs\\m19_collatz_S2_without_tf_end_to_end.aprove.aprove-probe.log",
+      "artifact_type": "tool_log",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105347516/m19-aprove-environment-probe-both/logs/m19_collatz_S2_without_tf_end_to_end.aprove.aprove-probe.log",
+      "sha256": "d017a5cdef2fd5d34fe2e5723434d9ab12d2de68d6f1a1151ffbd0b79d9f16e3",
+      "signals": [
+        "versioned"
+      ],
+      "size_bytes": 461694,
+      "tool": "aprove",
+      "top_level_status": "KILLED"
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105347516\\m19-aprove-environment-probe-both\\m19_aprove_environment_probe.json",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105347516/m19-aprove-environment-probe-both/m19_aprove_environment_probe.json",
+      "sha256": "346d4eba55534cc3f427d6beb88fe85f232a9f73850ee6f6b54c595bbf3a8228",
+      "signals": [
+        "versioned"
+      ],
+      "size_bytes": 4888,
+      "tool": "aprove",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105347516\\m19-aprove-environment-probe-both\\m19_aprove_environment_probe.md",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105347516/m19-aprove-environment-probe-both/m19_aprove_environment_probe.md",
+      "sha256": "af9b8f94ce25a7360512ac2a8a65724795bdc69bbad59caee7f6f4b46e23f0ae",
+      "signals": [],
+      "size_bytes": 2128,
+      "tool": "aprove",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105347516\\m19-aprove-environment-probe-both\\m19_aprove_environment_probe_runs.csv",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105347516/m19-aprove-environment-probe-both/m19_aprove_environment_probe_runs.csv",
+      "sha256": "a56c2b750643e88d36f19b1955d76db5d3712f84c20419c39254bb9229adcd4f",
+      "signals": [],
+      "size_bytes": 722,
+      "tool": "aprove",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105375622\\m19-matchbox-challenge-search-both\\logs\\m19_collatz_S1_without_ff_end_to_0_end.matchbox.log",
+      "artifact_type": "tool_log",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105375622/m19-matchbox-challenge-search-both/logs/m19_collatz_S1_without_ff_end_to_0_end.matchbox.log",
+      "sha256": "719bce803c94f39dd861f658e9ed8af311e84a80d9d70d70acd120e5c4edc654",
+      "signals": [],
+      "size_bytes": 92,
+      "tool": "matchbox",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105375622\\m19-matchbox-challenge-search-both\\logs\\m19_collatz_S2_without_tf_end_to_end.matchbox.log",
+      "artifact_type": "tool_log",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105375622/m19-matchbox-challenge-search-both/logs/m19_collatz_S2_without_tf_end_to_end.matchbox.log",
+      "sha256": "719bce803c94f39dd861f658e9ed8af311e84a80d9d70d70acd120e5c4edc654",
+      "signals": [],
+      "size_bytes": 92,
+      "tool": "matchbox",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105375622\\m19-matchbox-challenge-search-both\\m19_matchbox_challenges.csv",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105375622/m19-matchbox-challenge-search-both/m19_matchbox_challenges.csv",
+      "sha256": "6c5f11ddbf6a78558bb3cc0d2391c989bfd568186a4a333bf931c91e7b8cc162",
+      "signals": [
+        "contains-sha256"
+      ],
+      "size_bytes": 1054,
+      "tool": "matchbox",
+      "top_level_status": "ERROR"
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105375622\\m19-matchbox-challenge-search-both\\m19_matchbox_challenges.json",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105375622/m19-matchbox-challenge-search-both/m19_matchbox_challenges.json",
+      "sha256": "37e7c9389e65b3ffd6b09bfdfd73196e4573e198f7159e6d583d3d8062fd90f3",
+      "signals": [
+        "contains-sha256"
+      ],
+      "size_bytes": 1373,
+      "tool": "matchbox",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105375622\\m19-matchbox-challenge-search-both\\m19_matchbox_challenges.md",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105375622/m19-matchbox-challenge-search-both/m19_matchbox_challenges.md",
+      "sha256": "587261108ffc2d1eed4e0ab4c44c00d5c634ad6c956c37f54f04da320e721242",
+      "signals": [
+        "mentions-top-level"
+      ],
+      "size_bytes": 1153,
+      "tool": "matchbox",
+      "top_level_status": ""
+    },
+    {
       "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\m19_runs_20260429_after_first_ci.csv",
       "artifact_type": "inventory_or_report",
       "ceta_result": "",
@@ -707,6 +839,32 @@
       ],
       "size_bytes": 933,
       "tool": "aprove",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\m19_runs_20260429_second_ci_partial.csv",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/m19_runs_20260429_second_ci_partial.csv",
+      "sha256": "2e56322242cdc777446fa19477e92034d6ec4a8ae32a082b469d88c5df176394",
+      "signals": [],
+      "size_bytes": 1092,
+      "tool": "aprove,matchbox",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\m19_runs_20260429_second_ci_partial.md",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/m19_runs_20260429_second_ci_partial.md",
+      "sha256": "a52ba68bc031a074445b08a4459534fef6ad5f05714b4addacaef3839cb7fe1f",
+      "signals": [
+        "mentions-top-level"
+      ],
+      "size_bytes": 1119,
+      "tool": "aprove,matchbox",
       "top_level_status": ""
     },
     {

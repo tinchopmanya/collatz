@@ -48,6 +48,12 @@ def venv_python(rewriting_repo: Path) -> str:
 
 def status_from_return_code(return_code: int | None, timed_out: bool, text: str) -> str:
     if timed_out:
+        if return_code == 19 and "QED" in text:
+            return "QED_AFTER_TIMEOUT"
+        if "QED" in text:
+            return "QED_AFTER_TIMEOUT"
+        if "UNSAT" in text:
+            return "UNSAT_AFTER_TIMEOUT"
         return "TIMEOUT"
     if return_code == 19 and "QED" in text:
         return "QED"
@@ -197,8 +203,8 @@ def write_csv(rows: list[dict[str, object]], path: Path) -> None:
 
 def write_markdown(rows: list[dict[str, object]], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    successes = [row for row in rows if row["status"] == "QED"]
-    timeouts = [row for row in rows if row["status"] == "TIMEOUT"]
+    successes = [row for row in rows if row["status"] in {"QED", "QED_AFTER_TIMEOUT"}]
+    timeouts = [row for row in rows if row["status"] in {"TIMEOUT", "UNSAT_AFTER_TIMEOUT"}]
     errors = [row for row in rows if row["status"] == "ERROR"]
     lines = [
         "# M19 rewriting challenge grid",
@@ -300,7 +306,7 @@ def main() -> int:
                         f"rw={row['result_width']}",
                         row["status"],
                     )
-                    if args.stop_on_success and row["status"] == "QED":
+                    if args.stop_on_success and row["status"] in {"QED", "QED_AFTER_TIMEOUT"}:
                         write_csv(rows, args.out_dir / "m19_challenge_grid.csv")
                         write_markdown(rows, args.out_dir / "m19_challenge_grid.md")
                         return 0

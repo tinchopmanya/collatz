@@ -1,0 +1,26 @@
+[
+  {
+    "challenge": "m19_collatz_S1_without_ff_end_to_0_end.tpdb",
+    "challenge_path": "reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.tpdb",
+    "challenge_sha256": "696fd582b6fba539a12893d4f88054868f09a0efd96666cb42cf040e36e4a769",
+    "command": "matchbox2015 reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.tpdb",
+    "elapsed_seconds": "0.000",
+    "log": "/tmp/m19_matchbox_challenges/logs/m19_collatz_S1_without_ff_end_to_0_end.matchbox.log",
+    "return_code": 127,
+    "status": "ERROR",
+    "top_line": "ERROR: cannot execute Matchbox command: [Errno 2] No such file or directory: 'matchbox2015'",
+    "wall_timeout": 180
+  },
+  {
+    "challenge": "m19_collatz_S2_without_tf_end_to_end.tpdb",
+    "challenge_path": "reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.tpdb",
+    "challenge_sha256": "1cb698b7673aeef8d17ec550897b582e88ea88dcda11ab21781559146fd15615",
+    "command": "matchbox2015 reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.tpdb",
+    "elapsed_seconds": "0.000",
+    "log": "/tmp/m19_matchbox_challenges/logs/m19_collatz_S2_without_tf_end_to_end.matchbox.log",
+    "return_code": 127,
+    "status": "ERROR",
+    "top_line": "ERROR: cannot execute Matchbox command: [Errno 2] No such file or directory: 'matchbox2015'",
+    "wall_timeout": 180
+  }
+]

@@ -27,6 +27,14 @@ on:
         required: true
         default: "6g"
         type: string
+      yices_mode:
+        description: "Yices wiring mode"
+        required: true
+        default: "yices2"
+        type: choice
+        options:
+          - yices2
+          - yices2-strip-e
 
 jobs:
   probe:
@@ -54,7 +62,22 @@ jobs:
             https://yices.csl.sri.com/releases/2.6.4/yices-2.6.4-x86_64-pc-linux-gnu.tar.gz \
             -o /tmp/yices2/yices.tgz
           tar -xzf /tmp/yices2/yices.tgz -C /tmp/yices2 --strip-components=1
-          sudo ln -sf /tmp/yices2/bin/yices /usr/local/bin/yices
+          if [ "${{ inputs.yices_mode }}" = "yices2-strip-e" ]; then
+            cat > /tmp/yices2/yices-strip-e <<'EOF'
+          #!/usr/bin/env bash
+          args=()
+          for arg in "$@"; do
+            if [ "$arg" != "-e" ]; then
+              args+=("$arg")
+            fi
+          done
+          exec /tmp/yices2/bin/yices "${args[@]}"
+          EOF
+            chmod +x /tmp/yices2/yices-strip-e
+            sudo ln -sf /tmp/yices2/yices-strip-e /usr/local/bin/yices
+          else
+            sudo ln -sf /tmp/yices2/bin/yices /usr/local/bin/yices
+          fi
 
           mkdir -p /tmp/aprove
           curl -L \

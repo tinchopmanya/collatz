@@ -1,0 +1,151 @@
+{
+  "aprove_runs": [
+    {
+      "challenge": "m19_collatz_S1_without_ff_end_to_0_end.aprove.srs",
+      "challenge_path": "reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.aprove.srs",
+      "elapsed_seconds": "35.462",
+      "first_output_line": "Picked up JAVA_TOOL_OPTIONS: -Xmx6g",
+      "log": "/tmp/m19_aprove_environment_probe/logs/m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove-probe.log",
+      "return_code": 0,
+      "status": "ENV_YICES_E_INCOMPATIBLE",
+      "timeout": 20,
+      "wall_timeout": 45
+    },
+    {
+      "challenge": "m19_collatz_S2_without_tf_end_to_end.aprove.srs",
+      "challenge_path": "reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.aprove.srs",
+      "elapsed_seconds": "26.351",
+      "first_output_line": "Picked up JAVA_TOOL_OPTIONS: -Xmx6g",
+      "log": "/tmp/m19_aprove_environment_probe/logs/m19_collatz_S2_without_tf_end_to_end.aprove.aprove-probe.log",
+      "return_code": 0,
+      "status": "ENV_YICES_E_INCOMPATIBLE",
+      "timeout": 20,
+      "wall_timeout": 45
+    }
+  ],
+  "command_probe": {
+    "derived": {
+      "minisat2_on_path": true,
+      "minisat_on_path": true,
+      "yices_e_supported": false
+    },
+    "java_version": {
+      "cmd": [
+        "java",
+        "-version"
+      ],
+      "found": true,
+      "path": "/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.10-7/x64/bin/java",
+      "return_code": 0,
+      "stdout": "Picked up JAVA_TOOL_OPTIONS: -Xmx6g\nopenjdk version \"21.0.10\" 2026-01-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.10+7 (build 21.0.10+7-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.10+7 (build 21.0.10+7-LTS, mixed mode, sharing)\n",
+      "timed_out": false
+    },
+    "minisat2_help": {
+      "cmd": [
+        "minisat2",
+        "-help"
+      ],
+      "found": true,
+      "path": "/usr/local/bin/minisat2",
+      "return_code": 1,
+      "stdout": "ERROR! Unknown flag \"help\". Use '--help' for help.\nWARNING: for repeatability, setting FPU to use double precision\n",
+      "timed_out": false
+    },
+    "minisat_help": {
+      "cmd": [
+        "minisat",
+        "-help"
+      ],
+      "found": true,
+      "path": "/usr/bin/minisat",
+      "return_code": 1,
+      "stdout": "ERROR! Unknown flag \"help\". Use '--help' for help.\nWARNING: for repeatability, setting FPU to use double precision\n",
+      "timed_out": false
+    },
+    "yices_e_empty_stdin": {
+      "cmd": [
+        "yices",
+        "-e"
+      ],
+      "found": true,
+      "path": "/usr/local/bin/yices",
+      "return_code": 19,
+      "stdout": "yices: invalid option: -e\nTry 'yices --help' for more information\n",
+      "timed_out": false
+    },
+    "yices_version": {
+      "cmd": [
+        "yices",
+        "--version"
+      ],
+      "found": true,
+      "path": "/usr/local/bin/yices",
+      "return_code": 0,
+      "stdout": "Yices 2.6.4\nCopyright SRI International.\nLinked with GMP 6.2.1\nCopyright Free Software Foundation, Inc.\nBuild date: 2021-10-22\nPlatform: x86_64-pc-linux-gnu (release)\n",
+      "timed_out": false
+    }
+  },
+  "environment": {
+    "JAVA_TOOL_OPTIONS": "-Xmx6g",
+    "PATH": "/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.10-7/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+    "_JAVA_OPTIONS": ""
+  },
+  "platform": {
+    "cpu_count": 4,
+    "platform": "Linux-6.17.0-1010-azure-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0]",
+    "total_memory_mb": 15989
+  },
+  "srs_probe": [
+    {
+      "aprove_srs_suffix": true,
+      "exists": true,
+      "has_var_section": false,
+      "path": "reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.aprove.srs",
+      "rule_count": 11,
+      "rules": [
+        "b a d -> d",
+        "b d -> g d",
+        "a e -> e a",
+        "a f -> e b",
+        "a g -> f a",
+        "b e -> f b",
+        "b f -> g a",
+        "b g -> g b",
+        "c e -> c b",
+        "c f -> c a a",
+        "c g -> c a b"
+      ],
+      "starts_rules": true,
+      "suffixes": [
+        ".aprove",
+        ".srs"
+      ]
+    },
+    {
+      "aprove_srs_suffix": true,
+      "exists": true,
+      "has_var_section": false,
+      "path": "reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.aprove.srs",
+      "rule_count": 11,
+      "rules": [
+        "a a d -> e d",
+        "b d -> g d",
+        "a e -> e a",
+        "a f -> e b",
+        "a g -> f a",
+        "b e -> f b",
+        "b f -> g a",
+        "b g -> g b",
+        "c e -> c b",
+        "c f -> c a a",
+        "c g -> c a b"
+      ],
+      "starts_rules": true,
+      "suffixes": [
+        ".aprove",
+        ".srs"
+      ]
+    }
+  ]
+}
