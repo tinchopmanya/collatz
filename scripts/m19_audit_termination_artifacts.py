@@ -181,7 +181,7 @@ def collect_signals(path: Path, text: str) -> list[str]:
     signals: list[str] = []
     if "<certificationproblem" in lower_text:
         signals.append("cpf-root")
-    if "qed" in lower_text:
+    if re.search(r"\bQED\b", text):
         signals.append("qed")
     if re.search(r"\bSAT\b", text):
         signals.append("sat")

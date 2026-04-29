@@ -27,6 +27,10 @@ Estado: primera ronda CI auditada; fixes pendientes aplicados
 | 25105347516 | M19 AProVE environment probe | success | confirma `ENV_YICES_E_INCOMPATIBLE` con Yices 2.6.4 |
 | 25105375622 | M19 Matchbox challenge search | success | runner funciono, pero `matchbox2015` no quedo disponible |
 | 25105347569 | M19 rewriting challenge search | success | grilla corregida: 0 `QED`, 46 `UNSAT`, 2 logs imprimen `UNSAT` antes de colgar |
+| 25105647983 | M19 rewriting challenge search focalizada | success | las celdas dudosas de S2 tambien dan `UNSAT` |
+| 25105756807 | M19 rewriting reproduction | success | reproduccion Zantema validada en CI; `SAT=True`, `QED=True` |
+| 25105756825 | M19 AProVE environment probe | success | wrapper `yices2-strip-e` elimina bloqueo `-e`, pero S1/S2 terminan `WST_KILLED` |
+| 25105756640 | M19 rewriting challenge search focalizada | success | confirma de nuevo `UNSAT` en las celdas S2 dudosas |
 
 ## Hallazgos
 
@@ -42,6 +46,15 @@ El prover oficial usa codigos de salida no convencionales:
 
 Por eso el workflow de reproduccion trataba una prueba exitosa como failure. Se corrigio para aceptar `code=19` si el log contiene `QED` y `Relatively top-terminating rules`.
 
+La corrida `25105756807` valida la tuberia base:
+
+```text
+relative/zantema.srs
+SAT=True
+QED=True
+CNF: 1446 variables, 8537 clauses
+```
+
 ### AProVE
 
 El probe separo claramente ambiente de matematica:
@@ -53,6 +66,16 @@ S1/S2 -> ENV_YICES_E_INCOMPATIBLE
 ```
 
 Esto confirma que la corrida AProVE con Yices 2 no debe usarse como evidencia matematica. Para hacer una prueba justa hace falta Yices 1.0.40 o un wrapper compatible con `yices -e`.
+
+El experimento `25105756825` probo un wrapper minimo `yices2-strip-e`:
+
+```text
+yices -e probe -> supported
+S1 -> WST_KILLED
+S2 -> WST_KILLED
+```
+
+Lectura prudente: el wrapper permite que AProVE avance, pero no convierte Yices 2 en entorno certificado. Sirve como diagnostico barato; para evidencia fuerte sigue haciendo falta Yices 1 compatible o certificado independiente.
 
 ### Matchbox
 
@@ -81,6 +104,21 @@ Los dos timeouts corresponden a:
 - S2 arctic `d=2`, `rw=3`.
 
 Al inspeccionar logs, ambos habian impreso `UNSAT` antes de que el proceso externo venciera. Esto sugiere problema de salida/cleanup del prover, no una celda prometedora. Se ajusto el clasificador para marcar estos casos como `UNSAT_AFTER_TIMEOUT` en futuras corridas.
+
+La corrida focalizada `25105647983` con mayor presupuesto cerro esas celdas:
+
+```text
+S2 natural d=1 rw=3 -> UNSAT
+S2 arctic  d=2 rw=3 -> UNSAT
+```
+
+Resultado actualizado de la grilla chica:
+
+```text
+0 QED
+0 candidatos
+S1/S2 no ceden con natural/arctic d<=3, rw<=5 bajo este prover
+```
 
 ### Auditor de artefactos
 

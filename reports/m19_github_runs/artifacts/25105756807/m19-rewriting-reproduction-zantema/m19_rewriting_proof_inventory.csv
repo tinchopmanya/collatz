@@ -1,0 +1,2 @@
+source,log_name,args,log_exists,has_sat,has_qed,variables,clauses,attempt,sat_seconds
+relative/zantema.srs,zantema.log,-i natural -d 2 -rw 4,True,True,True,1446,8537,1,0.043

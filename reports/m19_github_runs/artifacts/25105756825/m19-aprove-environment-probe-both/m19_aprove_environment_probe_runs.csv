@@ -1,0 +1,3 @@
+challenge,challenge_path,status,return_code,timeout,wall_timeout,elapsed_seconds,log,first_output_line
+m19_collatz_S1_without_ff_end_to_0_end.aprove.srs,reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.aprove.srs,WST_KILLED,0,20,45,37.641,/tmp/m19_aprove_environment_probe/logs/m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove-probe.log,Picked up JAVA_TOOL_OPTIONS: -Xmx6g
+m19_collatz_S2_without_tf_end_to_end.aprove.srs,reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.aprove.srs,WST_KILLED,0,20,45,29.746,/tmp/m19_aprove_environment_probe/logs/m19_collatz_S2_without_tf_end_to_end.aprove.aprove-probe.log,Picked up JAVA_TOOL_OPTIONS: -Xmx6g
