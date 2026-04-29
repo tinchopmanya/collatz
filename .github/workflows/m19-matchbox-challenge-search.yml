@@ -72,6 +72,11 @@ on:
         required: true
         default: true
         type: boolean
+      patch_wl_pprint_extras:
+        description: "Use a local minimal MonadFail patch for Hackage wl-pprint-extras-3.5.0.5"
+        required: true
+        default: true
+        type: boolean
 
 jobs:
   matchbox:
@@ -133,7 +138,7 @@ jobs:
           path: |
             /tmp/matchbox-install
             ~/.cabal
-          key: m19-matchbox-${{ runner.os }}-${{ inputs.ghc_version }}-${{ inputs.matchbox_ref }}-v2
+          key: m19-matchbox-${{ runner.os }}-${{ inputs.ghc_version }}-${{ inputs.matchbox_ref }}-${{ inputs.patch_wl_pprint_extras }}-v3
 
       - name: Setup pinned Haskell toolchain
         if: inputs.experimental_build == true && inputs.binary_archive_url == ''
@@ -197,6 +202,53 @@ jobs:
               exit 1
             fi
             grep -n 'error "BUG: should really have the sort' /tmp/m19-haskell-boolector/boolector-0.0.0.13/src/Boolector.hs
+          fi
+          if [ "${{ inputs.patch_wl_pprint_extras }}" = "true" ]; then
+            rm -rf /tmp/m19-wl-pprint-extras
+            mkdir -p /tmp/m19-wl-pprint-extras
+            cabal get wl-pprint-extras-3.5.0.5 --destdir=/tmp/m19-wl-pprint-extras
+            python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("/tmp/m19-wl-pprint-extras/wl-pprint-extras-3.5.0.5/src/Text/PrettyPrint/Free/Internal.hs")
+          text = path.read_text(encoding="utf-8")
+          if "{-# LANGUAGE CPP #-}" not in text:
+              text = "{-# LANGUAGE CPP #-}\n" + text
+          if "import qualified Control.Monad.Fail as Fail" not in text:
+              text = text.replace(
+                  "import Control.Monad\n",
+                  "import Control.Monad\nimport qualified Control.Monad.Fail as Fail\n",
+                  1,
+              )
+          old = "\n  fail _ = empty\n\ninstance Alt Doc where"
+          new = "\n#if !MIN_VERSION_base(4,13,0)\n  fail = Fail.fail\n#endif\n\ninstance Fail.MonadFail Doc where\n  fail _ = empty\n\ninstance Alt Doc where"
+          if old not in text:
+              raise SystemExit("expected wl-pprint-extras Monad.fail line not found")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          project = Path("cabal.project.local")
+          project_text = project.read_text(encoding="utf-8")
+          local_package = "/tmp/m19-wl-pprint-extras/wl-pprint-extras-3.5.0.5"
+          lines = project_text.splitlines()
+          for i, line in enumerate(lines):
+              if line.startswith("packages:"):
+                  if local_package not in line:
+                      lines[i] = f"{line} {local_package}"
+                  break
+          else:
+              raise SystemExit("expected packages stanza not found in cabal.project.local")
+          project.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          PY
+            python3 - <<'PY'
+          from pathlib import Path
+
+          text = Path("/tmp/m19-wl-pprint-extras/wl-pprint-extras-3.5.0.5/src/Text/PrettyPrint/Free/Internal.hs").read_text(encoding="utf-8")
+          monad_block = text.split("instance Monad Doc where", 1)[1].split("instance Fail.MonadFail Doc where", 1)[0]
+          if "fail _ = empty" in monad_block or "fail = Fail.fail" not in monad_block:
+              raise SystemExit("wl-pprint-extras Monad instance was not patched canonically")
+          PY
+            grep -n 'instance Fail.MonadFail Doc where' /tmp/m19-wl-pprint-extras/wl-pprint-extras-3.5.0.5/src/Text/PrettyPrint/Free/Internal.hs
+            grep -n '  fail _ = empty' /tmp/m19-wl-pprint-extras/wl-pprint-extras-3.5.0.5/src/Text/PrettyPrint/Free/Internal.hs
           fi
           cat cabal.project.local
           ghc --version
