@@ -1,0 +1,8 @@
+k,audit_max_power,residue_strata,residues_per_stratum,lifts_per_residue,certified_residue_samples,uncertified_residue_samples,sampled_numbers,max_lift_seen,affine_failures,certified_false_positives,uncertified_sample_descents,min_contraction_slack,min_descent_slack
+8,24,16,3,3,48,36,252,65535,0,0,10,13,1
+10,24,16,3,3,48,48,288,16383,0,0,2,295,1
+12,24,16,3,3,48,48,288,4095,0,0,2,1909,1
+14,24,16,3,3,48,48,288,1023,0,0,2,9823,1
+16,24,16,3,3,48,48,288,255,0,0,2,6487,1
+18,24,16,3,3,48,48,288,63,0,0,2,84997,1
+20,24,16,3,3,48,48,288,15,0,0,2,517135,1

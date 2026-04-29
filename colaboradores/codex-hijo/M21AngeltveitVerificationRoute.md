@@ -124,3 +124,52 @@ No abandonaria solo porque no tengamos GPU. La primera pregunta cientifica de M2
 ## Recomendacion
 
 Abrir M21a con alcance acotado. La via Angeltveit no es terreno virgen mundial, pero si es una oportunidad fuerte para que el repo aporte una reproduccion independiente, parametrizada y auditable de un algoritmo 2026 con codigo publico. Es probablemente mas productiva que buscar otra "prueba" informal de Collatz, siempre que mantengamos el objetivo como verificacion computacional reproducible y no como afirmacion teorica global.
+
+## Avance independiente 2026-04-29: low-bit probe plus
+
+Rama de trabajo local: `codex-hijo/m21-angeltveit-probe-plus`.
+
+Cambios de alcance acotado:
+
+- Se mantuvo la reimplementacion propia en Python, sin copiar codigo GPL ni depender del repositorio externo.
+- Se extendio el barrido por defecto a `k = 8, 10, 12, 14, 16, 18, 20`.
+- Se agrego conteo directo por clases residuales para medir cobertura sin recorrer de nuevo todos los `n` certificados.
+- Se agrego auditoria estratificada determinista sobre residuos certificados y no certificados, con lifts bajo/medio/alto hasta `2^24`.
+- La auditoria chequea explicitamente la invariante afin `T^k(r + a 2^k) = T^k(r) + 3^f a`, que es la razon por la cual un residuo certificado vale para todos sus lifts positivos.
+
+Resultados numericos principales:
+
+- Reporte exhaustivo hasta `N = 20`: `133` filas, `max_false_positives = 0`.
+- Para `N = 20, k = 20`: `910594/1048576` residuos certificados y `910593/1048575` enteros positivos certificados, fraccion `0.868409984980`.
+- Para `N = 20, k = 18`: `230962/262144` residuos certificados y `923847/1048575` enteros positivos certificados, fraccion `0.881049996424`.
+- Para `N = 20, k = 16`: `58649/65536` residuos certificados y `938383/1048575` enteros positivos certificados, fraccion `0.894912619507`.
+- La cobertura no es monotona en `k` para este certificado simple: ampliar `k` cambia la condicion de descenso en exactamente `k` pasos, no agrega automaticamente los certificados de ventanas menores.
+- Auditoria estratificada hasta `2^24`: `7` filas, `1980` numeros muestreados, `affine_failures = 0`, `certified_false_positives = 0`.
+- En la auditoria, `k = 20` uso `48` residuos certificados y `48` no certificados, `288` numeros muestreados, lift maximo `15`, slack minimo de contraccion `517135` y slack minimo de descenso `1`.
+
+Artefactos generados:
+
+- `reports/m21_angeltveit_lowbit_probe.csv`
+- `reports/m21_angeltveit_lowbit_probe.md`
+- `reports/m21_angeltveit_lowbit_probe_audit.csv`
+- `reports/m21_angeltveit_lowbit_probe_audit.md`
+
+Checks ejecutados:
+
+- `python -m py_compile scripts\m21_angeltveit_lowbit_probe.py tests\test_m21_angeltveit_lowbit_probe.py`
+- `python -m unittest tests.test_m21_angeltveit_lowbit_probe`
+- `python scripts\m21_angeltveit_lowbit_probe.py --max-power 20 --ks 8,10,12,14,16,18,20 --audit-max-power 24`
+
+Terreno recorrido o virgen:
+
+Recorrido en matematicas y computacion global: esto sigue siendo un certificado local de descenso por bits bajos, dentro de la familia de verificaciones computacionales de Collatz. No prueba Collatz y no reproduce el verificador GPU completo de Angeltveit.
+
+Parcialmente virgen para este repo: la capa nueva no es un reclamo teorico, sino una mejora de rigor reproducible. Ahora el reporte no solo dice "estos residuos funcionan en el rango chico"; tambien audita la invariante afin que justifica lifts fuera del rango exhaustivo y deja muestras estratificadas de residuos certificados/no certificados.
+
+Que destruiria esta via:
+
+- Un solo `affine_failure > 0`, porque romperia el fundamento de bits bajos.
+- Un solo `certified_false_positive > 0`, porque el certificado dejaria de ser seguro.
+- Que al comparar contra una implementacion independiente o contra verificacion ingenua en `N` chicos aparezca una discrepancia no explicada.
+- Que subir `k` o `N` solo agregue costo sin mejorar cobertura ni producir sobrevivientes auditables.
+- Que el unico camino para reproducir Angeltveit requiera copiar codigo GPL al repo sin una decision explicita de licencia.
