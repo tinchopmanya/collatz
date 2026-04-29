@@ -1,0 +1,2 @@
+k,modulus,source,residual_count,residual_sha256,distribution_rows,block_count,singleton_blocks,max_block_length,symmetry_rows,top_symmetry,top_symmetry_forward_hits,candidate_rows
+16,65536,reports\m22_s2_k16_uncovered_residues.csv,378,bd04a1c2f65ccda483901f23fdb5f2392b824ac5b2d7ab1011e66f18771bb210,1470,360,342,2,28,xor_residue_bit_13,158,72
