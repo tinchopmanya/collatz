@@ -137,4 +137,3 @@ actual_build=true
 ## Recomendacion
 
 Primero correr la ruta implementada con GHC `8.10.7` y los dos parches locales (`boolector` y `wl-pprint-extras`). Si eso supera `wl-pprint-extras` pero descubre otro paquete legacy, repetir el mismo patron solo si el cambio es local y pequeno. Si aparecen dos o mas parches adicionales, conviene consolidar en forks `source-repository-package` pinneados por commit para congelar la evidencia.
-
