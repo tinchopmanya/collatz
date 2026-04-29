@@ -38,10 +38,11 @@ Cada alta nueva tambien debe:
 | 2026-04-25 09:45:21 -03:00 | Collatz - Undecima Ola (seleccion de muestra en `exit_v2 = 5`) | [InvestigacionSobreCollatzUndecimaOla.md](InvestigacionSobreCollatzUndecimaOla.md) | [ResumenInvestigacionSobreCollatzUndecimaOla.md](ResumenInvestigacionSobreCollatzUndecimaOla.md) | Undecima ola cerrada |
 | 2026-04-25 10:00:03 -03:00 | Collatz - Duodecima Ola (sesgo de supervivencia orbital) | [InvestigacionSobreCollatzDuodecimaOla.md](InvestigacionSobreCollatzDuodecimaOla.md) | [ResumenInvestigacionSobreCollatzDuodecimaOla.md](ResumenInvestigacionSobreCollatzDuodecimaOla.md) | Duodecima ola cerrada |
 | 2026-04-25 10:57:05 -03:00 | Collatz - Decimotercera Ola (prueba de destruccion M14) | [InvestigacionSobreCollatzDecimoterceraOla.md](InvestigacionSobreCollatzDecimoterceraOla.md) | [ResumenInvestigacionSobreCollatzDecimoterceraOla.md](ResumenInvestigacionSobreCollatzDecimoterceraOla.md) | Decimotercera ola cerrada |
+| 2026-04-29 09:57:15 -03:00 | Collatz - Decimocuarta Ola (rewriting, certificacion y puente low-bit) | [InvestigacionSobreCollatzDecimocuartaOla.md](InvestigacionSobreCollatzDecimocuartaOla.md) | [ResumenInvestigacionSobreCollatzDecimocuartaOla.md](ResumenInvestigacionSobreCollatzDecimocuartaOla.md) | Decimocuarta ola abierta |
 
 ## Estado actual del repositorio de investigacion
 
-- Hay 13 investigaciones registradas.
+- Hay 14 investigaciones registradas.
 - La conclusion dinamica vigente es [Conlusion.md](Conlusion.md).
 - La primera ola cubrio un panorama amplio del problema de Collatz.
 - La segunda ola profundizo en 8 subfrentes tecnicos.
@@ -56,6 +57,7 @@ Cada alta nueva tambien debe:
 - La undecima ola descarto `exit_v2 = 5` como mecanismo local: la senal aparece por seleccion de cadenas antes del primer descenso, no por la transicion local de todos los bloques.
 - La duodecima ola mostro que el modelo independiente explica la supervivencia global, pero queda una dependencia residual despues de `prev_exit_v2 = 5` en bloques interiores.
 - La decimotercera ola intento destruir esa dependencia: no sobrevivio un holdout independiente, asi que M14 queda cerrado como descarte limpio.
+- La decimocuarta ola cambio de marco: rewriting/certificacion y puente low-bit/descent. El terreno no es virgen para las piezas, pero M22 abre una combinacion parcialmente novedosa entre certificados low-bit y familias residuales de rewriting.
 
 ## Siguiente uso esperado
 

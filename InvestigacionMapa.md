@@ -30,6 +30,8 @@ Mapa cronologico de investigaciones.
 
 - 2026-04-25 10:57:05 -03:00 | Alta de decimotercera ola: prueba de destruccion M14, Bonferroni, permutacion/bootstrap por cadena y holdout independiente que descarta el residuo `prev_exit_v2 = 5` interior | Investigacion: [InvestigacionSobreCollatzDecimoterceraOla.md](InvestigacionSobreCollatzDecimoterceraOla.md) | Resumen: [ResumenInvestigacionSobreCollatzDecimoterceraOla.md](ResumenInvestigacionSobreCollatzDecimoterceraOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
 
+- 2026-04-29 09:57:15 -03:00 | Alta de decimocuarta ola: cambio de marco hacia rewriting/certificacion, auditoria Matchbox/AProVE, probe Angeltveit low-bit y puente M22 sobre complemento S2-k16 | Investigacion: [InvestigacionSobreCollatzDecimocuartaOla.md](InvestigacionSobreCollatzDecimocuartaOla.md) | Resumen: [ResumenInvestigacionSobreCollatzDecimocuartaOla.md](ResumenInvestigacionSobreCollatzDecimocuartaOla.md) | Conclusion vigente: [Conlusion.md](Conlusion.md)
+
 ## Regla de actualizacion
 
 - Cada nueva investigacion debe agregar una entrada con fecha y hora exactas.

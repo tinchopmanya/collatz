@@ -1,61 +1,69 @@
 # Conlusion dinamica
 
-Ultima actualizacion: 2026-04-27
-Tema: Collatz - arco estadistico cerrado; M19 reabierto solo para busqueda high-ceiling
+Ultima actualizacion: 2026-04-29
+Tema: Collatz - M19/M22, rewriting certificado y puente low-bit/descent
 
-## Estado final
+## Estado actual
 
-El proyecto se cierra tras 18 milestones (M0-M17 + M18 de cierre). El arco estocastico M12-M17 queda cerrado como descarte disciplinado. M18 resolvio el ultimo hilo suelto y confirmo que no hay direccion computacional con ceiling suficiente para continuar.
+El arco estadistico M12-M18 queda cerrado como descarte disciplinado. No hay senal odd-to-odd con ceiling suficiente para seguir invirtiendo ahi.
 
-## Reapertura condicionada M19
-
-A pedido del usuario, se busco una posibilidad cientifica mas fuerte. La conclusion no reabre el arco estadistico: mas mediciones odd-to-odd tienen ceiling bajo. La unica via con potencial relativamente alto y compatible con trabajo computacional es cambiar de marco hacia sistemas de reescritura y pruebas automaticas de terminacion.
-
-Decision M19:
+El proyecto sigue abierto solo por una via de mayor posibilidad cientifica:
 
 ```text
-Reabrir solo para auditar y reproducir mixed-base rewriting / SAT termination.
+M19/M22 - sistemas de reescritura, certificacion externa y puente low-bit/descent.
 ```
 
-Esto no afirma una prueba de Collatz. El objetivo realista es reproducir pruebas automaticas de debilitamientos no triviales y evaluar si existe una extension pequena, verificable y nueva.
+Esto no es una prueba de Collatz. La meta realista es producir una reduccion o benchmark certificable que conecte dos areas ya existentes: rewriting/termination y verificacion low-bit/descent.
 
-## Resultado principal
+## Respuesta corta a las preguntas guia
 
-El modelo geometrico i.i.d. (tail, exit_v2 ~ Geom(1/2), independientes por bloque) es estadisticamente indistinguible de la dinamica real Collatz odd-to-odd para n > 2.5M, en todos los umbrales testeados (k=10, 15, 20, 25).
+- Estamos avanzando? Si, porque estamos reemplazando correlaciones debiles por artefactos verificables, gates de certificacion y complementos residuales congelados.
+- Estamos en terreno virgen? No para rewriting ni para low-bit por separado. Parcialmente si para la combinacion reproducible de ambos.
+- Alguien ya estuvo aca? Si: Yolcu-Aaronson-Heule en rewriting; Barina y Angeltveit en verificacion computacional; TermComp/AProVE/Matchbox/CeTA en terminacion certificada. No encontramos aun una campana publica que use filtros low-bit como preprocesador de familias residuales S1/S2.
+- Que tan lejos estamos? Lejos de demostrar Collatz; a distancia moderada de un resultado computacional publicable si M22 estabiliza y alguna subfamilia queda cerrada con certificado.
+- Posibilidad cientifica fuerte alta? Media-alta para M22; media para Matchbox/AProVE si se obtiene un binario reproducible; baja para mas estadistica orbital.
 
-La unica desviacion significativa es un efecto de finitud en n < 2.5M donde el modelo sobreproducce cadenas largas (~11% mas en k=20). Este efecto desaparece rapidamente y es esperable desde la teoria de random walks.
+## Mejor via vigente
 
-## Arco completo M12-M18
+La via principal pasa a ser M22:
 
-| Milestone | Hipotesis | Resultado |
-| --- | --- | --- |
-| M12 | exit_v2=5 congruencia | Algebra local, descartado |
-| M13 | Sesgo supervivencia posicional | Explicado por posicion, no memoria |
-| M14 | prev_exit_v2=5 + interior | Fallo holdout, descartado |
-| M15 | q mod 8 marginal como memoria | Mezcla en 1 paso, cerrado |
-| M16 | Sesgo profundidad explica gap | Observable en train con bin anomalo |
-| M17 | Validacion holdout fresco | Negativo. Sin mejora |
-| M18 | Ratio por rango de n | Sin tendencia. Efecto solo en n < 2.5M |
+```text
+Usar certificados low-bit/descent para reducir familias de rewriting,
+y luego intentar cerrar los residuos con herramientas de terminacion certificadas.
+```
 
-## Que se lleva el proyecto
+Resultado concreto actual: para S2 con `k=16`, el filtro low-bit descarga `7814/8192` clases y deja un complemento congelado de `378` residuos, con hash:
 
-1. **Infraestructura:** motor odd-to-odd, pipeline de experiments, datasets hasta 25M.
-2. **Metodologia:** preregistro, holdout, Bonferroni, preguntas obligatorias, descarte limpio. 6 hipotesis formalmente testeadas y descartadas.
-3. **Resultado negativo limpio:** no hay estructura oculta en la dinamica odd-to-odd que el modelo i.i.d. no capture, al menos en el rango computacionalmente accesible.
-4. **Nivel de novedad final:** 2.5/5 (identificacion propia de mecanismo para fenomeno ya observado, con las salvedades documentadas).
+```text
+bd04a1c2f65ccda483901f23fdb5f2392b824ac5b2d7ab1011e66f18771bb210
+```
 
-## Que NO logro el proyecto
+Ese complemento es ahora el objeto cientifico principal. Si muestra estructura explotable, puede volverse benchmark. Si no la muestra, M22 se enfria limpiamente.
 
-- No probo ni refuto Collatz.
-- No produjo resultado publicable (nivel < 4).
-- No encontro dependencia explotable entre bloques odd-to-odd consecutivos.
+## Estado de Matchbox/AProVE
 
-## Leccion principal
+Matchbox/AProVE siguen siendo herramientas instrumentales, no la hipotesis central. Los intentos de build historico muestran fallos sucesivos de ecosistema:
 
-El modelo geometrico i.i.d. es tan bueno como baseline que romperlo requiere teoria, no mas computacion. Las 6 hipotesis computacionales testeadas fueron todas absorbidas por el modelo o por efectos de finitud. El proyecto demostro que es posible hacer investigacion computacional disciplinada sobre un problema famoso sin inflar claims.
+- paquete Ubuntu de Boolector sin headers/libreria;
+- parche Haskell `boolector`;
+- parche `wl-pprint-extras`;
+- fallo `satchmo`;
+- conflicto `atto-lisp/base` con `use_source_deps=true`.
 
-## Proxima linea permitida
+Decision provisoria: permitir como maximo uno o dos parches acotados mas si el run pendiente ofrece una frontera clara. Si la cadena continua, pivotar a binario/container/herramienta alternativa y no gastar la investigacion en arqueologia de dependencias.
 
-M19 - Auditoria y reproduccion de mixed-base rewriting para Collatz.
+## Que destruiria la linea actual
 
-Condicion: primero reproducir resultados existentes. Solo despues buscar extensiones.
+- Un falso positivo en el probe low-bit/descent.
+- Un complemento residual que crece sin estructura al subir `k`.
+- Herramientas de terminacion que no mejoran sobre subfamilias residuales frente a S2 completo.
+- Certificados no reproducibles o `YES` sin CPF/CeTA.
+- Que el supuesto puente low-bit/rewrite sea solo una reformulacion sin reduccion efectiva.
+
+## Proxima decision
+
+Esperar los resultados de los cinco hijos en worktrees separados y decidir:
+
+- si M19 se mantiene solo como herramienta o se enfria;
+- si M22 pasa a milestone principal;
+- que experimento confirmatorio se corre primero sobre el complemento S2-k16.
