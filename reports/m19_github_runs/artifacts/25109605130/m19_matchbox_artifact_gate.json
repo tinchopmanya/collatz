@@ -1,0 +1,86 @@
+{
+  "passed": false,
+  "artifact_dir": "reports\\m19_github_runs\\artifacts\\25109605130\\m19-matchbox-build-probe-ghc-8.10.7",
+  "checks": [
+    {
+      "name": "artifact_dir_exists",
+      "ok": true,
+      "detail": "artifact dir: reports\\m19_github_runs\\artifacts\\25109605130\\m19-matchbox-build-probe-ghc-8.10.7"
+    },
+    {
+      "name": "sha256_exists",
+      "ok": false,
+      "detail": "missing: reports\\m19_github_runs\\artifacts\\25109605130\\m19-matchbox-build-probe-ghc-8.10.7\\m19-matchbox-sha256.txt"
+    },
+    {
+      "name": "ldd_exists",
+      "ok": false,
+      "detail": "missing: reports\\m19_github_runs\\artifacts\\25109605130\\m19-matchbox-build-probe-ghc-8.10.7\\m19-matchbox-ldd.txt"
+    },
+    {
+      "name": "help_exists",
+      "ok": false,
+      "detail": "missing: reports\\m19_github_runs\\artifacts\\25109605130\\m19-matchbox-build-probe-ghc-8.10.7\\m19-matchbox-help.log"
+    },
+    {
+      "name": "build_log_exists",
+      "ok": true,
+      "detail": "m19-matchbox-build.log (46757 bytes)"
+    },
+    {
+      "name": "environment_exists",
+      "ok": true,
+      "detail": "environment.txt (318 bytes)"
+    },
+    {
+      "name": "boolector_rev_exists",
+      "ok": true,
+      "detail": "m19-boolector-source-rev.txt (41 bytes)"
+    },
+    {
+      "name": "boolector_version_exists",
+      "ok": true,
+      "detail": "m19-boolector-version.txt (6 bytes)"
+    },
+    {
+      "name": "sha256_has_matchbox_binary",
+      "ok": false,
+      "detail": "sha256 artifact is unavailable"
+    },
+    {
+      "name": "ldd_ran_on_binary",
+      "ok": false,
+      "detail": "ldd artifact is unavailable"
+    },
+    {
+      "name": "help_ran_on_binary",
+      "ok": false,
+      "detail": "help artifact is unavailable"
+    },
+    {
+      "name": "build_log_available",
+      "ok": true,
+      "detail": "build log is non-empty"
+    },
+    {
+      "name": "build_log_no_failed_build",
+      "ok": false,
+      "detail": "build log contains Failed to build or missing binary marker"
+    },
+    {
+      "name": "environment_has_pinnings",
+      "ok": true,
+      "detail": "environment pins ghc_version, cabal_version, index_state, matchbox_ref"
+    },
+    {
+      "name": "boolector_source_rev_pinned",
+      "ok": true,
+      "detail": "Boolector source rev/version is pinned"
+    },
+    {
+      "name": "boolector_version_recorded",
+      "ok": true,
+      "detail": "Boolector version is recorded"
+    }
+  ]
+}

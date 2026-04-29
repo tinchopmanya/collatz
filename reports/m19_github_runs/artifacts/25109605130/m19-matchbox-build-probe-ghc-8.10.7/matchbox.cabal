@@ -1,0 +1,70 @@
+Name: matchbox
+Version: 4.4.0
+Cabal-Version: >= 1.9.2
+License: GPL
+Build-type: Simple
+Author: Johannes Waldmann, Eric Noeth, Alexander Bau
+Maintainer: Johannes Waldmann, Eric Noeth, Alexander Bau
+
+homepage:      http://github.com/jwaldmann/matchbox/
+bug-reports:   http://github.com/jwaldmann/matchbox/issues/
+
+synopsis: termination of rewriting, 
+       matrix interpretation, tree compression
+
+description: 
+  This program proves termination of rewriting systems.
+  .
+  This is derived from 
+  <http://dfa.imn.htwk-leipzig.de/matchbox/>. 
+  The intention is to keep the main program small, 
+  by moving re-usable components to libraries
+  (haskell-tpdb, satchmo-smt).
+  .
+  Input is in TPDB syntax (plain or XTC),
+  output is proof trace (textual, CPF).
+  .
+  Methods used: Matrix interpretations over natural
+  and arctic numbers, dependency pairs transformation,
+  (for strings:) lexicographic path order, semantic labelling/unlabelling,
+  compression of rewriting systems,
+  (for cycle termination:) trace decreasing natural and arctic matrices.
+  .
+  Constraint solvers used: 
+  glpk linear programming solver, minisat SAT solver via CO4 SAT compiler
+  .
+  Installation: basically just @cabal install@ 
+  but you need current versions of some libraries
+  (from github, not from hackage). See @build-all.sh@.
+  .
+  Usage:
+  > matchbox --help
+  > matchbox  --cpf data/z002.srs | tail -n +2 | ceta /dev/stdin
+  (requires <http://cl-informatik.uibk.ac.at/software/ceta/>)
+
+source-repository head
+  type: git
+  location: git://github.com/jwaldmann/matchbox.git
+
+Executable matchbox2015
+  Main-Is:          MB.hs
+  -- -fllvm does not work (ghc-7.10.1, llvm-3.5 as on fedora 22)
+  -- while they claim it should:
+  -- http://smart-cactus.org/~ben/posts/2014-11-28-state-of-llvm-backend.html
+  Ghc-options:        -W -O2 -funbox-strict-fields -threaded -rtsopts
+  Extensions: DoAndIfThenElse
+  Build-Depends:      base 
+                    , containers
+                    , mtl, transformers, logict
+                    -- , satchmo-core
+                    , tpdb >= 0.9.6
+                    -- , co4 >= 0.0.75
+                    -- , satchmo-smt > 0.4
+                    , satchmo >= 2.8
+                    , boolector
+                    , array, hashable, HaXml, wl-pprint-text
+                    , async, stm
+                    , wl-pprint-extras , HaTeX, text, matrix
+                    , random, unix, directory, time >= 1.5.0.1
+                    , optparse-applicative, bytestring, stringsearch
+                    , pqueue, unordered-containers

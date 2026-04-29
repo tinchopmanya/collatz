@@ -1,0 +1,1024 @@
+Build profile: -w ghc-8.10.7 -O1
+In order, the following will be built (use -v for more details):
+ - StateVar-1.2.2 (lib) (requires download & build)
+ - alex-3.2.6 (exe:alex) (requires download & build)
+ - base-compat-0.11.2 (lib) (requires download & build)
+ - base-orphans-0.8.5 (lib) (requires download & build)
+ - cabal-doctest-1.0.8 (lib) (requires download & build)
+ - call-stack-0.4.0 (lib) (requires download & build)
+ - colour-2.3.6 (lib) (requires download & build)
+ - containers-0.5.11.0 (lib) (requires download & build)
+ - data-default-class-0.1.2.0 (lib:data-default-class) (requires download & build)
+ - dlist-1.0 (lib) (requires download & build)
+ - happy-1.20.0 (exe:happy) (requires download & build)
+ - integer-logarithms-1.0.3.1 (lib) (requires download & build)
+ - logict-0.7.0.3 (lib) (requires download & build)
+ - loop-0.3.0 (lib) (requires download & build)
+ - memoize-0.8.1 (lib) (requires download & build)
+ - nats-1.1.2 (lib) (requires download & build)
+ - old-locale-1.0.0.7 (lib) (requires download & build)
+ - pqueue-1.4.1.3 (lib) (requires download & build)
+ - primitive-0.7.2.0 (lib) (requires download & build)
+ - reflection-2.1.6 (lib) (requires download & build)
+ - semigroups-0.19.2 (lib) (requires download & build)
+ - split-0.2.3.4 (lib) (requires download & build)
+ - splitmix-0.1.0.3 (lib) (requires download & build)
+ - tagged-0.8.6.1 (lib) (requires download & build)
+ - transformers-compat-0.7 (lib) (requires download & build)
+ - unliftio-core-0.2.0.1 (lib) (requires download & build)
+ - utf8-string-1.0.2 (lib) (requires download & build)
+ - utility-ht-0.0.16 (lib) (requires download & build)
+ - void-0.7.3 (lib) (requires download & build)
+ - zlib-0.6.2.3 (lib) (requires download & build)
+ - contravariant-1.5.5 (lib) (requires download & build)
+ - base-compat-batteries-0.11.2 (lib) (requires download & build)
+ - ansi-terminal-0.11 (lib) (requires download & build)
+ - th-abstraction-0.4.3.0 (lib) (requires download & build)
+ - stringsearch-0.3.6.6 (lib:stringsearch) (requires download & build)
+ - parallel-3.2.2.0 (lib) (requires download & build)
+ - indexed-traversable-0.1.1 (lib) (requires download & build)
+ - hsc2hs-0.68.7 (exe:hsc2hs) (requires download & build)
+ - binary-0.8.9.0 (lib) (requires download & build)
+ - data-default-instances-containers-0.0.1 (lib:data-default-instances-containers) (requires download & build)
+ - data-default-instances-dlist-0.0.1 (lib:data-default-instances-dlist) (requires download & build)
+ - language-c-0.9.0.1 (lib) (requires download & build)
+ - data-default-instances-old-locale-0.0.1 (lib:data-default-instances-old-locale) (requires download & build)
+ - vector-0.12.3.0 (lib) (requires download & build)
+ - random-1.2.0 (lib) (requires download & build)
+ - distributive-0.6.2.1 (lib) (requires download & build)
+ - transformers-base-0.4.6 (lib) (requires download & build)
+ - resourcet-1.2.4.3 (lib) (requires download & build)
+ - latex-0.1.0.4 (lib:latex) (requires download & build)
+ - ansi-wl-pprint-0.6.9 (lib) (requires download & build)
+ - th-lift-0.8.2 (lib) (requires download & build)
+ - network-3.1.2.2 (lib:network) (requires download & build)
+ - text-1.2.5.0 (lib) (requires download & build)
+ - c2hs-0.28.8 (exe:c2hs) (requires download & build)
+ - data-default-0.7.1.1 (lib:data-default) (requires download & build)
+ - vector-algorithms-0.8.0.4 (lib) (requires download & build)
+ - matrix-0.3.6.1 (lib) (requires download & build)
+ - temporary-1.3 (lib) (requires download & build)
+ - QuickCheck-2.14.2 (lib) (requires download & build)
+ - comonad-5.0.8 (lib) (requires download & build)
+ - optparse-applicative-0.16.1.0 (lib) (requires download & build)
+ - xml-types-0.3.8 (lib) (requires download & build)
+ - wl-pprint-text-1.2.0.1 (lib:wl-pprint-text) (requires download & build)
+ - prettyprinter-1.7.0 (lib) (requires download & build)
+ - polyparse-1.13 (lib) (requires download & build)
+ - parsec-3.1.14.0 (lib) (requires download & build)
+ - hashable-1.3.3.0 (lib) (requires download & build)
+ - blaze-builder-0.4.2.1 (lib) (requires download & build)
+ - boolector-0.0.0.13 (lib) (first run)
+ - bifunctors-5.5.11 (lib) (requires download & build)
+ - HaXml-1.25.5 (lib) (requires download & build)
+ - bibtex-0.1.0.6 (lib:bibtex) (requires download & build)
+ - uuid-types-1.0.5 (lib) (requires download & build)
+ - unordered-containers-0.2.14.0 (lib) (requires download & build)
+ - time-compat-1.9.6.1 (lib) (requires download & build)
+ - scientific-0.3.7.0 (lib) (requires download & build)
+ - data-fix-0.3.2 (lib) (requires download & build)
+ - async-2.2.3 (lib) (requires download & build)
+ - blaze-markup-0.8.2.8 (lib) (requires download & build)
+ - profunctors-5.6.2 (lib) (requires download & build)
+ - assoc-1.0.2 (lib) (requires download & build)
+ - HaTeX-3.22.3.0 (lib) (requires download & build)
+ - semigroupoids-5.3.5 (lib) (requires download & build)
+ - mono-traversable-1.0.15.1 (lib) (requires download & build)
+ - indexed-traversable-instances-0.1 (lib) (requires download & build)
+ - attoparsec-0.14.1 (lib) (requires download & build)
+ - typed-process-0.2.6.1 (lib) (requires download & build)
+ - streaming-commons-0.2.2.1 (lib) (requires download & build)
+ - minisat-0.1.3 (lib) (requires download & build)
+ - blaze-html-0.9.1.2 (lib) (requires download & build)
+ - invariant-0.5.4 (lib) (requires download & build)
+ - these-1.1.1.1 (lib) (requires download & build)
+ - wl-pprint-extras-3.5.0.5 (lib) (first run)
+ - free-5.1.7 (lib) (requires download & build)
+ - conduit-1.3.4.1 (lib) (requires download & build)
+ - strict-0.4.0.1 (lib) (requires download & build)
+ - adjunctions-4.4 (lib) (requires download & build)
+ - conduit-extra-1.3.5 (lib) (requires download & build)
+ - aeson-1.5.6.0 (lib) (requires download & build)
+ - kan-extensions-5.2.3 (lib) (requires download & build)
+ - xml-conduit-1.9.1.1 (lib:xml-conduit) (requires download & build)
+ - shakespeare-2.0.25 (lib) (requires download & build)
+ - lens-5.0.1 (lib) (requires download & build)
+ - xml-hamlet-0.5.0.1 (lib) (requires download & build)
+ - satchmo-2.9.9.3 (lib) (requires download & build)
+ - tpdb-2.2.0 (lib) (requires download & build)
+ - matchbox-4.4.0 (exe:matchbox2015) (first run)
+Downloading  nats-1.1.2
+Downloaded   nats-1.1.2
+Downloading  base-orphans-0.8.5
+Downloaded   base-orphans-0.8.5
+Downloading  call-stack-0.4.0
+Downloaded   call-stack-0.4.0
+Downloading  colour-2.3.6
+Downloaded   colour-2.3.6
+Downloading  data-default-class-0.1.2.0
+Downloaded   data-default-class-0.1.2.0
+Downloading  loop-0.3.0
+Downloaded   loop-0.3.0
+Downloading  old-locale-1.0.0.7
+Downloaded   old-locale-1.0.0.7
+Downloading  data-default-instances-old-locale-0.0.1
+Downloaded   data-default-instances-old-locale-0.0.1
+Downloading  semigroups-0.19.2
+Downloaded   semigroups-0.19.2
+Downloading  split-0.2.3.4
+Downloaded   split-0.2.3.4
+Downloading  logict-0.7.0.3
+Downloaded   logict-0.7.0.3
+Downloading  transformers-compat-0.7
+Downloaded   transformers-compat-0.7
+Downloading  unliftio-core-0.2.0.1
+Downloaded   unliftio-core-0.2.0.1
+Downloading  utility-ht-0.0.16
+Downloaded   utility-ht-0.0.16
+Downloading  void-0.7.3
+Downloaded   void-0.7.3
+Downloading  utf8-string-1.0.2
+Downloaded   utf8-string-1.0.2
+Downloading  zlib-0.6.2.3
+Downloaded   zlib-0.6.2.3
+Downloading  containers-0.5.11.0
+Downloaded   containers-0.5.11.0
+Downloading  binary-0.8.9.0
+Downloaded   binary-0.8.9.0
+Downloading  data-default-instances-containers-0.0.1
+Downloaded   data-default-instances-containers-0.0.1
+Downloading  latex-0.1.0.4
+Downloaded   latex-0.1.0.4
+Downloading  dlist-1.0
+Downloaded   dlist-1.0
+Downloading  data-default-instances-dlist-0.0.1
+Downloaded   data-default-instances-dlist-0.0.1
+Downloading  data-default-0.7.1.1
+Downloaded   data-default-0.7.1.1
+Downloading  pqueue-1.4.1.3
+Downloaded   pqueue-1.4.1.3
+Downloading  memoize-0.8.1
+Downloaded   memoize-0.8.1
+Downloading  reflection-2.1.6
+Downloaded   reflection-2.1.6
+Downloading  th-abstraction-0.4.3.0
+Downloaded   th-abstraction-0.4.3.0
+Downloading  th-lift-0.8.2
+Downloaded   th-lift-0.8.2
+Downloading  primitive-0.7.2.0
+Downloaded   primitive-0.7.2.0
+Downloading  splitmix-0.1.0.3
+Downloaded   splitmix-0.1.0.3
+Downloading  random-1.2.0
+Downloaded   random-1.2.0
+Downloading  tagged-0.8.6.1
+Downloaded   tagged-0.8.6.1
+Downloading  distributive-0.6.2.1
+Downloaded   distributive-0.6.2.1
+Downloading  base-compat-0.11.2
+Downloaded   base-compat-0.11.2
+Downloading  base-compat-batteries-0.11.2
+Downloaded   base-compat-batteries-0.11.2
+Downloading  hsc2hs-0.68.7
+Downloaded   hsc2hs-0.68.7
+Downloading  network-3.1.2.2
+Downloaded   network-3.1.2.2
+Downloading  vector-0.12.3.0
+Downloaded   vector-0.12.3.0
+Downloading  matrix-0.3.6.1
+Downloaded   matrix-0.3.6.1
+Downloading  vector-algorithms-0.8.0.4
+Downloaded   vector-algorithms-0.8.0.4
+Downloading  happy-1.20.0
+Downloaded   happy-1.20.0
+Downloading  indexed-traversable-0.1.1
+Downloaded   indexed-traversable-0.1.1
+Downloading  comonad-5.0.8
+Downloaded   comonad-5.0.8
+Downloading  bifunctors-5.5.11
+Downloaded   bifunctors-5.5.11
+Downloading  assoc-1.0.2
+Downloaded   assoc-1.0.2
+Downloading  integer-logarithms-1.0.3.1
+Downloaded   integer-logarithms-1.0.3.1
+Downloading  parallel-3.2.2.0
+Downloaded   parallel-3.2.2.0
+Downloading  resourcet-1.2.4.3
+Downloaded   resourcet-1.2.4.3
+Downloading  temporary-1.3
+Downloaded   temporary-1.3
+Downloading  transformers-base-0.4.6
+Downloaded   transformers-base-0.4.6
+Downloading  stringsearch-0.3.6.6
+Downloaded   stringsearch-0.3.6.6
+Downloading  text-1.2.5.0
+Downloaded   text-1.2.5.0
+Downloading  blaze-builder-0.4.2.1
+Downloaded   blaze-builder-0.4.2.1
+Downloading  blaze-markup-0.8.2.8
+Downloaded   blaze-markup-0.8.2.8
+Downloading  blaze-html-0.9.1.2
+Downloaded   blaze-html-0.9.1.2
+Downloading  hashable-1.3.3.0
+Downloaded   hashable-1.3.3.0
+Downloading  async-2.2.3
+Downloaded   async-2.2.3
+Downloading  minisat-0.1.3
+Downloaded   minisat-0.1.3
+Downloading  typed-process-0.2.6.1
+Downloaded   typed-process-0.2.6.1
+Downloading  data-fix-0.3.2
+Downloaded   data-fix-0.3.2
+Downloading  these-1.1.1.1
+Downloaded   these-1.1.1.1
+Downloading  time-compat-1.9.6.1
+Downloaded   time-compat-1.9.6.1
+Downloading  unordered-containers-0.2.14.0
+Downloaded   unordered-containers-0.2.14.0
+Downloading  indexed-traversable-instances-0.1
+Downloaded   indexed-traversable-instances-0.1
+Downloading  mono-traversable-1.0.15.1
+Downloaded   mono-traversable-1.0.15.1
+Downloading  conduit-1.3.4.1
+Downloaded   conduit-1.3.4.1
+Downloading  parsec-3.1.14.0
+Downloaded   parsec-3.1.14.0
+Downloading  bibtex-0.1.0.6
+Downloaded   bibtex-0.1.0.6
+Downloading  polyparse-1.13
+Downloaded   polyparse-1.13
+Downloading  prettyprinter-1.7.0
+Downloaded   prettyprinter-1.7.0
+Downloading  scientific-0.3.7.0
+Downloaded   scientific-0.3.7.0
+Downloading  attoparsec-0.14.1
+Downloaded   attoparsec-0.14.1
+Downloading  streaming-commons-0.2.2.1
+Downloaded   streaming-commons-0.2.2.1
+Downloading  conduit-extra-1.3.5
+Downloaded   conduit-extra-1.3.5
+Downloading  strict-0.4.0.1
+Downloaded   strict-0.4.0.1
+Downloading  uuid-types-1.0.5
+Downloaded   uuid-types-1.0.5
+Downloading  wl-pprint-text-1.2.0.1
+Downloaded   wl-pprint-text-1.2.0.1
+Downloading  xml-types-0.3.8
+Downloaded   xml-types-0.3.8
+Downloading  ansi-terminal-0.11
+Downloaded   ansi-terminal-0.11
+Downloading  ansi-wl-pprint-0.6.9
+Downloaded   ansi-wl-pprint-0.6.9
+Downloading  optparse-applicative-0.16.1.0
+Downloaded   optparse-applicative-0.16.1.0
+Downloading  alex-3.2.6
+Downloaded   alex-3.2.6
+Downloading  language-c-0.9.0.1
+Starting     alex-3.2.6 (exe:alex)
+Downloaded   language-c-0.9.0.1
+Downloading  c2hs-0.28.8
+Downloaded   c2hs-0.28.8
+Downloading  aeson-1.5.6.0
+Building     alex-3.2.6 (exe:alex)
+Downloaded   aeson-1.5.6.0
+Downloading  shakespeare-2.0.25
+Downloaded   shakespeare-2.0.25
+Downloading  StateVar-1.2.2
+Downloaded   StateVar-1.2.2
+Downloading  contravariant-1.5.5
+Starting     StateVar-1.2.2 (lib)
+Downloaded   contravariant-1.5.5
+Downloading  profunctors-5.6.2
+Downloaded   profunctors-5.6.2
+Downloading  semigroupoids-5.3.5
+Building     StateVar-1.2.2 (lib)
+Downloaded   semigroupoids-5.3.5
+Downloading  free-5.1.7
+Downloaded   free-5.1.7
+Downloading  adjunctions-4.4
+Downloaded   adjunctions-4.4
+Downloading  invariant-0.5.4
+Downloaded   invariant-0.5.4
+Downloading  kan-extensions-5.2.3
+Installing   StateVar-1.2.2 (lib)
+Downloaded   kan-extensions-5.2.3
+Downloading  lens-5.0.1
+Completed    StateVar-1.2.2 (lib)
+Starting     base-compat-0.11.2 (lib)
+Downloaded   lens-5.0.1
+Downloading  satchmo-2.9.9.3
+Downloaded   satchmo-2.9.9.3
+Downloading  QuickCheck-2.14.2
+Downloaded   QuickCheck-2.14.2
+Downloading  HaXml-1.25.5
+Building     base-compat-0.11.2 (lib)
+Downloaded   HaXml-1.25.5
+Downloading  HaTeX-3.22.3.0
+Downloaded   HaTeX-3.22.3.0
+Downloading  cabal-doctest-1.0.8
+Downloaded   cabal-doctest-1.0.8
+Downloading  xml-conduit-1.9.1.1
+Downloaded   xml-conduit-1.9.1.1
+Downloading  xml-hamlet-0.5.0.1
+Downloaded   xml-hamlet-0.5.0.1
+Downloading  tpdb-2.2.0
+Downloaded   tpdb-2.2.0
+Installing   base-compat-0.11.2 (lib)
+Completed    base-compat-0.11.2 (lib)
+Starting     base-orphans-0.8.5 (lib)
+Building     base-orphans-0.8.5 (lib)
+Installing   alex-3.2.6 (exe:alex)
+Completed    alex-3.2.6 (exe:alex)
+Starting     cabal-doctest-1.0.8 (lib)
+Installing   base-orphans-0.8.5 (lib)
+Completed    base-orphans-0.8.5 (lib)
+Starting     call-stack-0.4.0 (lib)
+Building     cabal-doctest-1.0.8 (lib)
+Building     call-stack-0.4.0 (lib)
+Installing   call-stack-0.4.0 (lib)
+Completed    call-stack-0.4.0 (lib)
+Starting     colour-2.3.6 (lib)
+Building     colour-2.3.6 (lib)
+Installing   cabal-doctest-1.0.8 (lib)
+Completed    cabal-doctest-1.0.8 (lib)
+Starting     containers-0.5.11.0 (lib)
+Building     containers-0.5.11.0 (lib)
+Installing   colour-2.3.6 (lib)
+Completed    colour-2.3.6 (lib)
+Starting     data-default-class-0.1.2.0 (all, legacy fallback)
+Building     data-default-class-0.1.2.0 (all, legacy fallback)
+Installing   data-default-class-0.1.2.0 (all, legacy fallback)
+Completed    data-default-class-0.1.2.0 (all, legacy fallback)
+Starting     dlist-1.0 (lib)
+Building     dlist-1.0 (lib)
+Installing   dlist-1.0 (lib)
+Completed    dlist-1.0 (lib)
+Starting     happy-1.20.0 (exe:happy)
+Building     happy-1.20.0 (exe:happy)
+Installing   happy-1.20.0 (exe:happy)
+Completed    happy-1.20.0 (exe:happy)
+Starting     integer-logarithms-1.0.3.1 (lib)
+Building     integer-logarithms-1.0.3.1 (lib)
+Installing   integer-logarithms-1.0.3.1 (lib)
+Completed    integer-logarithms-1.0.3.1 (lib)
+Starting     logict-0.7.0.3 (lib)
+Building     logict-0.7.0.3 (lib)
+Installing   logict-0.7.0.3 (lib)
+Completed    logict-0.7.0.3 (lib)
+Starting     loop-0.3.0 (lib)
+Building     loop-0.3.0 (lib)
+Installing   loop-0.3.0 (lib)
+Completed    loop-0.3.0 (lib)
+Starting     memoize-0.8.1 (lib)
+Building     memoize-0.8.1 (lib)
+Installing   memoize-0.8.1 (lib)
+Completed    memoize-0.8.1 (lib)
+Starting     nats-1.1.2 (lib)
+Building     nats-1.1.2 (lib)
+Installing   nats-1.1.2 (lib)
+Completed    nats-1.1.2 (lib)
+Starting     old-locale-1.0.0.7 (lib)
+Building     old-locale-1.0.0.7 (lib)
+Installing   old-locale-1.0.0.7 (lib)
+Completed    old-locale-1.0.0.7 (lib)
+Starting     pqueue-1.4.1.3 (lib)
+Building     pqueue-1.4.1.3 (lib)
+Installing   pqueue-1.4.1.3 (lib)
+Completed    pqueue-1.4.1.3 (lib)
+Starting     primitive-0.7.2.0 (lib)
+Building     primitive-0.7.2.0 (lib)
+Installing   containers-0.5.11.0 (lib)
+Completed    containers-0.5.11.0 (lib)
+Starting     reflection-2.1.6 (lib)
+Building     reflection-2.1.6 (lib)
+Installing   primitive-0.7.2.0 (lib)
+Completed    primitive-0.7.2.0 (lib)
+Starting     semigroups-0.19.2 (lib)
+Building     semigroups-0.19.2 (lib)
+Installing   semigroups-0.19.2 (lib)
+Installing   reflection-2.1.6 (lib)
+Completed    semigroups-0.19.2 (lib)
+Starting     split-0.2.3.4 (lib)
+Completed    reflection-2.1.6 (lib)
+Starting     splitmix-0.1.0.3 (lib)
+Building     split-0.2.3.4 (lib)
+Building     splitmix-0.1.0.3 (lib)
+Installing   split-0.2.3.4 (lib)
+Completed    split-0.2.3.4 (lib)
+Starting     tagged-0.8.6.1 (lib)
+Installing   splitmix-0.1.0.3 (lib)
+Building     tagged-0.8.6.1 (lib)
+Completed    splitmix-0.1.0.3 (lib)
+Starting     transformers-compat-0.7 (lib)
+Building     transformers-compat-0.7 (lib)
+Installing   tagged-0.8.6.1 (lib)
+Completed    tagged-0.8.6.1 (lib)
+Starting     unliftio-core-0.2.0.1 (lib)
+Building     unliftio-core-0.2.0.1 (lib)
+Installing   transformers-compat-0.7 (lib)
+Installing   unliftio-core-0.2.0.1 (lib)
+Completed    transformers-compat-0.7 (lib)
+Starting     utf8-string-1.0.2 (lib)
+Completed    unliftio-core-0.2.0.1 (lib)
+Starting     utility-ht-0.0.16 (lib)
+Building     utf8-string-1.0.2 (lib)
+Building     utility-ht-0.0.16 (lib)
+Installing   utf8-string-1.0.2 (lib)
+Completed    utf8-string-1.0.2 (lib)
+Starting     void-0.7.3 (lib)
+Installing   utility-ht-0.0.16 (lib)
+Building     void-0.7.3 (lib)
+Completed    utility-ht-0.0.16 (lib)
+Starting     zlib-0.6.2.3 (lib)
+Installing   void-0.7.3 (lib)
+Completed    void-0.7.3 (lib)
+Starting     contravariant-1.5.5 (lib)
+Building     zlib-0.6.2.3 (lib)
+Building     contravariant-1.5.5 (lib)
+Installing   contravariant-1.5.5 (lib)
+Completed    contravariant-1.5.5 (lib)
+Starting     base-compat-batteries-0.11.2 (lib)
+Building     base-compat-batteries-0.11.2 (lib)
+Installing   zlib-0.6.2.3 (lib)
+Installing   base-compat-batteries-0.11.2 (lib)
+Completed    zlib-0.6.2.3 (lib)
+Starting     ansi-terminal-0.11 (lib)
+Completed    base-compat-batteries-0.11.2 (lib)
+Starting     data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Building     ansi-terminal-0.11 (lib)
+Building     data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Installing   data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Completed    data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Starting     language-c-0.9.0.1 (lib)
+Building     language-c-0.9.0.1 (lib)
+Installing   ansi-terminal-0.11 (lib)
+Completed    ansi-terminal-0.11 (lib)
+Starting     data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Building     data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Installing   data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Completed    data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Starting     th-abstraction-0.4.3.0 (lib)
+Building     th-abstraction-0.4.3.0 (lib)
+Installing   th-abstraction-0.4.3.0 (lib)
+Completed    th-abstraction-0.4.3.0 (lib)
+Starting     stringsearch-0.3.6.6 (all, legacy fallback)
+Building     stringsearch-0.3.6.6 (all, legacy fallback)
+Installing   stringsearch-0.3.6.6 (all, legacy fallback)
+Completed    stringsearch-0.3.6.6 (all, legacy fallback)
+Starting     parallel-3.2.2.0 (lib)
+Building     parallel-3.2.2.0 (lib)
+Installing   parallel-3.2.2.0 (lib)
+Completed    parallel-3.2.2.0 (lib)
+Starting     indexed-traversable-0.1.1 (lib)
+Building     indexed-traversable-0.1.1 (lib)
+Installing   indexed-traversable-0.1.1 (lib)
+Completed    indexed-traversable-0.1.1 (lib)
+Starting     hsc2hs-0.68.7 (exe:hsc2hs)
+Building     hsc2hs-0.68.7 (exe:hsc2hs)
+Installing   hsc2hs-0.68.7 (exe:hsc2hs)
+Completed    hsc2hs-0.68.7 (exe:hsc2hs)
+Starting     data-default-instances-containers-0.0.1 (all, legacy fallback)
+Building     data-default-instances-containers-0.0.1 (all, legacy fallback)
+Installing   data-default-instances-containers-0.0.1 (all, legacy fallback)
+Completed    data-default-instances-containers-0.0.1 (all, legacy fallback)
+Starting     binary-0.8.9.0 (lib)
+Building     binary-0.8.9.0 (lib)
+Installing   binary-0.8.9.0 (lib)
+Completed    binary-0.8.9.0 (lib)
+Starting     vector-0.12.3.0 (lib)
+Building     vector-0.12.3.0 (lib)
+Installing   language-c-0.9.0.1 (lib)
+Completed    language-c-0.9.0.1 (lib)
+Starting     random-1.2.0 (lib)
+Building     random-1.2.0 (lib)
+Installing   random-1.2.0 (lib)
+Completed    random-1.2.0 (lib)
+Starting     distributive-0.6.2.1 (lib)
+Building     distributive-0.6.2.1 (lib)
+Installing   distributive-0.6.2.1 (lib)
+Completed    distributive-0.6.2.1 (lib)
+Starting     transformers-base-0.4.6 (lib)
+Building     transformers-base-0.4.6 (lib)
+Installing   transformers-base-0.4.6 (lib)
+Completed    transformers-base-0.4.6 (lib)
+Starting     resourcet-1.2.4.3 (lib)
+Building     resourcet-1.2.4.3 (lib)
+Installing   resourcet-1.2.4.3 (lib)
+Completed    resourcet-1.2.4.3 (lib)
+Starting     latex-0.1.0.4 (all, legacy fallback)
+Building     latex-0.1.0.4 (all, legacy fallback)
+Installing   latex-0.1.0.4 (all, legacy fallback)
+Completed    latex-0.1.0.4 (all, legacy fallback)
+Starting     ansi-wl-pprint-0.6.9 (lib)
+Building     ansi-wl-pprint-0.6.9 (lib)
+Installing   ansi-wl-pprint-0.6.9 (lib)
+Completed    ansi-wl-pprint-0.6.9 (lib)
+Starting     th-lift-0.8.2 (lib)
+Building     th-lift-0.8.2 (lib)
+Installing   th-lift-0.8.2 (lib)
+Completed    th-lift-0.8.2 (lib)
+Starting     network-3.1.2.2 (all, legacy fallback)
+Building     network-3.1.2.2 (all, legacy fallback)
+Installing   network-3.1.2.2 (all, legacy fallback)
+Completed    network-3.1.2.2 (all, legacy fallback)
+Starting     data-default-0.7.1.1 (all, legacy fallback)
+Building     data-default-0.7.1.1 (all, legacy fallback)
+Installing   data-default-0.7.1.1 (all, legacy fallback)
+Completed    data-default-0.7.1.1 (all, legacy fallback)
+Starting     text-1.2.5.0 (lib)
+Building     text-1.2.5.0 (lib)
+Installing   vector-0.12.3.0 (lib)
+Completed    vector-0.12.3.0 (lib)
+Starting     c2hs-0.28.8 (exe:c2hs)
+Building     c2hs-0.28.8 (exe:c2hs)
+Installing   text-1.2.5.0 (lib)
+Installing   c2hs-0.28.8 (exe:c2hs)
+Completed    c2hs-0.28.8 (exe:c2hs)
+Starting     temporary-1.3 (lib)
+Completed    text-1.2.5.0 (lib)
+Starting     QuickCheck-2.14.2 (lib)
+Building     temporary-1.3 (lib)
+Building     QuickCheck-2.14.2 (lib)
+Installing   temporary-1.3 (lib)
+Completed    temporary-1.3 (lib)
+Starting     comonad-5.0.8 (lib)
+Building     comonad-5.0.8 (lib)
+Installing   comonad-5.0.8 (lib)
+Completed    comonad-5.0.8 (lib)
+Starting     optparse-applicative-0.16.1.0 (lib)
+Building     optparse-applicative-0.16.1.0 (lib)
+Installing   optparse-applicative-0.16.1.0 (lib)
+Completed    optparse-applicative-0.16.1.0 (lib)
+Starting     vector-algorithms-0.8.0.4 (lib)
+Building     vector-algorithms-0.8.0.4 (lib)
+Installing   QuickCheck-2.14.2 (lib)
+Completed    QuickCheck-2.14.2 (lib)
+Starting     matrix-0.3.6.1 (lib)
+Building     matrix-0.3.6.1 (lib)
+Installing   vector-algorithms-0.8.0.4 (lib)
+Completed    vector-algorithms-0.8.0.4 (lib)
+Starting     xml-types-0.3.8 (lib)
+Building     xml-types-0.3.8 (lib)
+Installing   xml-types-0.3.8 (lib)
+Completed    xml-types-0.3.8 (lib)
+Starting     wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Building     wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Installing   wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Completed    wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Starting     prettyprinter-1.7.0 (lib)
+Building     prettyprinter-1.7.0 (lib)
+Installing   matrix-0.3.6.1 (lib)
+Completed    matrix-0.3.6.1 (lib)
+Starting     polyparse-1.13 (lib)
+Building     polyparse-1.13 (lib)
+Installing   prettyprinter-1.7.0 (lib)
+Completed    prettyprinter-1.7.0 (lib)
+Starting     parsec-3.1.14.0 (lib)
+Building     parsec-3.1.14.0 (lib)
+Installing   polyparse-1.13 (lib)
+Completed    polyparse-1.13 (lib)
+Starting     hashable-1.3.3.0 (lib)
+Building     hashable-1.3.3.0 (lib)
+Installing   hashable-1.3.3.0 (lib)
+Completed    hashable-1.3.3.0 (lib)
+Starting     blaze-builder-0.4.2.1 (lib)
+Building     blaze-builder-0.4.2.1 (lib)
+Installing   parsec-3.1.14.0 (lib)
+Completed    parsec-3.1.14.0 (lib)
+Configuring library for boolector-0.0.0.13..
+Preprocessing library for boolector-0.0.0.13..
+Building library for boolector-0.0.0.13..
+[1 of 2] Compiling Boolector.Foreign ( /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/boolector-0.0.0.13/build/Boolector/Foreign.hs, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/boolector-0.0.0.13/build/Boolector/Foreign.o, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/boolector-0.0.0.13/build/Boolector/Foreign.dyn_o )
+Installing   blaze-builder-0.4.2.1 (lib)
+Completed    blaze-builder-0.4.2.1 (lib)
+Starting     bifunctors-5.5.11 (lib)
+Building     bifunctors-5.5.11 (lib)
+[2 of 2] Compiling Boolector        ( src/Boolector.hs, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/boolector-0.0.0.13/build/Boolector.o, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/boolector-0.0.0.13/build/Boolector.dyn_o )
+
+src/Boolector.hs:251:1: warning: [-Wunused-imports]
+    The import of ‘Control.Applicative’ is redundant
+      except perhaps to import instances from ‘Control.Applicative’
+    To import instances alone, use: import Control.Applicative()
+    |
+251 | import Control.Applicative ((<$>))
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Starting     HaXml-1.25.5 (lib)
+Building     HaXml-1.25.5 (lib)
+Installing   bifunctors-5.5.11 (lib)
+Completed    bifunctors-5.5.11 (lib)
+Starting     uuid-types-1.0.5 (lib)
+Building     uuid-types-1.0.5 (lib)
+Installing   uuid-types-1.0.5 (lib)
+Completed    uuid-types-1.0.5 (lib)
+Starting     unordered-containers-0.2.14.0 (lib)
+Building     unordered-containers-0.2.14.0 (lib)
+Installing   unordered-containers-0.2.14.0 (lib)
+Completed    unordered-containers-0.2.14.0 (lib)
+Starting     time-compat-1.9.6.1 (lib)
+Building     time-compat-1.9.6.1 (lib)
+Installing   time-compat-1.9.6.1 (lib)
+Completed    time-compat-1.9.6.1 (lib)
+Starting     scientific-0.3.7.0 (lib)
+Building     scientific-0.3.7.0 (lib)
+Installing   scientific-0.3.7.0 (lib)
+Completed    scientific-0.3.7.0 (lib)
+Starting     data-fix-0.3.2 (lib)
+Building     data-fix-0.3.2 (lib)
+Installing   data-fix-0.3.2 (lib)
+Completed    data-fix-0.3.2 (lib)
+Starting     async-2.2.3 (lib)
+Building     async-2.2.3 (lib)
+Installing   async-2.2.3 (lib)
+Completed    async-2.2.3 (lib)
+Starting     bibtex-0.1.0.6 (all, legacy fallback)
+Building     bibtex-0.1.0.6 (all, legacy fallback)
+Installing   bibtex-0.1.0.6 (all, legacy fallback)
+Completed    bibtex-0.1.0.6 (all, legacy fallback)
+Starting     blaze-markup-0.8.2.8 (lib)
+Building     blaze-markup-0.8.2.8 (lib)
+Installing   blaze-markup-0.8.2.8 (lib)
+Completed    blaze-markup-0.8.2.8 (lib)
+Starting     profunctors-5.6.2 (lib)
+Building     profunctors-5.6.2 (lib)
+Installing   HaXml-1.25.5 (lib)
+Completed    HaXml-1.25.5 (lib)
+Starting     assoc-1.0.2 (lib)
+Building     assoc-1.0.2 (lib)
+Installing   assoc-1.0.2 (lib)
+Completed    assoc-1.0.2 (lib)
+Starting     semigroupoids-5.3.5 (lib)
+Building     semigroupoids-5.3.5 (lib)
+Installing   profunctors-5.6.2 (lib)
+Completed    profunctors-5.6.2 (lib)
+Starting     mono-traversable-1.0.15.1 (lib)
+Building     mono-traversable-1.0.15.1 (lib)
+Installing   semigroupoids-5.3.5 (lib)
+Completed    semigroupoids-5.3.5 (lib)
+Starting     indexed-traversable-instances-0.1 (lib)
+Building     indexed-traversable-instances-0.1 (lib)
+Installing   indexed-traversable-instances-0.1 (lib)
+Completed    indexed-traversable-instances-0.1 (lib)
+Starting     attoparsec-0.14.1 (lib)
+Building     attoparsec-0.14.1 (lib)
+Installing   mono-traversable-1.0.15.1 (lib)
+Completed    mono-traversable-1.0.15.1 (lib)
+Starting     typed-process-0.2.6.1 (lib)
+Building     typed-process-0.2.6.1 (lib)
+Installing   typed-process-0.2.6.1 (lib)
+Completed    typed-process-0.2.6.1 (lib)
+Starting     streaming-commons-0.2.2.1 (lib)
+Building     streaming-commons-0.2.2.1 (lib)
+Installing   attoparsec-0.14.1 (lib)
+Installing   streaming-commons-0.2.2.1 (lib)
+Completed    attoparsec-0.14.1 (lib)
+Starting     minisat-0.1.3 (lib)
+Completed    streaming-commons-0.2.2.1 (lib)
+Starting     HaTeX-3.22.3.0 (lib)
+Building     minisat-0.1.3 (lib)
+Building     HaTeX-3.22.3.0 (lib)
+Installing   minisat-0.1.3 (lib)
+Completed    minisat-0.1.3 (lib)
+Starting     blaze-html-0.9.1.2 (lib)
+Building     blaze-html-0.9.1.2 (lib)
+Installing   blaze-html-0.9.1.2 (lib)
+Completed    blaze-html-0.9.1.2 (lib)
+Starting     these-1.1.1.1 (lib)
+Building     these-1.1.1.1 (lib)
+Installing   these-1.1.1.1 (lib)
+Completed    these-1.1.1.1 (lib)
+Starting     invariant-0.5.4 (lib)
+Building     invariant-0.5.4 (lib)
+Installing   HaTeX-3.22.3.0 (lib)
+Completed    HaTeX-3.22.3.0 (lib)
+Configuring library for wl-pprint-extras-3.5.0.5..
+Preprocessing library for wl-pprint-extras-3.5.0.5..
+Building library for wl-pprint-extras-3.5.0.5..
+[1 of 2] Compiling Text.PrettyPrint.Free.Internal ( src/Text/PrettyPrint/Free/Internal.hs, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/wl-pprint-extras-3.5.0.5/build/Text/PrettyPrint/Free/Internal.o, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/wl-pprint-extras-3.5.0.5/build/Text/PrettyPrint/Free/Internal.dyn_o )
+[2 of 2] Compiling Text.PrettyPrint.Free ( src/Text/PrettyPrint/Free.hs, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/wl-pprint-extras-3.5.0.5/build/Text/PrettyPrint/Free.o, /tmp/m19-matchbox-src/dist-newstyle/build/x86_64-linux/ghc-8.10.7/wl-pprint-extras-3.5.0.5/build/Text/PrettyPrint/Free.dyn_o )
+Installing   invariant-0.5.4 (lib)
+Completed    invariant-0.5.4 (lib)
+Starting     free-5.1.7 (lib)
+Starting     conduit-1.3.4.1 (lib)
+Building     free-5.1.7 (lib)
+Building     conduit-1.3.4.1 (lib)
+Installing   conduit-1.3.4.1 (lib)
+Completed    conduit-1.3.4.1 (lib)
+Starting     strict-0.4.0.1 (lib)
+Building     strict-0.4.0.1 (lib)
+Installing   free-5.1.7 (lib)
+Completed    free-5.1.7 (lib)
+Starting     conduit-extra-1.3.5 (lib)
+Building     conduit-extra-1.3.5 (lib)
+Installing   strict-0.4.0.1 (lib)
+Completed    strict-0.4.0.1 (lib)
+Starting     adjunctions-4.4 (lib)
+Building     adjunctions-4.4 (lib)
+Installing   conduit-extra-1.3.5 (lib)
+Completed    conduit-extra-1.3.5 (lib)
+Starting     aeson-1.5.6.0 (lib)
+Building     aeson-1.5.6.0 (lib)
+Installing   adjunctions-4.4 (lib)
+Completed    adjunctions-4.4 (lib)
+Starting     xml-conduit-1.9.1.1 (all, legacy fallback)
+Building     xml-conduit-1.9.1.1 (all, legacy fallback)
+Installing   xml-conduit-1.9.1.1 (all, legacy fallback)
+Completed    xml-conduit-1.9.1.1 (all, legacy fallback)
+Starting     kan-extensions-5.2.3 (lib)
+Building     kan-extensions-5.2.3 (lib)
+Installing   kan-extensions-5.2.3 (lib)
+Completed    kan-extensions-5.2.3 (lib)
+Starting     lens-5.0.1 (lib)
+Building     lens-5.0.1 (lib)
+Installing   lens-5.0.1 (lib)
+Completed    lens-5.0.1 (lib)
+Starting     satchmo-2.9.9.3 (lib)
+Building     satchmo-2.9.9.3 (lib)
+Installing   aeson-1.5.6.0 (lib)
+Completed    aeson-1.5.6.0 (lib)
+
+Failed to build satchmo-2.9.9.3.
+Build log (
+/home/runner/.cabal/logs/ghc-8.10.7/satchmo-2.9.9.3-6173fe6440d4efc2691ed7be5b2e5bc7d97377208979152bfbf97e480709c4aa.log
+):
+Warning: satchmo.cabal:11:1: Tabs used as indentation at 11:1, 12:1
+Configuring library for satchmo-2.9.9.3..
+Preprocessing library for satchmo-2.9.9.3..
+Building library for satchmo-2.9.9.3..
+
+Satchmo/Unary/Op/Common.hs:2:14: warning:
+    -XPatternSignatures is deprecated: use -XScopedTypeVariables or pragma {-# LANGUAGE ScopedTypeVariables #-} instead
+  |
+2 | {-# language PatternSignatures #-}
+  |              ^^^^^^^^^^^^^^^^^
+
+Satchmo/SAT/Mini.hs:5:14: warning:
+    -XPatternSignatures is deprecated: use -XScopedTypeVariables or pragma {-# LANGUAGE ScopedTypeVariables #-} instead
+  |
+5 | {-# LANGUAGE PatternSignatures #-}
+  |              ^^^^^^^^^^^^^^^^^
+
+Satchmo/SAT/External.hs:5:14: warning:
+    -XPatternSignatures is deprecated: use -XScopedTypeVariables or pragma {-# LANGUAGE ScopedTypeVariables #-} instead
+  |
+5 | {-# LANGUAGE PatternSignatures #-}
+  |              ^^^^^^^^^^^^^^^^^
+[ 1 of 50] Compiling Satchmo.Data     ( Satchmo/Data.hs, dist/build/Satchmo/Data.o, dist/build/Satchmo/Data.dyn_o )
+[ 2 of 50] Compiling Satchmo.Code     ( Satchmo/Code.hs, dist/build/Satchmo/Code.o, dist/build/Satchmo/Code.dyn_o )
+[ 3 of 50] Compiling Satchmo.Array    ( Satchmo/Array.hs, dist/build/Satchmo/Array.o, dist/build/Satchmo/Array.dyn_o )
+[ 4 of 50] Compiling Satchmo.MonadSAT ( Satchmo/MonadSAT.hs, dist/build/Satchmo/MonadSAT.o, dist/build/Satchmo/MonadSAT.dyn_o )
+
+Satchmo/MonadSAT.hs:66:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (ListT m)’
+   |
+66 | instance (Monad m, MonadSAT m) => MonadSAT (ListT m) where
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:66:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (ListT m)’
+   |
+66 | instance (Monad m, MonadSAT m) => MonadSAT (ListT m) where
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:66:45: warning: [-Wdeprecations]
+    In the use of type constructor or class ‘ListT’
+    (imported from Control.Monad.List, but defined in Control.Monad.Trans.List):
+    Deprecated: "This transformer is invalid on most monads"
+   |
+66 | instance (Monad m, MonadSAT m) => MonadSAT (ListT m) where
+   |                                             ^^^^^
+
+Satchmo/MonadSAT.hs:73:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (ReaderT r m)’
+   |
+73 | instance (Monad m, MonadSAT m) => MonadSAT (ReaderT r m) where
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:73:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (ReaderT r m)’
+   |
+73 | instance (Monad m, MonadSAT m) => MonadSAT (ReaderT r m) where
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:80:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (Lazy.StateT s m)’
+   |
+80 | instance (Monad m, MonadSAT m) => MonadSAT (Lazy.StateT s m) where
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:80:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (Lazy.StateT s m)’
+   |
+80 | instance (Monad m, MonadSAT m) => MonadSAT (Lazy.StateT s m) where
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:87:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (Lazy.RWST r w s m)’
+   |
+87 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Lazy.RWST r w s m) where
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:87:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (Lazy.RWST r w s m)’
+   |
+87 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Lazy.RWST r w s m) where
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:94:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (Lazy.WriterT w m)’
+   |
+94 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Lazy.WriterT w m) where
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:94:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (Lazy.WriterT w m)’
+   |
+94 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Lazy.WriterT w m) where
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:101:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (Strict.StateT s m)’
+    |
+101 | instance (Monad m, MonadSAT m) => MonadSAT (Strict.StateT s m) where
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:101:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (Strict.StateT s m)’
+    |
+101 | instance (Monad m, MonadSAT m) => MonadSAT (Strict.StateT s m) where
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:108:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (Strict.RWST r w s m)’
+    |
+108 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Strict.RWST r w s m) where
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:108:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (Strict.RWST r w s m)’
+    |
+108 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Strict.RWST r w s m) where
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:115:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (Strict.WriterT w m)’
+    |
+115 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Strict.WriterT w m) where
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:115:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (Strict.WriterT w m)’
+    |
+115 | instance (Monad m, MonadSAT m, Monoid w) => MonadSAT (Strict.WriterT w m) where
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Satchmo/MonadSAT.hs:122:1: warning: [-Wmissing-methods]
+    • No explicit associated type or default declaration for ‘Decoder’
+    • In the instance declaration for ‘MonadSAT (ContT s m)’
+    |
+122 | instance (Monad m, MonadSAT m) => MonadSAT (ContT s m) where
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^...
+
+Satchmo/MonadSAT.hs:122:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT (ContT s m)’
+    |
+122 | instance (Monad m, MonadSAT m) => MonadSAT (ContT s m) where
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[ 5 of 50] Compiling Satchmo.Boolean.Data ( Satchmo/Boolean/Data.hs, dist/build/Satchmo/Boolean/Data.o, dist/build/Satchmo/Boolean/Data.dyn_o )
+
+Satchmo/Boolean/Data.hs:10:26: warning: [-Wduplicate-exports]
+    ‘encode’ is exported by ‘encode’ and ‘Boolean(..)’
+   |
+10 | ( Boolean(..), Booleans, encode
+   |                          ^^^^^^
+[ 6 of 50] Compiling Satchmo.Boolean.Op ( Satchmo/Boolean/Op.hs, dist/build/Satchmo/Boolean/Op.o, dist/build/Satchmo/Boolean/Op.dyn_o )
+[ 7 of 50] Compiling Satchmo.Boolean  ( Satchmo/Boolean.hs, dist/build/Satchmo/Boolean.o, dist/build/Satchmo/Boolean.dyn_o )
+[ 8 of 50] Compiling Satchmo.Counting.Direct ( Satchmo/Counting/Direct.hs, dist/build/Satchmo/Counting/Direct.o, dist/build/Satchmo/Counting/Direct.dyn_o )
+[ 9 of 50] Compiling Satchmo.Binary.Data ( Satchmo/Binary/Data.hs, dist/build/Satchmo/Binary/Data.o, dist/build/Satchmo/Binary/Data.dyn_o )
+[10 of 50] Compiling Satchmo.Binary.Op.Common ( Satchmo/Binary/Op/Common.hs, dist/build/Satchmo/Binary/Op/Common.o, dist/build/Satchmo/Binary/Op/Common.dyn_o )
+[11 of 50] Compiling Satchmo.Binary.Op.Times ( Satchmo/Binary/Op/Times.hs, dist/build/Satchmo/Binary/Op/Times.o, dist/build/Satchmo/Binary/Op/Times.dyn_o )
+[12 of 50] Compiling Satchmo.BinaryTwosComplement.Data ( Satchmo/BinaryTwosComplement/Data.hs, dist/build/Satchmo/BinaryTwosComplement/Data.o, dist/build/Satchmo/BinaryTwosComplement/Data.dyn_o )
+[13 of 50] Compiling Satchmo.BinaryTwosComplement.Op.Common ( Satchmo/BinaryTwosComplement/Op/Common.hs, dist/build/Satchmo/BinaryTwosComplement/Op/Common.o, dist/build/Satchmo/BinaryTwosComplement/Op/Common.dyn_o )
+[14 of 50] Compiling Satchmo.Numeric  ( Satchmo/Numeric.hs, dist/build/Satchmo/Numeric.o, dist/build/Satchmo/Numeric.dyn_o )
+[15 of 50] Compiling Satchmo.Integer.Difference ( Satchmo/Integer/Difference.hs, dist/build/Satchmo/Integer/Difference.o, dist/build/Satchmo/Integer/Difference.dyn_o )
+[16 of 50] Compiling Satchmo.Polynomial.Numeric ( Satchmo/Polynomial/Numeric.hs, dist/build/Satchmo/Polynomial/Numeric.o, dist/build/Satchmo/Polynomial/Numeric.dyn_o )
+[17 of 50] Compiling Satchmo.SAT.External ( Satchmo/SAT/External.hs, dist/build/Satchmo/SAT/External.o, dist/build/Satchmo/SAT/External.dyn_o )
+
+Satchmo/SAT/External.hs:70:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘fresh_forall’ and ‘decode_variable’
+    • In the instance declaration for ‘MonadSAT SAT’
+   |
+70 | instance MonadSAT SAT where
+   |          ^^^^^^^^^^^^
+[18 of 50] Compiling Satchmo.SAT.Mini ( Satchmo/SAT/Mini.hs, dist/build/Satchmo/SAT/Mini.o, dist/build/Satchmo/SAT/Mini.dyn_o )
+
+Satchmo/SAT/Mini.hs:67:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘fresh_forall’
+    • In the instance declaration for ‘MonadSAT SAT’
+   |
+67 | instance MonadSAT SAT where
+   |          ^^^^^^^^^^^^
+[19 of 50] Compiling Satchmo.SAT.Tmpfile ( Satchmo/SAT/Tmpfile.hs, dist/build/Satchmo/SAT/Tmpfile.o, dist/build/Satchmo/SAT/Tmpfile.dyn_o )
+
+Satchmo/SAT/Tmpfile.hs:46:10: warning: [-Wmissing-methods]
+    • No explicit implementation for
+        ‘fresh_forall’
+    • In the instance declaration for ‘MonadSAT SAT’
+   |
+46 | instance MonadSAT SAT where
+   |          ^^^^^^^^^^^^
+[20 of 50] Compiling Satchmo.SAT      ( Satchmo/SAT.hs, dist/build/Satchmo/SAT.o, dist/build/Satchmo/SAT.dyn_o )
+[21 of 50] Compiling Satchmo.Relation.Data ( Satchmo/Relation/Data.hs, dist/build/Satchmo/Relation/Data.o, dist/build/Satchmo/Relation/Data.dyn_o )
+[22 of 50] Compiling Satchmo.Map.Data ( Satchmo/Map/Data.hs, dist/build/Satchmo/Map/Data.o, dist/build/Satchmo/Map/Data.dyn_o )
+[23 of 50] Compiling Satchmo.Map      ( Satchmo/Map.hs, dist/build/Satchmo/Map.o, dist/build/Satchmo/Map.dyn_o )
+[24 of 50] Compiling Satchmo.Counting.Unary ( Satchmo/Counting/Unary.hs, dist/build/Satchmo/Counting/Unary.o, dist/build/Satchmo/Counting/Unary.dyn_o )
+[25 of 50] Compiling Satchmo.Binary.Op.Flexible ( Satchmo/Binary/Op/Flexible.hs, dist/build/Satchmo/Binary/Op/Flexible.o, dist/build/Satchmo/Binary/Op/Flexible.dyn_o )
+[26 of 50] Compiling Satchmo.Binary   ( Satchmo/Binary.hs, dist/build/Satchmo/Binary.o, dist/build/Satchmo/Binary.dyn_o )
+[27 of 50] Compiling Satchmo.Counting.Binary ( Satchmo/Counting/Binary.hs, dist/build/Satchmo/Counting/Binary.o, dist/build/Satchmo/Counting/Binary.dyn_o )
+[28 of 50] Compiling Satchmo.Counting ( Satchmo/Counting.hs, dist/build/Satchmo/Counting.o, dist/build/Satchmo/Counting.dyn_o )
+[29 of 50] Compiling Satchmo.Relation.Op ( Satchmo/Relation/Op.hs, dist/build/Satchmo/Relation/Op.o, dist/build/Satchmo/Relation/Op.dyn_o )
+[30 of 50] Compiling Satchmo.Relation.Prop ( Satchmo/Relation/Prop.hs, dist/build/Satchmo/Relation/Prop.o, dist/build/Satchmo/Relation/Prop.dyn_o )
+[31 of 50] Compiling Satchmo.Relation ( Satchmo/Relation.hs, dist/build/Satchmo/Relation.o, dist/build/Satchmo/Relation.dyn_o )
+[32 of 50] Compiling Satchmo.Integer.Data ( Satchmo/Integer/Data.hs, dist/build/Satchmo/Integer/Data.o, dist/build/Satchmo/Integer/Data.dyn_o )
+
+Satchmo/Integer/Data.hs:25:1: warning: [-Wtabs]
+    Tab character found here, and in six further locations.
+    Please use spaces instead.
+   |
+25 |                  -- using two's complement
+   | ^^^^^^^^
+[33 of 50] Compiling Satchmo.Integer.Op ( Satchmo/Integer/Op.hs, dist/build/Satchmo/Integer/Op.o, dist/build/Satchmo/Integer/Op.dyn_o )
+
+Satchmo/Integer/Op.hs:61:5: warning: [-Wtabs]
+    Tab character found here, and in 21 further locations.
+    Please use spaces instead.
+   |
+61 |          $ error "Satchmo.Integer.Op.sub"
+   |     ^^^^
+[34 of 50] Compiling Satchmo.Integer  ( Satchmo/Integer.hs, dist/build/Satchmo/Integer.o, dist/build/Satchmo/Integer.dyn_o )
+[35 of 50] Compiling Satchmo.Binary.Op.Fixed ( Satchmo/Binary/Op/Fixed.hs, dist/build/Satchmo/Binary/Op/Fixed.o, dist/build/Satchmo/Binary/Op/Fixed.dyn_o )
+[36 of 50] Compiling Satchmo.PolynomialN ( Satchmo/PolynomialN.hs, dist/build/Satchmo/PolynomialN.o, dist/build/Satchmo/PolynomialN.dyn_o )
+[37 of 50] Compiling Satchmo.BinaryTwosComplement.Op.Fixed ( Satchmo/BinaryTwosComplement/Op/Fixed.hs, dist/build/Satchmo/BinaryTwosComplement/Op/Fixed.o, dist/build/Satchmo/BinaryTwosComplement/Op/Fixed.dyn_o )
+[38 of 50] Compiling Satchmo.Polynomial ( Satchmo/Polynomial.hs, dist/build/Satchmo/Polynomial.o, dist/build/Satchmo/Polynomial.dyn_o )
+
+Satchmo/Polynomial.hs:143:28: error:
+    • Could not deduce (MonadFail m)
+        arising from a do statement
+        with the failable pattern ‘f : fs’
+      from the context: MonadSAT m
+        bound by the type signature for:
+                   times' :: forall (m :: * -> *).
+                             MonadSAT m =>
+                             [F.Number] -> [F.Number] -> m [F.Number]
+        at Satchmo/Polynomial.hs:131:1-70
+      Possible fix:
+        add (MonadFail m) to the context of
+          the type signature for:
+            times' :: forall (m :: * -> *).
+                      MonadSAT m =>
+                      [F.Number] -> [F.Number] -> m [F.Number]
+    • In a stmt of a 'do' block: f : fs <- forM ys $ F.times x
+      In the expression:
+        do zs <- times' xs ys
+           f : fs <- forM ys $ F.times x
+           rest <- add' zs fs
+           return $ f : rest
+      In the second argument of ‘binaryOp’, namely
+        ‘(\ (x : xs) ys
+            -> do zs <- times' xs ys
+                  f : fs <- forM ys $ F.times x
+                  rest <- add' zs fs
+                  ....)’
+    |
+143 |                            f:fs <- forM ys $ F.times x
+    |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error: cabal: Failed to build satchmo-2.9.9.3 (which is required by
+exe:matchbox2015 from matchbox-4.4.0). See the build log above for details.
+
