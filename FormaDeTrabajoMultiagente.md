@@ -4,6 +4,8 @@ Estado: v1.0, revisado despues de respuesta de Claude
 Fecha: 2026-04-25
 Repo: `collatz`
 
+Actualizacion operativa: 2026-04-29. En corridas largas, ningun agente hijo trabaja en el worktree principal.
+
 ## Objetivo
 
 Organizar una investigacion colaborativa sobre Collatz sin perder trazabilidad, sin mezclar intuiciones con evidencia y sin convertir varios modelos en ruido.
@@ -156,6 +158,23 @@ Reglas:
 - Codex orquestador integra a `main` despues de validar.
 - No se usa `git reset --hard`.
 - No se reescribe historia remota.
+- Para trabajo paralelo real, cada hijo usa un `git worktree` dedicado fuera de `C:\dev\vert\collatz`.
+- El worktree principal `C:\dev\vert\collatz` queda reservado para el orquestador y para integracion a `main`.
+- Si un hijo deja un archivo accidental en el worktree principal, el orquestador lo rescata a la rama correcta antes de integrarlo o borrarlo.
+- Ningun hijo usa `git add -A`; se stagean archivos exactos y los logs ignorados solo con `git add -f` cuando sean artefactos deliberados.
+
+Plantilla de worktree para hijos:
+
+```powershell
+git fetch origin
+git worktree add C:\dev\vert\collatz-<tarea> -b <rama> origin/main
+```
+
+Ejemplo:
+
+```powershell
+git worktree add C:\dev\vert\collatz-m22-c1-rechecker -b codex-hijo/m22-c1-rechecker origin/main
+```
 
 ## Ciclo de una iteracion
 
