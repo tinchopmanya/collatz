@@ -1,0 +1,61 @@
+# m25.c3-minimal-guarded-benchmark.v1
+name: M25-C3-minimal-guarded-benchmark-rmod2p13-eq-8189
+claim_scope: finite_implication_and_insertion_metadata_only
+c3_build_status: blocked
+c3_blocked_reason: guarded_srs_semantics_missing
+emits_srs: false
+prover_calls: none
+termination_claim: none
+collatz_claim: none
+
+[microguard]
+universe: r modulo 2^16
+selector: r mod 2^13 = 8189
+selector_bits: 13
+selector_modulus: 8192
+selector_residue: 8189
+accepted_count: 8
+exact_subset_statement: G_8189 = U_16 intersection {r | r mod 2^13 = 8189}
+u16_selector_slice_count: 8
+certified_overlap_count: 0
+outside_u16_count: 0
+
+[dynamic_branch]
+ascii_rule: bad -> d
+paper_rule: tf* -> *
+branch_condition: n mod 8 = 5
+guard_implies_branch: outside_dynamic_branch_count=0
+
+[guard_insertion_site]
+base_srs: reports\m19_rewriting_challenges\m19_collatz_S_full.srs
+comparison_s2_srs: reports\m19_rewriting_challenges\m19_collatz_S2_without_tf_end_to_end.srs
+anchor_rule_ascii: bad -> d
+anchor_rule_paper: tf* -> *
+branch_condition: n mod 8 = 5
+insertion_point_status: conceptual_anchor_only_not_materialized
+conceptual_guard: r mod 2^13 = 8189
+conceptual_location: Attach the guard to the dynamic contraction anchor `bad -> d` after the mixed-alphabet S word has exposed lhs `bad` and before that lhs is contracted to `d`; no guarded rewrite rule is emitted here.
+blocked_reason: A semantically honest SRS still needs a local definition for residue-state threading through auxiliary rules, bit orientation, and context handling.
+
+[accepted_residues]
+8189 msb=0001111111111101 lsb=1011111111111000
+16381 msb=0011111111111101 lsb=1011111111111100
+24573 msb=0101111111111101 lsb=1011111111111010
+32765 msb=0111111111111101 lsb=1011111111111110
+40957 msb=1001111111111101 lsb=1011111111111001
+49149 msb=1011111111111101 lsb=1011111111111101
+57341 msb=1101111111111101 lsb=1011111111111011
+65533 msb=1111111111111101 lsb=1011111111111111
+
+[hashes]
+accepted_residues_sha256: de4100dcb707ee6d42acf0fc6af8b8bb8d2a70852b1a2af461d64e4926eb281c
+frozen_uncovered_sha256: bd04a1c2f65ccda483901f23fdb5f2392b824ac5b2d7ab1011e66f18771bb210
+certified_set_sha256_checked_not_embedded: 0e8d2a804d7cc129a5fc6eec295250fd2a57786c25f2764e1bbd5100be01c7fa
+
+[non_claims]
+does_not_emit_srs: true
+does_not_emit_tpdb: true
+does_not_call_matchbox: true
+does_not_call_aprove: true
+does_not_claim_termination: true
+does_not_claim_collatz: true
