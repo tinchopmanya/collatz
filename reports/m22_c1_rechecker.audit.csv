@@ -1,0 +1,2 @@
+audit_max_power,residue_strata,residues_per_stratum,lifts_per_residue,certified_residue_samples,uncovered_residue_samples,sampled_numbers,max_lift_seen,affine_failures,certified_false_positives,uncovered_sample_descents,min_contraction_slack,min_descent_slack
+24,32,3,3,96,96,576,255,0,0,0,6487,4
