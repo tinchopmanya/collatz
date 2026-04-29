@@ -1,0 +1,134 @@
+name: M19 Matchbox challenge search
+
+on:
+  workflow_dispatch:
+    inputs:
+      challenge:
+        description: "Challenge to run through Matchbox"
+        required: true
+        default: "both"
+        type: choice
+        options:
+          - S1
+          - S2
+          - both
+      matchbox_command:
+        description: "Matchbox command prefix after setup"
+        required: true
+        default: "matchbox2015"
+        type: string
+      matchbox_args:
+        description: "Extra Matchbox args, one shell string, before input file"
+        required: false
+        default: ""
+        type: string
+      binary_archive_url:
+        description: "Optional tar.gz/zip URL containing matchbox2015 or matchbox"
+        required: false
+        default: ""
+        type: string
+      experimental_build:
+        description: "Try building old jwaldmann/matchbox from source if no binary URL is provided"
+        required: true
+        default: false
+        type: boolean
+      wall_timeout:
+        description: "Outer wall timeout per challenge in seconds"
+        required: true
+        default: "180"
+        type: string
+
+jobs:
+  matchbox:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Install baseline dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bash curl unzip tar time python3 glpk-utils minisat
+
+      - name: Restore experimental Matchbox cache
+        if: inputs.experimental_build == true && inputs.binary_archive_url == ''
+        uses: actions/cache@v4
+        with:
+          path: |
+            /tmp/matchbox-install
+            ~/.cabal
+          key: m19-matchbox-${{ runner.os }}-old-github-master-v1
+
+      - name: Install Matchbox from optional binary archive
+        if: inputs.binary_archive_url != ''
+        run: |
+          mkdir -p /tmp/matchbox-bin /tmp/matchbox-archive
+          curl -L "${{ inputs.binary_archive_url }}" -o /tmp/matchbox-archive/matchbox-package
+          if tar -tzf /tmp/matchbox-archive/matchbox-package >/dev/null 2>&1; then
+            tar -xzf /tmp/matchbox-archive/matchbox-package -C /tmp/matchbox-bin
+          else
+            unzip -q /tmp/matchbox-archive/matchbox-package -d /tmp/matchbox-bin
+          fi
+          find /tmp/matchbox-bin -type f -name 'matchbox*' -exec chmod +x {} \;
+          echo "/tmp/matchbox-bin" >> "$GITHUB_PATH"
+          find /tmp/matchbox-bin -maxdepth 3 -type f -perm -111 -print
+
+      - name: Try experimental source build
+        if: inputs.experimental_build == true && inputs.binary_archive_url == ''
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y cabal-install ghc libgmp-dev libglpk-dev
+          mkdir -p /tmp/matchbox-src /tmp/matchbox-install/bin
+          git clone https://github.com/jwaldmann/matchbox.git /tmp/matchbox-src/matchbox
+          cd /tmp/matchbox-src/matchbox
+          cabal update
+          cabal v2-build exe:matchbox2015
+          cp "$(cabal list-bin exe:matchbox2015)" /tmp/matchbox-install/bin/matchbox2015
+          /tmp/matchbox-install/bin/matchbox2015 --help || true
+
+      - name: Add experimental Matchbox cache to PATH
+        if: inputs.experimental_build == true && inputs.binary_archive_url == ''
+        run: |
+          echo "/tmp/matchbox-install/bin" >> "$GITHUB_PATH"
+          ls -la /tmp/matchbox-install/bin || true
+
+      - name: Probe Matchbox command
+        continue-on-error: true
+        run: |
+          ${{ inputs.matchbox_command }} --help || true
+          command -v matchbox2015 || true
+          command -v matchbox || true
+
+      - name: Run Matchbox on selected challenge files
+        shell: bash
+        run: |
+          challenge_args=()
+          if [ "${{ inputs.challenge }}" = "S1" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.tpdb)
+          fi
+          if [ "${{ inputs.challenge }}" = "S2" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.tpdb)
+          fi
+          extra_args=()
+          if [ -n "${{ inputs.matchbox_args }}" ]; then
+            read -r -a extra_args <<< "${{ inputs.matchbox_args }}"
+          fi
+          py_args=()
+          for arg in "${extra_args[@]}"; do
+            py_args+=(--matchbox-arg "$arg")
+          done
+          python3 scripts/m19_run_matchbox_challenges.py \
+            --matchbox-command "${{ inputs.matchbox_command }}" \
+            "${py_args[@]}" \
+            "${challenge_args[@]}" \
+            --out-dir /tmp/m19_matchbox_challenges \
+            --wall-timeout "${{ inputs.wall_timeout }}"
+
+      - name: Upload Matchbox artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-matchbox-challenge-search-${{ inputs.challenge }}
+          path: /tmp/m19_matchbox_challenges

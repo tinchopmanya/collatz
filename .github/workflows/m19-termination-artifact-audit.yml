@@ -1,0 +1,67 @@
+name: M19 termination artifact audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_roots:
+        description: "Comma-separated artifact roots to audit"
+        required: true
+        default: "reports"
+        type: string
+      require_certified:
+        description: "Fail unless a CPF plus successful certifier artifact is present"
+        required: true
+        default: false
+        type: boolean
+  pull_request:
+    paths:
+      - "scripts/m19_audit_termination_artifacts.py"
+      - ".github/workflows/m19-termination-artifact-audit.yml"
+      - "reports/**"
+      - "colaboradores/codex-hijo/M19TerminationCertificationRoute.md"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Compile audit script
+        run: python -m py_compile scripts/m19_audit_termination_artifacts.py
+
+      - name: Audit termination artifacts
+        shell: bash
+        run: |
+          roots="${{ inputs.artifact_roots || 'reports' }}"
+          audit_args=()
+          IFS=',' read -ra root_parts <<< "$roots"
+          for root in "${root_parts[@]}"; do
+            trimmed="$(echo "$root" | xargs)"
+            if [ -n "$trimmed" ]; then
+              audit_args+=(--artifact-root "$trimmed")
+            fi
+          done
+
+          require_certified=()
+          if [ "${{ inputs.require_certified || false }}" = "true" ]; then
+            require_certified+=(--require-certified)
+          fi
+
+          python scripts/m19_audit_termination_artifacts.py \
+            "${audit_args[@]}" \
+            --csv /tmp/m19_termination_artifact_audit.csv \
+            --md /tmp/m19_termination_artifact_audit.md \
+            --json /tmp/m19_termination_artifact_audit.json \
+            "${require_certified[@]}"
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-termination-artifact-audit
+          path: |
+            /tmp/m19_termination_artifact_audit.csv
+            /tmp/m19_termination_artifact_audit.md
+            /tmp/m19_termination_artifact_audit.json

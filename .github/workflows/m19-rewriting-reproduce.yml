@@ -40,6 +40,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install "numpy>=1.19"
 
+      - name: Apply Python 3 compatibility patch
+        run: python scripts/m19_patch_rewriting_collatz_python3.py --repo /tmp/rewriting-collatz
+
       - name: Build CaDiCaL
         run: |
           cd /tmp/rewriting-collatz

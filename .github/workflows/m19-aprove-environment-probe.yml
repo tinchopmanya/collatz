@@ -1,0 +1,88 @@
+name: M19 AProVE environment probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      challenge:
+        description: "Challenge to probe through AProVE"
+        required: true
+        default: "both"
+        type: choice
+        options:
+          - S1
+          - S2
+          - both
+      timeout:
+        description: "AProVE timeout in seconds"
+        required: true
+        default: "20"
+        type: string
+      wall_timeout:
+        description: "Outer wall timeout per challenge in seconds"
+        required: true
+        default: "45"
+        type: string
+      java_xmx:
+        description: "Java heap for the probe"
+        required: true
+        default: "6g"
+        type: string
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install reproducible AProVE environment candidates
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl minisat
+          sudo ln -sf /usr/bin/minisat /usr/local/bin/minisat2
+
+          mkdir -p /tmp/yices2
+          curl -L \
+            https://yices.csl.sri.com/releases/2.6.4/yices-2.6.4-x86_64-pc-linux-gnu.tar.gz \
+            -o /tmp/yices2/yices.tgz
+          tar -xzf /tmp/yices2/yices.tgz -C /tmp/yices2 --strip-components=1
+          sudo ln -sf /tmp/yices2/bin/yices /usr/local/bin/yices
+
+          mkdir -p /tmp/aprove
+          curl -L \
+            https://github.com/aprove-developers/aprove-releases/releases/download/master_2026_02_15/aprove.jar \
+            -o /tmp/aprove/aprove.jar
+          test -s /tmp/aprove/aprove.jar
+
+      - name: Run environment probe
+        env:
+          JAVA_TOOL_OPTIONS: -Xmx${{ inputs.java_xmx }}
+        run: |
+          challenge_args=()
+          if [ "${{ inputs.challenge }}" = "S1" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.aprove.srs)
+          fi
+          if [ "${{ inputs.challenge }}" = "S2" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.aprove.srs)
+          fi
+
+          python scripts/m19_probe_aprove_environment.py \
+            --jar /tmp/aprove/aprove.jar \
+            "${challenge_args[@]}" \
+            --out-dir /tmp/m19_aprove_environment_probe \
+            --timeout "${{ inputs.timeout }}" \
+            --wall-timeout "${{ inputs.wall_timeout }}"
+
+      - name: Upload probe artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-aprove-environment-probe-${{ inputs.challenge }}
+          path: /tmp/m19_aprove_environment_probe
