@@ -70,7 +70,11 @@ jobs:
       - name: Install baseline dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y bash curl unzip tar time python3 glpk-utils minisat
+          sudo apt-get install -y \
+            bash curl unzip tar time python3 glpk-utils minisat \
+            build-essential git ca-certificates pkg-config \
+            libgmp-dev libglpk-dev zlib1g-dev boolector
+          dpkg -L boolector | grep -E 'boolector\.(h|a|so)' || true
 
       - name: Restore experimental Matchbox cache
         if: inputs.experimental_build == true && inputs.binary_archive_url == ''
@@ -107,7 +111,6 @@ jobs:
         if: inputs.experimental_build == true && inputs.binary_archive_url == ''
         continue-on-error: true
         run: |
-          sudo apt-get install -y libgmp-dev libglpk-dev
           mkdir -p /tmp/matchbox-src /tmp/matchbox-install/bin
           git clone https://github.com/jwaldmann/matchbox.git /tmp/matchbox-src/matchbox
           cd /tmp/matchbox-src/matchbox

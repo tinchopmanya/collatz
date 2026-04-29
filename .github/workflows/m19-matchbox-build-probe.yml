@@ -48,7 +48,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             build-essential git ca-certificates pkg-config \
-            libgmp-dev libglpk-dev glpk-utils minisat zlib1g-dev
+            libgmp-dev libglpk-dev glpk-utils minisat zlib1g-dev boolector
+          dpkg -L boolector | grep -E 'boolector\.(h|a|so)' || true
 
       - name: Setup pinned Haskell toolchain
         uses: haskell-actions/setup@v2

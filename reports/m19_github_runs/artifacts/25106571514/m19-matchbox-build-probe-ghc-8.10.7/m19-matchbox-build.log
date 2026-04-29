@@ -1,0 +1,677 @@
+Build profile: -w ghc-8.10.7 -O1
+In order, the following will be built (use -v for more details):
+ - StateVar-1.2.2 (lib) (requires download & build)
+ - base-compat-0.11.2 (lib) (requires download & build)
+ - base-orphans-0.8.5 (lib) (requires download & build)
+ - cabal-doctest-1.0.8 (lib) (requires download & build)
+ - call-stack-0.4.0 (lib) (requires download & build)
+ - colour-2.3.6 (lib) (requires download & build)
+ - containers-0.5.11.0 (lib) (requires download & build)
+ - data-default-class-0.1.2.0 (lib:data-default-class) (requires download & build)
+ - dlist-1.0 (lib) (requires download & build)
+ - integer-logarithms-1.0.3.1 (lib) (requires download & build)
+ - logict-0.7.0.3 (lib) (requires download & build)
+ - loop-0.3.0 (lib) (requires download & build)
+ - memoize-0.8.1 (lib) (requires download & build)
+ - nats-1.1.2 (lib) (requires download & build)
+ - old-locale-1.0.0.7 (lib) (requires download & build)
+ - pqueue-1.4.1.3 (lib) (requires download & build)
+ - primitive-0.7.2.0 (lib) (requires download & build)
+ - reflection-2.1.6 (lib) (requires download & build)
+ - semigroups-0.19.2 (lib) (requires download & build)
+ - split-0.2.3.4 (lib) (requires download & build)
+ - splitmix-0.1.0.3 (lib) (requires download & build)
+ - tagged-0.8.6.1 (lib) (requires download & build)
+ - transformers-compat-0.7 (lib) (requires download & build)
+ - unliftio-core-0.2.0.1 (lib) (requires download & build)
+ - utf8-string-1.0.2 (lib) (requires download & build)
+ - utility-ht-0.0.16 (lib) (requires download & build)
+ - void-0.7.3 (lib) (requires download & build)
+ - zlib-0.6.2.3 (lib) (requires download & build)
+ - contravariant-1.5.5 (lib) (requires download & build)
+ - base-compat-batteries-0.11.2 (lib) (requires download & build)
+ - ansi-terminal-0.11 (lib) (requires download & build)
+ - th-abstraction-0.4.3.0 (lib) (requires download & build)
+ - stringsearch-0.3.6.6 (lib:stringsearch) (requires download & build)
+ - parallel-3.2.2.0 (lib) (requires download & build)
+ - indexed-traversable-0.1.1 (lib) (requires download & build)
+ - hsc2hs-0.68.7 (exe:hsc2hs) (requires download & build)
+ - happy-1.20.0 (exe:happy) (requires download & build)
+ - binary-0.8.9.0 (lib) (requires download & build)
+ - alex-3.2.6 (exe:alex) (requires download & build)
+ - data-default-instances-containers-0.0.1 (lib:data-default-instances-containers) (requires download & build)
+ - data-default-instances-dlist-0.0.1 (lib:data-default-instances-dlist) (requires download & build)
+ - data-default-instances-old-locale-0.0.1 (lib:data-default-instances-old-locale) (requires download & build)
+ - vector-0.12.3.0 (lib) (requires download & build)
+ - random-1.2.0 (lib) (requires download & build)
+ - distributive-0.6.2.1 (lib) (requires download & build)
+ - transformers-base-0.4.6 (lib) (requires download & build)
+ - resourcet-1.2.4.3 (lib) (requires download & build)
+ - latex-0.1.0.4 (lib:latex) (requires download & build)
+ - ansi-wl-pprint-0.6.9 (lib) (requires download & build)
+ - th-lift-0.8.2 (lib) (requires download & build)
+ - network-3.1.2.2 (lib:network) (requires download & build)
+ - text-1.2.5.0 (lib) (requires download & build)
+ - language-c-0.9.0.1 (lib) (requires download & build)
+ - data-default-0.7.1.1 (lib:data-default) (requires download & build)
+ - vector-algorithms-0.8.0.4 (lib) (requires download & build)
+ - matrix-0.3.6.1 (lib) (requires download & build)
+ - temporary-1.3 (lib) (requires download & build)
+ - QuickCheck-2.14.2 (lib) (requires download & build)
+ - comonad-5.0.8 (lib) (requires download & build)
+ - optparse-applicative-0.16.1.0 (lib) (requires download & build)
+ - xml-types-0.3.8 (lib) (requires download & build)
+ - wl-pprint-text-1.2.0.1 (lib:wl-pprint-text) (requires download & build)
+ - prettyprinter-1.7.0 (lib) (requires download & build)
+ - polyparse-1.13 (lib) (requires download & build)
+ - parsec-3.1.14.0 (lib) (requires download & build)
+ - hashable-1.3.3.0 (lib) (requires download & build)
+ - blaze-builder-0.4.2.1 (lib) (requires download & build)
+ - c2hs-0.28.8 (exe:c2hs) (requires download & build)
+ - bifunctors-5.5.11 (lib) (requires download & build)
+ - HaXml-1.25.5 (lib) (requires download & build)
+ - bibtex-0.1.0.6 (lib:bibtex) (requires download & build)
+ - uuid-types-1.0.5 (lib) (requires download & build)
+ - unordered-containers-0.2.14.0 (lib) (requires download & build)
+ - time-compat-1.9.6.1 (lib) (requires download & build)
+ - scientific-0.3.7.0 (lib) (requires download & build)
+ - data-fix-0.3.2 (lib) (requires download & build)
+ - async-2.2.3 (lib) (requires download & build)
+ - blaze-markup-0.8.2.8 (lib) (requires download & build)
+ - boolector-0.0.0.13 (lib) (requires download & build)
+ - profunctors-5.6.2 (lib) (requires download & build)
+ - assoc-1.0.2 (lib) (requires download & build)
+ - HaTeX-3.22.3.0 (lib) (requires download & build)
+ - semigroupoids-5.3.5 (lib) (requires download & build)
+ - mono-traversable-1.0.15.1 (lib) (requires download & build)
+ - indexed-traversable-instances-0.1 (lib) (requires download & build)
+ - attoparsec-0.14.1 (lib) (requires download & build)
+ - typed-process-0.2.6.1 (lib) (requires download & build)
+ - streaming-commons-0.2.2.1 (lib) (requires download & build)
+ - minisat-0.1.3 (lib) (requires download & build)
+ - blaze-html-0.9.1.2 (lib) (requires download & build)
+ - invariant-0.5.4 (lib) (requires download & build)
+ - these-1.1.1.1 (lib) (requires download & build)
+ - wl-pprint-extras-3.5.0.5 (lib) (requires download & build)
+ - free-5.1.7 (lib) (requires download & build)
+ - conduit-1.3.4.1 (lib) (requires download & build)
+ - strict-0.4.0.1 (lib) (requires download & build)
+ - adjunctions-4.4 (lib) (requires download & build)
+ - conduit-extra-1.3.5 (lib) (requires download & build)
+ - aeson-1.5.6.0 (lib) (requires download & build)
+ - kan-extensions-5.2.3 (lib) (requires download & build)
+ - xml-conduit-1.9.1.1 (lib:xml-conduit) (requires download & build)
+ - shakespeare-2.0.25 (lib) (requires download & build)
+ - lens-5.0.1 (lib) (requires download & build)
+ - xml-hamlet-0.5.0.1 (lib) (requires download & build)
+ - satchmo-2.9.9.3 (lib) (requires download & build)
+ - tpdb-2.2.0 (lib) (requires download & build)
+ - matchbox-4.4.0 (exe:matchbox2015) (first run)
+Downloading  nats-1.1.2
+Downloaded   nats-1.1.2
+Downloading  base-orphans-0.8.5
+Downloaded   base-orphans-0.8.5
+Downloading  call-stack-0.4.0
+Downloaded   call-stack-0.4.0
+Downloading  colour-2.3.6
+Downloaded   colour-2.3.6
+Downloading  data-default-class-0.1.2.0
+Downloaded   data-default-class-0.1.2.0
+Downloading  loop-0.3.0
+Downloaded   loop-0.3.0
+Downloading  old-locale-1.0.0.7
+Downloaded   old-locale-1.0.0.7
+Downloading  data-default-instances-old-locale-0.0.1
+Downloaded   data-default-instances-old-locale-0.0.1
+Downloading  semigroups-0.19.2
+Downloaded   semigroups-0.19.2
+Downloading  split-0.2.3.4
+Downloaded   split-0.2.3.4
+Downloading  logict-0.7.0.3
+Downloaded   logict-0.7.0.3
+Downloading  transformers-compat-0.7
+Downloaded   transformers-compat-0.7
+Downloading  unliftio-core-0.2.0.1
+Downloaded   unliftio-core-0.2.0.1
+Downloading  utility-ht-0.0.16
+Downloaded   utility-ht-0.0.16
+Downloading  void-0.7.3
+Downloaded   void-0.7.3
+Downloading  utf8-string-1.0.2
+Downloaded   utf8-string-1.0.2
+Downloading  zlib-0.6.2.3
+Downloaded   zlib-0.6.2.3
+Downloading  containers-0.5.11.0
+Downloaded   containers-0.5.11.0
+Downloading  binary-0.8.9.0
+Downloaded   binary-0.8.9.0
+Downloading  data-default-instances-containers-0.0.1
+Downloaded   data-default-instances-containers-0.0.1
+Downloading  latex-0.1.0.4
+Downloaded   latex-0.1.0.4
+Downloading  dlist-1.0
+Downloaded   dlist-1.0
+Downloading  data-default-instances-dlist-0.0.1
+Downloaded   data-default-instances-dlist-0.0.1
+Downloading  data-default-0.7.1.1
+Downloaded   data-default-0.7.1.1
+Downloading  pqueue-1.4.1.3
+Downloaded   pqueue-1.4.1.3
+Downloading  memoize-0.8.1
+Downloaded   memoize-0.8.1
+Downloading  reflection-2.1.6
+Downloaded   reflection-2.1.6
+Downloading  th-abstraction-0.4.3.0
+Downloaded   th-abstraction-0.4.3.0
+Downloading  th-lift-0.8.2
+Downloaded   th-lift-0.8.2
+Downloading  primitive-0.7.2.0
+Downloaded   primitive-0.7.2.0
+Downloading  splitmix-0.1.0.3
+Downloaded   splitmix-0.1.0.3
+Downloading  random-1.2.0
+Downloaded   random-1.2.0
+Downloading  tagged-0.8.6.1
+Downloaded   tagged-0.8.6.1
+Downloading  distributive-0.6.2.1
+Downloaded   distributive-0.6.2.1
+Downloading  base-compat-0.11.2
+Downloaded   base-compat-0.11.2
+Downloading  base-compat-batteries-0.11.2
+Starting     base-compat-0.11.2 (lib)
+Downloaded   base-compat-batteries-0.11.2
+Downloading  hsc2hs-0.68.7
+Downloaded   hsc2hs-0.68.7
+Downloading  network-3.1.2.2
+Building     base-compat-0.11.2 (lib)
+Downloaded   network-3.1.2.2
+Downloading  vector-0.12.3.0
+Downloaded   vector-0.12.3.0
+Downloading  matrix-0.3.6.1
+Downloaded   matrix-0.3.6.1
+Downloading  vector-algorithms-0.8.0.4
+Downloaded   vector-algorithms-0.8.0.4
+Downloading  happy-1.20.0
+Downloaded   happy-1.20.0
+Downloading  indexed-traversable-0.1.1
+Downloaded   indexed-traversable-0.1.1
+Downloading  comonad-5.0.8
+Downloaded   comonad-5.0.8
+Downloading  bifunctors-5.5.11
+Downloaded   bifunctors-5.5.11
+Downloading  assoc-1.0.2
+Downloaded   assoc-1.0.2
+Downloading  integer-logarithms-1.0.3.1
+Installing   base-compat-0.11.2 (lib)
+Downloaded   integer-logarithms-1.0.3.1
+Downloading  parallel-3.2.2.0
+Downloaded   parallel-3.2.2.0
+Downloading  resourcet-1.2.4.3
+Completed    base-compat-0.11.2 (lib)
+Starting     base-orphans-0.8.5 (lib)
+Downloaded   resourcet-1.2.4.3
+Downloading  temporary-1.3
+Downloaded   temporary-1.3
+Downloading  transformers-base-0.4.6
+Building     base-orphans-0.8.5 (lib)
+Downloaded   transformers-base-0.4.6
+Downloading  stringsearch-0.3.6.6
+Downloaded   stringsearch-0.3.6.6
+Downloading  text-1.2.5.0
+Downloaded   text-1.2.5.0
+Downloading  blaze-builder-0.4.2.1
+Downloaded   blaze-builder-0.4.2.1
+Downloading  blaze-markup-0.8.2.8
+Downloaded   blaze-markup-0.8.2.8
+Downloading  blaze-html-0.9.1.2
+Downloaded   blaze-html-0.9.1.2
+Downloading  hashable-1.3.3.0
+Downloaded   hashable-1.3.3.0
+Downloading  async-2.2.3
+Installing   base-orphans-0.8.5 (lib)
+Downloaded   async-2.2.3
+Downloading  minisat-0.1.3
+Completed    base-orphans-0.8.5 (lib)
+Downloaded   minisat-0.1.3
+Downloading  typed-process-0.2.6.1
+Downloaded   typed-process-0.2.6.1
+Downloading  data-fix-0.3.2
+Downloaded   data-fix-0.3.2
+Downloading  these-1.1.1.1
+Downloaded   these-1.1.1.1
+Downloading  time-compat-1.9.6.1
+Downloaded   time-compat-1.9.6.1
+Downloading  unordered-containers-0.2.14.0
+Downloaded   unordered-containers-0.2.14.0
+Downloading  indexed-traversable-instances-0.1
+Downloaded   indexed-traversable-instances-0.1
+Downloading  mono-traversable-1.0.15.1
+Downloaded   mono-traversable-1.0.15.1
+Downloading  conduit-1.3.4.1
+Downloaded   conduit-1.3.4.1
+Downloading  parsec-3.1.14.0
+Downloaded   parsec-3.1.14.0
+Downloading  bibtex-0.1.0.6
+Downloaded   bibtex-0.1.0.6
+Downloading  polyparse-1.13
+Downloaded   polyparse-1.13
+Downloading  prettyprinter-1.7.0
+Downloaded   prettyprinter-1.7.0
+Downloading  scientific-0.3.7.0
+Downloaded   scientific-0.3.7.0
+Downloading  attoparsec-0.14.1
+Downloaded   attoparsec-0.14.1
+Downloading  streaming-commons-0.2.2.1
+Downloaded   streaming-commons-0.2.2.1
+Downloading  conduit-extra-1.3.5
+Downloaded   conduit-extra-1.3.5
+Downloading  strict-0.4.0.1
+Downloaded   strict-0.4.0.1
+Downloading  uuid-types-1.0.5
+Downloaded   uuid-types-1.0.5
+Downloading  wl-pprint-text-1.2.0.1
+Downloaded   wl-pprint-text-1.2.0.1
+Downloading  xml-types-0.3.8
+Downloaded   xml-types-0.3.8
+Downloading  ansi-terminal-0.11
+Downloaded   ansi-terminal-0.11
+Downloading  ansi-wl-pprint-0.6.9
+Downloaded   ansi-wl-pprint-0.6.9
+Downloading  optparse-applicative-0.16.1.0
+Downloaded   optparse-applicative-0.16.1.0
+Downloading  alex-3.2.6
+Downloaded   alex-3.2.6
+Downloading  language-c-0.9.0.1
+Downloaded   language-c-0.9.0.1
+Downloading  c2hs-0.28.8
+Downloaded   c2hs-0.28.8
+Downloading  boolector-0.0.0.13
+Downloaded   boolector-0.0.0.13
+Downloading  aeson-1.5.6.0
+Downloaded   aeson-1.5.6.0
+Downloading  shakespeare-2.0.25
+Downloaded   shakespeare-2.0.25
+Downloading  StateVar-1.2.2
+Downloaded   StateVar-1.2.2
+Downloading  contravariant-1.5.5
+Starting     StateVar-1.2.2 (lib)
+Downloaded   contravariant-1.5.5
+Downloading  profunctors-5.6.2
+Downloaded   profunctors-5.6.2
+Downloading  semigroupoids-5.3.5
+Building     StateVar-1.2.2 (lib)
+Downloaded   semigroupoids-5.3.5
+Downloading  free-5.1.7
+Downloaded   free-5.1.7
+Downloading  adjunctions-4.4
+Downloaded   adjunctions-4.4
+Downloading  wl-pprint-extras-3.5.0.5
+Installing   StateVar-1.2.2 (lib)
+Downloaded   wl-pprint-extras-3.5.0.5
+Downloading  invariant-0.5.4
+Completed    StateVar-1.2.2 (lib)
+Starting     call-stack-0.4.0 (lib)
+Downloaded   invariant-0.5.4
+Downloading  kan-extensions-5.2.3
+Downloaded   kan-extensions-5.2.3
+Downloading  lens-5.0.1
+Building     call-stack-0.4.0 (lib)
+Downloaded   lens-5.0.1
+Downloading  satchmo-2.9.9.3
+Installing   call-stack-0.4.0 (lib)
+Downloaded   satchmo-2.9.9.3
+Downloading  QuickCheck-2.14.2
+Completed    call-stack-0.4.0 (lib)
+Starting     colour-2.3.6 (lib)
+Downloaded   QuickCheck-2.14.2
+Downloading  HaXml-1.25.5
+Downloaded   HaXml-1.25.5
+Downloading  HaTeX-3.22.3.0
+Building     colour-2.3.6 (lib)
+Downloaded   HaTeX-3.22.3.0
+Downloading  cabal-doctest-1.0.8
+Downloaded   cabal-doctest-1.0.8
+Downloading  xml-conduit-1.9.1.1
+Starting     cabal-doctest-1.0.8 (lib)
+Downloaded   xml-conduit-1.9.1.1
+Downloading  xml-hamlet-0.5.0.1
+Downloaded   xml-hamlet-0.5.0.1
+Downloading  tpdb-2.2.0
+Building     cabal-doctest-1.0.8 (lib)
+Downloaded   tpdb-2.2.0
+Installing   cabal-doctest-1.0.8 (lib)
+Completed    cabal-doctest-1.0.8 (lib)
+Starting     containers-0.5.11.0 (lib)
+Building     containers-0.5.11.0 (lib)
+Installing   colour-2.3.6 (lib)
+Completed    colour-2.3.6 (lib)
+Starting     data-default-class-0.1.2.0 (all, legacy fallback)
+Building     data-default-class-0.1.2.0 (all, legacy fallback)
+Installing   data-default-class-0.1.2.0 (all, legacy fallback)
+Completed    data-default-class-0.1.2.0 (all, legacy fallback)
+Starting     dlist-1.0 (lib)
+Building     dlist-1.0 (lib)
+Installing   dlist-1.0 (lib)
+Completed    dlist-1.0 (lib)
+Starting     integer-logarithms-1.0.3.1 (lib)
+Building     integer-logarithms-1.0.3.1 (lib)
+Installing   integer-logarithms-1.0.3.1 (lib)
+Completed    integer-logarithms-1.0.3.1 (lib)
+Starting     logict-0.7.0.3 (lib)
+Building     logict-0.7.0.3 (lib)
+Installing   logict-0.7.0.3 (lib)
+Completed    logict-0.7.0.3 (lib)
+Starting     loop-0.3.0 (lib)
+Building     loop-0.3.0 (lib)
+Installing   loop-0.3.0 (lib)
+Completed    loop-0.3.0 (lib)
+Starting     memoize-0.8.1 (lib)
+Building     memoize-0.8.1 (lib)
+Installing   memoize-0.8.1 (lib)
+Completed    memoize-0.8.1 (lib)
+Starting     nats-1.1.2 (lib)
+Building     nats-1.1.2 (lib)
+Installing   nats-1.1.2 (lib)
+Completed    nats-1.1.2 (lib)
+Starting     old-locale-1.0.0.7 (lib)
+Building     old-locale-1.0.0.7 (lib)
+Installing   old-locale-1.0.0.7 (lib)
+Completed    old-locale-1.0.0.7 (lib)
+Starting     pqueue-1.4.1.3 (lib)
+Building     pqueue-1.4.1.3 (lib)
+Installing   pqueue-1.4.1.3 (lib)
+Completed    pqueue-1.4.1.3 (lib)
+Starting     primitive-0.7.2.0 (lib)
+Building     primitive-0.7.2.0 (lib)
+Installing   primitive-0.7.2.0 (lib)
+Completed    primitive-0.7.2.0 (lib)
+Starting     reflection-2.1.6 (lib)
+Building     reflection-2.1.6 (lib)
+Installing   reflection-2.1.6 (lib)
+Completed    reflection-2.1.6 (lib)
+Starting     semigroups-0.19.2 (lib)
+Building     semigroups-0.19.2 (lib)
+Installing   semigroups-0.19.2 (lib)
+Completed    semigroups-0.19.2 (lib)
+Starting     split-0.2.3.4 (lib)
+Building     split-0.2.3.4 (lib)
+Installing   split-0.2.3.4 (lib)
+Completed    split-0.2.3.4 (lib)
+Starting     splitmix-0.1.0.3 (lib)
+Building     splitmix-0.1.0.3 (lib)
+Installing   splitmix-0.1.0.3 (lib)
+Completed    splitmix-0.1.0.3 (lib)
+Starting     tagged-0.8.6.1 (lib)
+Building     tagged-0.8.6.1 (lib)
+Installing   tagged-0.8.6.1 (lib)
+Completed    tagged-0.8.6.1 (lib)
+Starting     transformers-compat-0.7 (lib)
+Building     transformers-compat-0.7 (lib)
+Installing   containers-0.5.11.0 (lib)
+Completed    containers-0.5.11.0 (lib)
+Starting     unliftio-core-0.2.0.1 (lib)
+Building     unliftio-core-0.2.0.1 (lib)
+Installing   unliftio-core-0.2.0.1 (lib)
+Installing   transformers-compat-0.7 (lib)
+Completed    unliftio-core-0.2.0.1 (lib)
+Starting     utf8-string-1.0.2 (lib)
+Completed    transformers-compat-0.7 (lib)
+Starting     utility-ht-0.0.16 (lib)
+Building     utf8-string-1.0.2 (lib)
+Building     utility-ht-0.0.16 (lib)
+Installing   utf8-string-1.0.2 (lib)
+Completed    utf8-string-1.0.2 (lib)
+Starting     void-0.7.3 (lib)
+Installing   utility-ht-0.0.16 (lib)
+Building     void-0.7.3 (lib)
+Completed    utility-ht-0.0.16 (lib)
+Starting     zlib-0.6.2.3 (lib)
+Installing   void-0.7.3 (lib)
+Building     zlib-0.6.2.3 (lib)
+Completed    void-0.7.3 (lib)
+Starting     base-compat-batteries-0.11.2 (lib)
+Building     base-compat-batteries-0.11.2 (lib)
+Installing   base-compat-batteries-0.11.2 (lib)
+Completed    base-compat-batteries-0.11.2 (lib)
+Starting     contravariant-1.5.5 (lib)
+Building     contravariant-1.5.5 (lib)
+Installing   zlib-0.6.2.3 (lib)
+Installing   contravariant-1.5.5 (lib)
+Completed    zlib-0.6.2.3 (lib)
+Starting     ansi-terminal-0.11 (lib)
+Completed    contravariant-1.5.5 (lib)
+Starting     data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Building     ansi-terminal-0.11 (lib)
+Building     data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Installing   data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Completed    data-default-instances-dlist-0.0.1 (all, legacy fallback)
+Starting     data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Building     data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Installing   data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Completed    data-default-instances-old-locale-0.0.1 (all, legacy fallback)
+Starting     vector-0.12.3.0 (lib)
+Building     vector-0.12.3.0 (lib)
+Installing   ansi-terminal-0.11 (lib)
+Completed    ansi-terminal-0.11 (lib)
+Starting     random-1.2.0 (lib)
+Building     random-1.2.0 (lib)
+Installing   random-1.2.0 (lib)
+Completed    random-1.2.0 (lib)
+Starting     distributive-0.6.2.1 (lib)
+Building     distributive-0.6.2.1 (lib)
+Installing   distributive-0.6.2.1 (lib)
+Completed    distributive-0.6.2.1 (lib)
+Starting     th-abstraction-0.4.3.0 (lib)
+Building     th-abstraction-0.4.3.0 (lib)
+Installing   th-abstraction-0.4.3.0 (lib)
+Completed    th-abstraction-0.4.3.0 (lib)
+Starting     stringsearch-0.3.6.6 (all, legacy fallback)
+Building     stringsearch-0.3.6.6 (all, legacy fallback)
+Installing   stringsearch-0.3.6.6 (all, legacy fallback)
+Completed    stringsearch-0.3.6.6 (all, legacy fallback)
+Starting     parallel-3.2.2.0 (lib)
+Building     parallel-3.2.2.0 (lib)
+Installing   parallel-3.2.2.0 (lib)
+Completed    parallel-3.2.2.0 (lib)
+Starting     indexed-traversable-0.1.1 (lib)
+Building     indexed-traversable-0.1.1 (lib)
+Installing   indexed-traversable-0.1.1 (lib)
+Completed    indexed-traversable-0.1.1 (lib)
+Starting     hsc2hs-0.68.7 (exe:hsc2hs)
+Building     hsc2hs-0.68.7 (exe:hsc2hs)
+Installing   hsc2hs-0.68.7 (exe:hsc2hs)
+Completed    hsc2hs-0.68.7 (exe:hsc2hs)
+Starting     happy-1.20.0 (exe:happy)
+Building     happy-1.20.0 (exe:happy)
+Installing   happy-1.20.0 (exe:happy)
+Completed    happy-1.20.0 (exe:happy)
+Starting     data-default-instances-containers-0.0.1 (all, legacy fallback)
+Building     data-default-instances-containers-0.0.1 (all, legacy fallback)
+Installing   data-default-instances-containers-0.0.1 (all, legacy fallback)
+Completed    data-default-instances-containers-0.0.1 (all, legacy fallback)
+Starting     binary-0.8.9.0 (lib)
+Building     binary-0.8.9.0 (lib)
+Installing   binary-0.8.9.0 (lib)
+Completed    binary-0.8.9.0 (lib)
+Starting     alex-3.2.6 (exe:alex)
+Building     alex-3.2.6 (exe:alex)
+Installing   vector-0.12.3.0 (lib)
+Completed    vector-0.12.3.0 (lib)
+Starting     resourcet-1.2.4.3 (lib)
+Building     resourcet-1.2.4.3 (lib)
+Installing   resourcet-1.2.4.3 (lib)
+Completed    resourcet-1.2.4.3 (lib)
+Starting     transformers-base-0.4.6 (lib)
+Building     transformers-base-0.4.6 (lib)
+Installing   alex-3.2.6 (exe:alex)
+Completed    alex-3.2.6 (exe:alex)
+Starting     latex-0.1.0.4 (all, legacy fallback)
+Installing   transformers-base-0.4.6 (lib)
+Completed    transformers-base-0.4.6 (lib)
+Starting     ansi-wl-pprint-0.6.9 (lib)
+Building     latex-0.1.0.4 (all, legacy fallback)
+Building     ansi-wl-pprint-0.6.9 (lib)
+Installing   latex-0.1.0.4 (all, legacy fallback)
+Installing   ansi-wl-pprint-0.6.9 (lib)
+Completed    latex-0.1.0.4 (all, legacy fallback)
+Starting     temporary-1.3 (lib)
+Completed    ansi-wl-pprint-0.6.9 (lib)
+Starting     QuickCheck-2.14.2 (lib)
+Building     temporary-1.3 (lib)
+Building     QuickCheck-2.14.2 (lib)
+Installing   temporary-1.3 (lib)
+Completed    temporary-1.3 (lib)
+Starting     th-lift-0.8.2 (lib)
+Building     th-lift-0.8.2 (lib)
+Installing   th-lift-0.8.2 (lib)
+Completed    th-lift-0.8.2 (lib)
+Starting     comonad-5.0.8 (lib)
+Building     comonad-5.0.8 (lib)
+Installing   comonad-5.0.8 (lib)
+Completed    comonad-5.0.8 (lib)
+Starting     network-3.1.2.2 (all, legacy fallback)
+Building     network-3.1.2.2 (all, legacy fallback)
+Installing   QuickCheck-2.14.2 (lib)
+Completed    QuickCheck-2.14.2 (lib)
+Starting     data-default-0.7.1.1 (all, legacy fallback)
+Building     data-default-0.7.1.1 (all, legacy fallback)
+Installing   data-default-0.7.1.1 (all, legacy fallback)
+Completed    data-default-0.7.1.1 (all, legacy fallback)
+Starting     text-1.2.5.0 (lib)
+Installing   network-3.1.2.2 (all, legacy fallback)
+Building     text-1.2.5.0 (lib)
+Completed    network-3.1.2.2 (all, legacy fallback)
+Starting     vector-algorithms-0.8.0.4 (lib)
+Building     vector-algorithms-0.8.0.4 (lib)
+Installing   vector-algorithms-0.8.0.4 (lib)
+Completed    vector-algorithms-0.8.0.4 (lib)
+Starting     matrix-0.3.6.1 (lib)
+Building     matrix-0.3.6.1 (lib)
+Installing   text-1.2.5.0 (lib)
+Completed    text-1.2.5.0 (lib)
+Starting     language-c-0.9.0.1 (lib)
+Building     language-c-0.9.0.1 (lib)
+Installing   matrix-0.3.6.1 (lib)
+Completed    matrix-0.3.6.1 (lib)
+Starting     optparse-applicative-0.16.1.0 (lib)
+Building     optparse-applicative-0.16.1.0 (lib)
+Installing   optparse-applicative-0.16.1.0 (lib)
+Completed    optparse-applicative-0.16.1.0 (lib)
+Starting     bifunctors-5.5.11 (lib)
+Building     bifunctors-5.5.11 (lib)
+Installing   bifunctors-5.5.11 (lib)
+Completed    bifunctors-5.5.11 (lib)
+Starting     xml-types-0.3.8 (lib)
+Building     xml-types-0.3.8 (lib)
+Installing   xml-types-0.3.8 (lib)
+Completed    xml-types-0.3.8 (lib)
+Starting     wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Building     wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Installing   wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Completed    wl-pprint-text-1.2.0.1 (all, legacy fallback)
+Starting     prettyprinter-1.7.0 (lib)
+Building     prettyprinter-1.7.0 (lib)
+Installing   prettyprinter-1.7.0 (lib)
+Completed    prettyprinter-1.7.0 (lib)
+Starting     polyparse-1.13 (lib)
+Building     polyparse-1.13 (lib)
+Installing   polyparse-1.13 (lib)
+Completed    polyparse-1.13 (lib)
+Starting     parsec-3.1.14.0 (lib)
+Building     parsec-3.1.14.0 (lib)
+Installing   parsec-3.1.14.0 (lib)
+Completed    parsec-3.1.14.0 (lib)
+Starting     hashable-1.3.3.0 (lib)
+Building     hashable-1.3.3.0 (lib)
+Installing   language-c-0.9.0.1 (lib)
+Completed    language-c-0.9.0.1 (lib)
+Starting     blaze-builder-0.4.2.1 (lib)
+Building     blaze-builder-0.4.2.1 (lib)
+Installing   hashable-1.3.3.0 (lib)
+Completed    hashable-1.3.3.0 (lib)
+Starting     profunctors-5.6.2 (lib)
+Building     profunctors-5.6.2 (lib)
+Installing   blaze-builder-0.4.2.1 (lib)
+Completed    blaze-builder-0.4.2.1 (lib)
+Starting     assoc-1.0.2 (lib)
+Building     assoc-1.0.2 (lib)
+Installing   assoc-1.0.2 (lib)
+Completed    assoc-1.0.2 (lib)
+Starting     HaXml-1.25.5 (lib)
+Building     HaXml-1.25.5 (lib)
+Installing   profunctors-5.6.2 (lib)
+Completed    profunctors-5.6.2 (lib)
+Starting     bibtex-0.1.0.6 (all, legacy fallback)
+Building     bibtex-0.1.0.6 (all, legacy fallback)
+Installing   bibtex-0.1.0.6 (all, legacy fallback)
+Completed    bibtex-0.1.0.6 (all, legacy fallback)
+Starting     c2hs-0.28.8 (exe:c2hs)
+Building     c2hs-0.28.8 (exe:c2hs)
+Installing   c2hs-0.28.8 (exe:c2hs)
+Completed    c2hs-0.28.8 (exe:c2hs)
+Starting     uuid-types-1.0.5 (lib)
+Building     uuid-types-1.0.5 (lib)
+Installing   uuid-types-1.0.5 (lib)
+Completed    uuid-types-1.0.5 (lib)
+Starting     unordered-containers-0.2.14.0 (lib)
+Building     unordered-containers-0.2.14.0 (lib)
+Installing   unordered-containers-0.2.14.0 (lib)
+Completed    unordered-containers-0.2.14.0 (lib)
+Starting     time-compat-1.9.6.1 (lib)
+Building     time-compat-1.9.6.1 (lib)
+Installing   HaXml-1.25.5 (lib)
+Completed    HaXml-1.25.5 (lib)
+Starting     scientific-0.3.7.0 (lib)
+Installing   time-compat-1.9.6.1 (lib)
+Completed    time-compat-1.9.6.1 (lib)
+Starting     data-fix-0.3.2 (lib)
+Building     scientific-0.3.7.0 (lib)
+Building     data-fix-0.3.2 (lib)
+Installing   data-fix-0.3.2 (lib)
+Completed    data-fix-0.3.2 (lib)
+Starting     async-2.2.3 (lib)
+Building     async-2.2.3 (lib)
+Installing   async-2.2.3 (lib)
+Completed    async-2.2.3 (lib)
+Starting     blaze-markup-0.8.2.8 (lib)
+Installing   scientific-0.3.7.0 (lib)
+Completed    scientific-0.3.7.0 (lib)
+Starting     these-1.1.1.1 (lib)
+Building     blaze-markup-0.8.2.8 (lib)
+Building     these-1.1.1.1 (lib)
+Installing   these-1.1.1.1 (lib)
+Completed    these-1.1.1.1 (lib)
+Starting     HaTeX-3.22.3.0 (lib)
+Building     HaTeX-3.22.3.0 (lib)
+Installing   blaze-markup-0.8.2.8 (lib)
+Completed    blaze-markup-0.8.2.8 (lib)
+Starting     boolector-0.0.0.13 (lib)
+Starting     semigroupoids-5.3.5 (lib)
+Building     semigroupoids-5.3.5 (lib)
+Installing   semigroupoids-5.3.5 (lib)
+Completed    semigroupoids-5.3.5 (lib)
+Installing   HaTeX-3.22.3.0 (lib)
+Completed    HaTeX-3.22.3.0 (lib)
+
+Failed to build boolector-0.0.0.13. The failure occurred during the configure
+step.
+Build log (
+/home/runner/.cabal/logs/ghc-8.10.7/boolector-0.0.0.13-25c5f1b8e0781be2da48bb0b32549336099238db8c1a83708ce8499a8f1db898.log
+):
+Configuring library for boolector-0.0.0.13..
+Error: cabal-3.10.3.0: Missing dependency on a foreign library:
+* Missing (or bad) header file: boolector.h
+* Missing (or bad) C library: boolector
+This problem can usually be solved by installing the system package that
+provides this library (you may need the "-dev" version). If the library is
+already installed but in a non-standard location then you can use the flags
+--extra-include-dirs= and --extra-lib-dirs= to specify where it is.If the
+library file does exist, it may contain errors that are caught by the C
+compiler at the preprocessing stage. In this case you can re-run configure
+with the verbosity flag -v3 to see the error messages.
+If the header file does exist, it may contain errors that are caught by the C
+compiler at the preprocessing stage. In this case you can re-run configure
+with the verbosity flag -v3 to see the error messages.
+
+Error: cabal: Failed to build boolector-0.0.0.13 (which is required by
+exe:matchbox2015 from matchbox-4.4.0). See the build log above for details.
