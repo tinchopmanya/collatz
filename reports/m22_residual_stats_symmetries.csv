@@ -1,0 +1,29 @@
+name,kind,parameter,k,checked_residuals,preserves_s2_mod8,forward_hits,forward_hit_fraction,fixed_points,involutive,hit_orbits_if_involutive,note
+branch_index_reflection,reflection,q -> 8191 - q,16,378,True,0,0.000000000000,0,True,0,Reflects the 13-bit S2 branch index.
+branch_index_bit_reverse,bit_reverse,"reverse_bits(q,13)",16,378,True,26,0.068783068783,8,True,17,Reverses the branch-index bits after removing the fixed low suffix 101.
+xor_residue_bit_3,xor,r -> r xor 2^3,16,378,True,26,0.068783068783,0,True,13,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_4,xor,r -> r xor 2^4,16,378,True,16,0.042328042328,0,True,8,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_5,xor,r -> r xor 2^5,16,378,True,24,0.063492063492,0,True,12,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_6,xor,r -> r xor 2^6,16,378,True,28,0.074074074074,0,True,14,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_7,xor,r -> r xor 2^7,16,378,True,30,0.079365079365,0,True,15,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_8,xor,r -> r xor 2^8,16,378,True,46,0.121693121693,0,True,23,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_9,xor,r -> r xor 2^9,16,378,True,50,0.132275132275,0,True,25,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_10,xor,r -> r xor 2^10,16,378,True,68,0.179894179894,0,True,34,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_11,xor,r -> r xor 2^11,16,378,True,104,0.275132275132,0,True,52,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_12,xor,r -> r xor 2^12,16,378,True,110,0.291005291005,0,True,55,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_13,xor,r -> r xor 2^13,16,378,True,158,0.417989417989,0,True,79,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_14,xor,r -> r xor 2^14,16,378,True,158,0.417989417989,0,True,79,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+xor_residue_bit_15,xor,r -> r xor 2^15,16,378,True,158,0.417989417989,0,True,79,"Toggles one non-fixed residue bit, preserving r mod 8 = 5."
+cyclic_shift_plus_2^3,cyclic_shift,r -> r + 2^3 mod 2^16,16,378,True,18,0.047619047619,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^4,cyclic_shift,r -> r + 2^4 mod 2^16,16,378,True,11,0.029100529101,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^5,cyclic_shift,r -> r + 2^5 mod 2^16,16,378,True,19,0.050264550265,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^6,cyclic_shift,r -> r + 2^6 mod 2^16,16,378,True,19,0.050264550265,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^7,cyclic_shift,r -> r + 2^7 mod 2^16,16,378,True,34,0.089947089947,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^8,cyclic_shift,r -> r + 2^8 mod 2^16,16,378,True,40,0.105820105820,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^9,cyclic_shift,r -> r + 2^9 mod 2^16,16,378,True,48,0.126984126984,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^10,cyclic_shift,r -> r + 2^10 mod 2^16,16,378,True,66,0.174603174603,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^11,cyclic_shift,r -> r + 2^11 mod 2^16,16,378,True,104,0.275132275132,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^12,cyclic_shift,r -> r + 2^12 mod 2^16,16,378,True,113,0.298941798942,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^13,cyclic_shift,r -> r + 2^13 mod 2^16,16,378,True,158,0.417989417989,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^14,cyclic_shift,r -> r + 2^14 mod 2^16,16,378,True,158,0.417989417989,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
+cyclic_shift_plus_2^15,cyclic_shift,r -> r + 2^15 mod 2^16,16,378,True,158,0.417989417989,0,False,,Cyclic shift inside the S2 branch; hit count equals overlap with that translate.
