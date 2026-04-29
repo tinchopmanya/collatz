@@ -58,7 +58,14 @@ M22-C2 paso como guarda computacional finita:
 - `0` residuos fuera de S2 aceptados;
 - `0` residuos certificados reenviados al guardado.
 
-Pero C2 no probo todavia la equivalencia semantica entre la rama del SRS mixto `bad -> d` / `tf* -> *` y el predicado `r mod 8 = 5`. Por lo tanto, C3 queda bloqueado como experimento confirmatorio hasta completar M24.
+M24 cerro la brecha semantica estrecha para la rama dinamica:
+
+```text
+tf* = *(f(t(x))) = 8x + 5
+bad -> d = tf* -> *
+```
+
+Por lo tanto, `bad -> d` corresponde al caso operacional `n % 8 == 5` dentro de `S`. Esto desbloquea un C3 minimo, pero no prueba todavia que un SRS guardado por residuos `mod 2^16` este correctamente construido.
 
 ## Estado de Matchbox/AProVE
 
@@ -82,8 +89,9 @@ Decision provisoria: permitir como maximo uno o dos parches acotados mas si el r
 
 ## Proxima decision
 
-Ejecutar M24:
+Ejecutar C3 minimo:
 
-- auditar reglas oficiales YA-Heule;
-- derivar, refutar o dejar no decidida la equivalencia SRS -> `r mod 8 = 5`;
-- permitir C3 solo si la brecha semantica se cierra.
+- usar microguarda `r mod 2^13 = 8189`;
+- generar artefacto/checker antes de correr provers;
+- comparar contra S2 base solo con parametros preregistrados;
+- exigir CPF/CeTA si aparece un `YES`.
