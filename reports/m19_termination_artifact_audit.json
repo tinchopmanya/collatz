@@ -1,5 +1,5 @@
 {
-  "artifact_count": 147,
+  "artifact_count": 151,
   "artifacts": [
     {
       "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25104952228\\m19-rewriting-challenge-search-both\\logs\\m19_collatz_S1_without_ff_end_to_0_end_arctic_d1_rw2.log",
@@ -1642,6 +1642,58 @@
       "sha256": "1e068ff7c491558e943fa33b5ece2964d323df0927bd588e805f1e14c1690a20",
       "signals": [],
       "size_bytes": 691,
+      "tool": "aprove",
+      "top_level_status": ""
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105972129\\m19-aprove-challenge-search-both\\logs\\m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove.log",
+      "artifact_type": "tool_log",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105972129/m19-aprove-challenge-search-both/logs/m19_collatz_S1_without_ff_end_to_0_end.aprove.aprove.log",
+      "sha256": "552b99e93997aaf5a919e73c7c2b65a14660568a33f6c16ba6401d3b0543fe2b",
+      "signals": [
+        "versioned"
+      ],
+      "size_bytes": 1142205,
+      "tool": "aprove",
+      "top_level_status": "KILLED"
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105972129\\m19-aprove-challenge-search-both\\logs\\m19_collatz_S2_without_tf_end_to_end.aprove.aprove.log",
+      "artifact_type": "tool_log",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105972129/m19-aprove-challenge-search-both/logs/m19_collatz_S2_without_tf_end_to_end.aprove.aprove.log",
+      "sha256": "56a427335573b68a03f51bd1d91a8f9d73df409daad450b979396918f896117a",
+      "signals": [
+        "versioned"
+      ],
+      "size_bytes": 1081969,
+      "tool": "aprove",
+      "top_level_status": "KILLED"
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105972129\\m19-aprove-challenge-search-both\\m19_aprove_challenges.csv",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105972129/m19-aprove-challenge-search-both/m19_aprove_challenges.csv",
+      "sha256": "5f38fbab6e915290b6661905f457618b1441be5d733a4a2d47a8c446829949e3",
+      "signals": [],
+      "size_bytes": 576,
+      "tool": "aprove",
+      "top_level_status": "KILLED"
+    },
+    {
+      "absolute_path": "C:\\dev\\vert\\collatz\\reports\\m19_github_runs\\artifacts\\25105972129\\m19-aprove-challenge-search-both\\m19_aprove_challenges.md",
+      "artifact_type": "inventory_or_report",
+      "ceta_result": "",
+      "hash_status": "missing_sidecar",
+      "relpath": "m19_github_runs/artifacts/25105972129/m19-aprove-challenge-search-both/m19_aprove_challenges.md",
+      "sha256": "a2433e37e6726539c7ea498c9145e5388e1e5fbabfa8f498f715c9f7523bce28",
+      "signals": [],
+      "size_bytes": 485,
       "tool": "aprove",
       "top_level_status": ""
     },

@@ -1,0 +1,195 @@
+name: M19 AProVE Yices1 manual route
+
+on:
+  workflow_dispatch:
+    inputs:
+      license_attestation:
+        description: "I accepted the AProVE license and may use/provide Yices 1 under SRI terms"
+        required: true
+        default: false
+        type: boolean
+      yices_source:
+        description: "How to provide Yices 1 without this workflow downloading it"
+        required: true
+        default: "cache"
+        type: choice
+        options:
+          - cache
+          - artifact
+          - runner-path
+      yices1_bin_dir:
+        description: "Directory containing yices when source=runner-path"
+        required: false
+        default: ""
+        type: string
+      cache_key:
+        description: "Preseeded cache key containing extracted Yices 1 or an archive"
+        required: false
+        default: "manual-yices1-1.0.40-linux-x86_64"
+        type: string
+      artifact_run_id:
+        description: "Workflow run id containing the licensed Yices 1 artifact"
+        required: false
+        default: ""
+        type: string
+      artifact_name:
+        description: "Artifact name containing extracted Yices 1 or an archive"
+        required: false
+        default: "manual-yices1"
+        type: string
+      challenge:
+        description: "Challenge to probe through AProVE"
+        required: true
+        default: "both"
+        type: choice
+        options:
+          - S1
+          - S2
+          - both
+      timeout:
+        description: "AProVE timeout in seconds"
+        required: true
+        default: "120"
+        type: string
+      wall_timeout:
+        description: "Outer wall timeout per challenge in seconds"
+        required: true
+        default: "180"
+        type: string
+      runner_labels_json:
+        description: "JSON array for runs-on, e.g. [\"ubuntu-latest\"] or [\"self-hosted\",\"linux\",\"x64\"]"
+        required: true
+        default: "[\"ubuntu-latest\"]"
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  aprove-yices1:
+    runs-on: ${{ fromJson(inputs.runner_labels_json) }}
+    timeout-minutes: 40
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Verify manual license attestation
+        shell: bash
+        run: |
+          if [ "${{ inputs.license_attestation }}" != "true" ]; then
+            echo "Refusing to run: Yices 1 requires manual license acceptance outside this workflow."
+            exit 2
+          fi
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Restore manually provided Yices 1 cache
+        if: ${{ inputs.yices_source == 'cache' }}
+        id: yices-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .manual-yices1
+          key: ${{ inputs.cache_key }}
+          fail-on-cache-miss: true
+
+      - name: Download manually provided Yices 1 artifact
+        if: ${{ inputs.yices_source == 'artifact' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: .manual-yices1-artifact
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.artifact_run_id }}
+
+      - name: Install public dependencies and AProVE
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl minisat unzip
+          sudo ln -sf /usr/bin/minisat /usr/local/bin/minisat2
+
+          mkdir -p /tmp/aprove
+          curl -L \
+            https://github.com/aprove-developers/aprove-releases/releases/download/master_2026_02_15/aprove.jar \
+            -o /tmp/aprove/aprove.jar
+          test -s /tmp/aprove/aprove.jar
+
+      - name: Wire manually provided Yices 1 into PATH
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/yices1-candidate
+
+          case "${{ inputs.yices_source }}" in
+            cache)
+              cp -a .manual-yices1/. /tmp/yices1-candidate/
+              ;;
+            artifact)
+              cp -a .manual-yices1-artifact/. /tmp/yices1-candidate/
+              ;;
+            runner-path)
+              if [ -z "${{ inputs.yices1_bin_dir }}" ]; then
+                echo "yices1_bin_dir is required when yices_source=runner-path."
+                exit 2
+              fi
+              ;;
+            *)
+              echo "Unknown yices_source: ${{ inputs.yices_source }}"
+              exit 2
+              ;;
+          esac
+
+          if [ "${{ inputs.yices_source }}" != "runner-path" ]; then
+            while IFS= read -r archive; do
+              case "$archive" in
+                *.tar.gz|*.tgz) tar -xzf "$archive" -C /tmp/yices1-candidate ;;
+                *.zip) unzip -q "$archive" -d /tmp/yices1-candidate ;;
+              esac
+            done < <(find /tmp/yices1-candidate -type f \( -name '*.tar.gz' -o -name '*.tgz' -o -name '*.zip' \))
+
+            yices_bin="$(find /tmp/yices1-candidate -type f -name yices -path '*/bin/yices' | head -n 1)"
+          else
+            yices_bin="${{ inputs.yices1_bin_dir }}/yices"
+          fi
+
+          if [ ! -f "$yices_bin" ]; then
+            echo "Could not find a Yices 1 executable named yices."
+            exit 2
+          fi
+
+          chmod +x "$yices_bin"
+          sudo ln -sf "$yices_bin" /usr/local/bin/yices
+          yices --version
+          yices -e </dev/null || true
+
+      - name: Run AProVE environment probe with Yices 1
+        env:
+          JAVA_TOOL_OPTIONS: -Xmx6g
+        shell: bash
+        run: |
+          challenge_args=()
+          if [ "${{ inputs.challenge }}" = "S1" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S1_without_ff_end_to_0_end.aprove.srs)
+          fi
+          if [ "${{ inputs.challenge }}" = "S2" ] || [ "${{ inputs.challenge }}" = "both" ]; then
+            challenge_args+=(--challenge-file reports/m19_rewriting_challenges/m19_collatz_S2_without_tf_end_to_end.aprove.srs)
+          fi
+
+          python scripts/m19_probe_aprove_environment.py \
+            --jar /tmp/aprove/aprove.jar \
+            "${challenge_args[@]}" \
+            --out-dir /tmp/m19_aprove_yices1_manual \
+            --timeout "${{ inputs.timeout }}" \
+            --wall-timeout "${{ inputs.wall_timeout }}"
+
+      - name: Upload probe artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-aprove-yices1-manual-${{ inputs.challenge }}
+          path: /tmp/m19_aprove_yices1_manual

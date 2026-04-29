@@ -1,0 +1,168 @@
+name: M19 Matchbox build pinning probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      ghc_version:
+        description: "Pinned GHC version for the probe"
+        required: true
+        default: "8.10.7"
+        type: string
+      cabal_version:
+        description: "Pinned cabal-install version for the probe"
+        required: true
+        default: "3.10.3.0"
+        type: string
+      index_state:
+        description: "Pinned Hackage index-state"
+        required: true
+        default: "2021-09-01T00:00:00Z"
+        type: string
+      matchbox_ref:
+        description: "jwaldmann/matchbox commit/ref"
+        required: true
+        default: "3b219db26dfb5ff9dd8777dcebabdd4e2a9427a4"
+        type: string
+      use_source_deps:
+        description: "Use pinned Git source deps for satchmo/tpdb/wl-pprint-text"
+        required: true
+        default: false
+        type: boolean
+      actual_build:
+        description: "After dependency dry-run, attempt the full build"
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  build-probe:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential git ca-certificates pkg-config \
+            libgmp-dev libglpk-dev glpk-utils minisat zlib1g-dev
+
+      - name: Setup pinned Haskell toolchain
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: ${{ inputs.ghc_version }}
+          cabal-version: ${{ inputs.cabal_version }}
+          cabal-update: true
+
+      - name: Print toolchain
+        run: |
+          set -euxo pipefail
+          command -v ghc
+          command -v cabal
+          ghc --version
+          ghc --numeric-version
+          ghc-pkg field base version
+          cabal --version
+
+      - name: Clone pinned Matchbox
+        run: |
+          set -euxo pipefail
+          rm -rf /tmp/m19-matchbox-src
+          git clone https://github.com/jwaldmann/matchbox.git /tmp/m19-matchbox-src
+          cd /tmp/m19-matchbox-src
+          git checkout "${{ inputs.matchbox_ref }}"
+          git rev-parse HEAD
+
+      - name: Write cabal.project.local
+        working-directory: /tmp/m19-matchbox-src
+        run: |
+          set -euxo pipefail
+          cat > cabal.project.local <<'EOF'
+          packages: .
+          index-state: ${{ inputs.index_state }}
+          allow-newer: false
+          EOF
+          if [ "${{ inputs.use_source_deps }}" = "true" ]; then
+            cat >> cabal.project.local <<'EOF'
+
+          source-repository-package
+            type: git
+            location: https://github.com/jwaldmann/satchmo.git
+            tag: 67c3cd02669ea87281873de297733024e9c23ecb
+
+          source-repository-package
+            type: git
+            location: https://github.com/jwaldmann/haskell-tpdb.git
+            tag: 6be6abc52af1bc95f17d398d7b1f93bd4f1a538e
+
+          source-repository-package
+            type: git
+            location: https://github.com/jwaldmann/wl-pprint-text.git
+            tag: ef27a093f50163e54c3eea91520c9b8bdd7aa063
+          EOF
+          fi
+          cat cabal.project.local
+
+      - name: Dependency solver dry-run
+        id: dry-run
+        continue-on-error: true
+        working-directory: /tmp/m19-matchbox-src
+        run: |
+          set -euo pipefail
+          cabal v2-build exe:matchbox2015 \
+            -w "$(command -v ghc)" \
+            --dry-run \
+            --jobs=2 \
+            2>&1 | tee /tmp/m19-matchbox-build-dry-run.log
+
+      - name: Full build
+        if: inputs.actual_build == true
+        id: full-build
+        continue-on-error: true
+        working-directory: /tmp/m19-matchbox-src
+        run: |
+          set -euo pipefail
+          cabal v2-build exe:matchbox2015 \
+            -w "$(command -v ghc)" \
+            --jobs=2 \
+            2>&1 | tee /tmp/m19-matchbox-build.log
+          mkdir -p /tmp/m19-matchbox-install/bin
+          cp "$(cabal list-bin exe:matchbox2015)" /tmp/m19-matchbox-install/bin/matchbox2015
+          /tmp/m19-matchbox-install/bin/matchbox2015 --help 2>&1 | tee /tmp/m19-matchbox-help.log || true
+          sha256sum /tmp/m19-matchbox-install/bin/matchbox2015 | tee /tmp/m19-matchbox-sha256.txt
+          ldd /tmp/m19-matchbox-install/bin/matchbox2015 | tee /tmp/m19-matchbox-ldd.txt || true
+
+      - name: Collect probe artifacts
+        if: always()
+        run: |
+          set -euxo pipefail
+          mkdir -p /tmp/m19-matchbox-build-probe
+          cp /tmp/m19-matchbox-src/matchbox.cabal /tmp/m19-matchbox-build-probe/ || true
+          cp /tmp/m19-matchbox-src/cabal.project.local /tmp/m19-matchbox-build-probe/ || true
+          cp /tmp/m19-matchbox-src/cabal.project.freeze /tmp/m19-matchbox-build-probe/ || true
+          cp /tmp/m19-matchbox-build-dry-run.log /tmp/m19-matchbox-build-probe/ || true
+          cp /tmp/m19-matchbox-build.log /tmp/m19-matchbox-build-probe/ || true
+          cp /tmp/m19-matchbox-help.log /tmp/m19-matchbox-build-probe/ || true
+          cp /tmp/m19-matchbox-sha256.txt /tmp/m19-matchbox-build-probe/ || true
+          cp /tmp/m19-matchbox-ldd.txt /tmp/m19-matchbox-build-probe/ || true
+          {
+            echo "ghc_version=${{ inputs.ghc_version }}"
+            echo "cabal_version=${{ inputs.cabal_version }}"
+            echo "index_state=${{ inputs.index_state }}"
+            echo "matchbox_ref=${{ inputs.matchbox_ref }}"
+            echo "use_source_deps=${{ inputs.use_source_deps }}"
+            echo "actual_build=${{ inputs.actual_build }}"
+            echo "ghc=$(ghc --numeric-version 2>/dev/null || true)"
+            echo "base=$(ghc-pkg field base version 2>/dev/null || true)"
+            echo "cabal=$(cabal --numeric-version 2>/dev/null || true)"
+          } > /tmp/m19-matchbox-build-probe/environment.txt
+
+      - name: Upload probe artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-matchbox-build-probe-ghc-${{ inputs.ghc_version }}
+          path: /tmp/m19-matchbox-build-probe
