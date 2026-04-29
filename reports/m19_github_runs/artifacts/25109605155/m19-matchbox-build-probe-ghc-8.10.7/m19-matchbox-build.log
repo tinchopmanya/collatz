@@ -1,0 +1,37 @@
+HEAD is now at 6be6abc read ARI format
+HEAD is now at 67c3cd0 replace lens with microlens
+HEAD is now at ef27a09 add renderWide function
+Warning: Requested index-state 2021-09-01T00:00:00Z is newer than
+'hackage.haskell.org'! Falling back to older state (2021-08-31T21:49:42Z).
+Resolving dependencies...
+Error: cabal: Could not resolve dependencies:
+[__0] trying: boolector-0.0.0.13 (user goal)
+[__1] trying: time-1.9.3/installed-1.9.3 (dependency of boolector)
+[__2] trying: directory-1.3.6.0/installed-1.3.6.0 (dependency of boolector)
+[__3] trying: base-4.14.3.0/installed-4.14.3.0 (dependency of boolector)
+[__4] trying: tpdb-2.9.0 (user goal)
+[__5] trying: xml-hamlet-0.5.0.1 (dependency of tpdb)
+[__6] trying: template-haskell-2.16.0.0/installed-2.16.0.0 (dependency of
+xml-hamlet)
+[__7] trying: pretty-1.1.3.6/installed-1.1.3.6 (dependency of
+template-haskell)
+[__8] trying: shakespeare-2.0.25 (dependency of xml-hamlet)
+[__9] trying: process-1.6.13.2/installed-1.6.13.2 (dependency of shakespeare)
+[_10] trying: aeson-1.5.6.0 (dependency of shakespeare)
+[_11] trying: text-1.2.4.1/installed-1.2.4.1 (dependency of tpdb)
+[_12] trying: attoparsec-0.14.1 (dependency of tpdb)
+[_13] next goal: atto-lisp (dependency of tpdb)
+[_13] rejecting: atto-lisp-0.2.2.3 (conflict: time =>
+base==4.14.3.0/installed-4.14.3.0, atto-lisp => base>=4.9 && <4.13)
+[_13] rejecting: atto-lisp-0.2.2.2 (conflict: attoparsec==0.14.1, atto-lisp =>
+attoparsec>=0.10 && <0.14)
+[_13] skipping: atto-lisp-0.2.2.1, atto-lisp-0.2.2, atto-lisp-0.2.1.2,
+atto-lisp-0.2.1.1, atto-lisp-0.2.1, atto-lisp-0.2, atto-lisp-0.1 (has the same
+characteristics that caused the previous version to fail: excludes
+'attoparsec' version 0.14.1)
+[_13] fail (backjumping, conflict set: atto-lisp, attoparsec, time, tpdb)
+After searching the rest of the dependency tree exhaustively, these were the
+goals I've had most trouble fulfilling: attoparsec, aeson, shakespeare, base,
+text, xml-hamlet, time, process, tpdb, directory, atto-lisp, template-haskell,
+boolector, pretty
+Try running with --minimize-conflict-set to improve the error message.

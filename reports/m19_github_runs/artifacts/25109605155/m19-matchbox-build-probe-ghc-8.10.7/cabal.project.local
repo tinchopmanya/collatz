@@ -1,0 +1,18 @@
+packages: . /tmp/m19-haskell-boolector/boolector-0.0.0.13 /tmp/m19-wl-pprint-extras/wl-pprint-extras-3.5.0.5
+index-state: 2021-09-01T00:00:00Z
+allow-newer: false
+
+source-repository-package
+  type: git
+  location: https://github.com/jwaldmann/satchmo.git
+  tag: 67c3cd02669ea87281873de297733024e9c23ecb
+
+source-repository-package
+  type: git
+  location: https://github.com/jwaldmann/haskell-tpdb.git
+  tag: 6be6abc52af1bc95f17d398d7b1f93bd4f1a538e
+
+source-repository-package
+  type: git
+  location: https://github.com/jwaldmann/wl-pprint-text.git
+  tag: ef27a093f50163e54c3eea91520c9b8bdd7aa063
