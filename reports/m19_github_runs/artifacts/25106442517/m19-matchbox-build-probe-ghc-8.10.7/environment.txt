@@ -1,0 +1,9 @@
+ghc_version=8.10.7
+cabal_version=3.10.3.0
+index_state=2021-09-01T00:00:00Z
+matchbox_ref=3b219db26dfb5ff9dd8777dcebabdd4e2a9427a4
+use_source_deps=false
+actual_build=false
+ghc=8.10.7
+base=version: 4.14.3.0
+cabal=3.10.3.0

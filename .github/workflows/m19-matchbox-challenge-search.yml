@@ -37,6 +37,26 @@ on:
         required: true
         default: "180"
         type: string
+      ghc_version:
+        description: "Pinned GHC version when experimental_build=true"
+        required: true
+        default: "8.10.7"
+        type: string
+      cabal_version:
+        description: "Pinned cabal-install version when experimental_build=true"
+        required: true
+        default: "3.10.3.0"
+        type: string
+      index_state:
+        description: "Pinned Hackage index-state when experimental_build=true"
+        required: true
+        default: "2021-09-01T00:00:00Z"
+        type: string
+      matchbox_ref:
+        description: "jwaldmann/matchbox commit/ref when experimental_build=true"
+        required: true
+        default: "3b219db26dfb5ff9dd8777dcebabdd4e2a9427a4"
+        type: string
 
 jobs:
   matchbox:
@@ -59,7 +79,15 @@ jobs:
           path: |
             /tmp/matchbox-install
             ~/.cabal
-          key: m19-matchbox-${{ runner.os }}-old-github-master-v1
+          key: m19-matchbox-${{ runner.os }}-${{ inputs.ghc_version }}-${{ inputs.matchbox_ref }}-v2
+
+      - name: Setup pinned Haskell toolchain
+        if: inputs.experimental_build == true && inputs.binary_archive_url == ''
+        uses: haskell-actions/setup@v2
+        with:
+          ghc-version: ${{ inputs.ghc_version }}
+          cabal-version: ${{ inputs.cabal_version }}
+          cabal-update: true
 
       - name: Install Matchbox from optional binary archive
         if: inputs.binary_archive_url != ''
@@ -79,12 +107,19 @@ jobs:
         if: inputs.experimental_build == true && inputs.binary_archive_url == ''
         continue-on-error: true
         run: |
-          sudo apt-get install -y cabal-install ghc libgmp-dev libglpk-dev
+          sudo apt-get install -y libgmp-dev libglpk-dev
           mkdir -p /tmp/matchbox-src /tmp/matchbox-install/bin
           git clone https://github.com/jwaldmann/matchbox.git /tmp/matchbox-src/matchbox
           cd /tmp/matchbox-src/matchbox
-          cabal update
-          cabal v2-build exe:matchbox2015
+          git checkout "${{ inputs.matchbox_ref }}"
+          cat > cabal.project.local <<'EOF'
+          packages: .
+          index-state: hackage.haskell.org ${{ inputs.index_state }}
+          allow-newer: false
+          EOF
+          ghc --version
+          cabal --version
+          cabal v2-build exe:matchbox2015 -w "$(command -v ghc)" --jobs=2
           cp "$(cabal list-bin exe:matchbox2015)" /tmp/matchbox-install/bin/matchbox2015
           /tmp/matchbox-install/bin/matchbox2015 --help || true
 
