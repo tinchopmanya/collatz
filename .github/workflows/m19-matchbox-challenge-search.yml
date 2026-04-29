@@ -57,6 +57,16 @@ on:
         required: true
         default: "3b219db26dfb5ff9dd8777dcebabdd4e2a9427a4"
         type: string
+      build_boolector_c:
+        description: "Build and install Boolector C library from source when experimental_build=true"
+        required: true
+        default: true
+        type: boolean
+      boolector_ref:
+        description: "Boolector tag/ref used when build_boolector_c=true"
+        required: true
+        default: "3.2.4"
+        type: string
 
 jobs:
   matchbox:
@@ -72,9 +82,44 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y \
             bash curl unzip tar time python3 glpk-utils minisat \
-            build-essential git ca-certificates pkg-config \
+            build-essential git ca-certificates pkg-config cmake \
             libgmp-dev libglpk-dev zlib1g-dev boolector
           dpkg -L boolector | grep -E 'boolector\.(h|a|so)' || true
+
+      - name: Build and install Boolector C library
+        if: inputs.experimental_build == true && inputs.binary_archive_url == '' && inputs.build_boolector_c == true
+        run: |
+          set -euxo pipefail
+          rm -rf /tmp/m19-boolector-src
+          git clone --depth 1 --branch "${{ inputs.boolector_ref }}" https://github.com/Boolector/boolector.git /tmp/m19-boolector-src
+          cd /tmp/m19-boolector-src
+          git rev-parse HEAD
+          ./contrib/setup-lingeling.sh
+          ./contrib/setup-btor2tools.sh
+          ./configure.sh --prefix /usr/local --shared --only-lingeling --no-testing
+          cmake --build build --parallel "$(nproc)"
+          sudo cmake --install build
+          sudo ldconfig
+          test -f /usr/local/include/boolector/boolector.h
+          test -e /usr/local/lib/libboolector.so
+          {
+            echo "C_INCLUDE_PATH=/usr/local/include/boolector:${C_INCLUDE_PATH:-}"
+            echo "LIBRARY_PATH=/usr/local/lib:${LIBRARY_PATH:-}"
+            echo "LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH:-}"
+          } >> "$GITHUB_ENV"
+          cat > /tmp/m19-boolector-smoke.c <<'EOF'
+          #include "boolector.h"
+          int main(void) {
+            Btor *btor = boolector_new();
+            boolector_delete(btor);
+            return 0;
+          }
+          EOF
+          cc -I/usr/local/include/boolector /tmp/m19-boolector-smoke.c \
+            -L/usr/local/lib -Wl,-rpath,/usr/local/lib -lboolector \
+            -o /tmp/m19-boolector-smoke
+          /tmp/m19-boolector-smoke
+          /usr/local/bin/boolector --version || true
 
       - name: Restore experimental Matchbox cache
         if: inputs.experimental_build == true && inputs.binary_archive_url == ''
@@ -122,7 +167,9 @@ jobs:
           EOF
           ghc --version
           cabal --version
-          cabal v2-build exe:matchbox2015 -w "$(command -v ghc)" --jobs=2
+          cabal v2-build exe:matchbox2015 -w "$(command -v ghc)" --jobs=2 \
+            --extra-include-dirs=/usr/local/include/boolector \
+            --extra-lib-dirs=/usr/local/lib
           cp "$(cabal list-bin exe:matchbox2015)" /tmp/matchbox-install/bin/matchbox2015
           /tmp/matchbox-install/bin/matchbox2015 --help || true
 
