@@ -106,17 +106,57 @@ matchbox_ref=3b219db26dfb5ff9dd8777dcebabdd4e2a9427a4
 wall_timeout=180
 ```
 
-## Evidencia que valida la via
+## Evidencia CI obtenida
 
-La via queda validada si el artifact del probe contiene:
+Run: https://github.com/tinchopmanya/collatz/actions/runs/25107937562
 
-- `m19-boolector-source-rev.txt` con `393cdfba3735d334bb4e6525500b8a0280dd41e6` o el commit exacto del `boolector_ref` usado.
-- `m19-boolector-version.txt` producido por `/usr/local/bin/boolector --version`.
+Configuracion:
+
+```text
+ghc_version=8.10.7
+cabal_version=3.10.3.0
+index_state=2021-09-01T00:00:00Z
+matchbox_ref=3b219db26dfb5ff9dd8777dcebabdd4e2a9427a4
+use_source_deps=false
+build_boolector_c=true
+boolector_ref=3.2.4
+actual_build=true
+```
+
+Resultado:
+
+- El paso `Build and install Boolector C library` paso.
+- El artifact contiene `m19-boolector-source-rev.txt = 393cdfba3735d334bb4e6525500b8a0280dd41e6`.
+- El artifact contiene `m19-boolector-version.txt = 3.2.4`.
+- El artifact contiene `m19-libboolector-ldd.txt` sin dependencias faltantes: solo `libm`, `libc` y loader.
+- El build Haskell avanzo mas alla del bloqueo anterior: `boolector-0.0.0.13` ya no falla en configure por header/libreria; ahora configura, preprocesa y compila `Boolector.Foreign`.
+
+Nuevo bloqueo, distinto de la libreria C:
+
+```text
+Failed to build boolector-0.0.0.13.
+Configuring library for boolector-0.0.0.13..
+Preprocessing library for boolector-0.0.0.13..
+Building library for boolector-0.0.0.13..
+[1 of 2] Compiling Boolector.Foreign
+[2 of 2] Compiling Boolector
+src/Boolector.hs:1327:10: error:
+Could not deduce (MonadFail m) arising from a use of 'fail'
+```
+
+Lectura: esta rama resuelve el bloqueo `boolector.h/libboolector`; no produce todavia `matchbox2015` con GHC `8.10.7` porque aparece una incompatibilidad fuente del paquete Haskell `boolector-0.0.0.13` con `MonadFail`.
+
+Tambien lance una prueba con `ghc_version=8.6.5` para evitar la fase final de `MonadFail`, pero fue cancelada externamente antes de terminar: https://github.com/tinchopmanya/collatz/actions/runs/25108397131. No debe contarse como evidencia a favor ni en contra.
+
+## Evidencia que valida la via Boolector C
+
+La via Boolector C queda validada porque el artifact del probe contiene:
+
+- `m19-boolector-source-rev.txt` con `393cdfba3735d334bb4e6525500b8a0280dd41e6`.
+- `m19-boolector-version.txt` con `3.2.4`.
 - `m19-libboolector-ldd.txt` sin dependencias faltantes.
-- `m19-matchbox-sha256.txt` y `m19-matchbox-ldd.txt`.
-- `matchbox2015 --help` ejecutado sin `command not found`.
 
-La via matematica M19 se valida solo despues: `M19 Matchbox challenge search` debe producir `YES` top-level sobre los `.tpdb` S1/S2 y, para una prueba publicable, habria que repetir con CPF/CeTA.
+La via completa Matchbox queda pendiente. Para validarla faltan `m19-matchbox-sha256.txt`, `m19-matchbox-ldd.txt` y `matchbox2015 --help` sin error. La via matematica M19 se valida solo despues: `M19 Matchbox challenge search` debe producir `YES` top-level sobre los `.tpdb` S1/S2 y, para una prueba publicable, habria que repetir con CPF/CeTA.
 
 ## Evidencia que destruye o debilita la via
 
@@ -130,9 +170,17 @@ La via matematica M19 se valida solo despues: `M19 Matchbox challenge search` de
 
 - El build fuente agrega tiempo a CI. Si funciona, conviene congelar un artifact binario con `sha256sum`, `ldd`, `cabal.project.freeze`, version de GHC/Cabal y version de Boolector.
 - `setup-lingeling.sh` y `setup-btor2tools.sh` descargan tarballs de GitHub aunque los commits esten pinneados. Si GitHub rate-limitea o cambia disponibilidad de archives, puede fallar el CI.
-- No pude ejecutar el build Linux local en esta maquina Windows. La validacion fuerte debe venir de GitHub Actions.
+- No pude ejecutar el build Linux local en esta maquina Windows; la evidencia fuerte usada aqui viene de GitHub Actions.
 - Esta ruta solo resuelve la dependencia C. No garantiza que Matchbox encuentre una prueba para S1/S2.
+
+## Proximo bloqueo tecnico
+
+Opciones precisas:
+
+- Probar de nuevo `ghc_version=8.6.5` con `actual_build=true`, porque GHC 8.8 implemento la fase final de `MonadFail` y el error actual puede desaparecer con base/GHC anterior.
+- Si GHC 8.6.5 no resuelve dependencias o no compila, usar un `source-repository-package` para `boolector` Haskell con un parche minimo: reemplazar el `fail` de `lookupSort` por un error monomorfico compatible, o agregar `MonadFail m` donde corresponda y propagar la restriccion.
+- Si se usa parche, fijar commit/fork y repetir el probe hasta obtener `matchbox2015`, `sha256sum`, `ldd` y `--help`.
 
 ## Estado
 
-Solucion preparada, no reclamo exito todavia. El bloqueo `boolector.h/libboolector` queda atacado con build fuente pinneado y smoke test C en CI. Falta correr el workflow actualizado para confirmar si `cabal v2-build exe:matchbox2015` produce el binario.
+Solucion Boolector C validada en CI. No reclamo exito de Matchbox completo todavia: `cabal v2-build exe:matchbox2015` ya supera el bloqueo `boolector.h/libboolector`, pero falla despues por `MonadFail` en `boolector-0.0.0.13`.
