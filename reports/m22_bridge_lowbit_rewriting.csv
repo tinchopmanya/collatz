@@ -1,0 +1,22 @@
+k,modulus,branch,removed_rule,paper_rule,predicate,branch_residues,lowbit_certified,uncovered_residues,certified_fraction,uncovered_fraction
+8,256,S1_without_ff_end_to_0_end,aad -> ed,ff* -> 0*,mod8_eq_1,32,23,9,0.718750000000,0.281250000000
+8,256,S2_without_tf_end_to_end,bad -> d,tf* -> *,mod8_eq_5,32,31,1,0.968750000000,0.031250000000
+8,256,S3_without_t_end_to_2_end,bd -> gd,t* -> 2*,mod4_eq_3,64,40,24,0.625000000000,0.375000000000
+10,1024,S1_without_ff_end_to_0_end,aad -> ed,ff* -> 0*,mod8_eq_1,128,98,30,0.765625000000,0.234375000000
+10,1024,S2_without_tf_end_to_end,bad -> d,tf* -> *,mod8_eq_5,128,120,8,0.937500000000,0.062500000000
+10,1024,S3_without_t_end_to_2_end,bd -> gd,t* -> 2*,mod4_eq_3,256,163,93,0.636718750000,0.363281250000
+12,4096,S1_without_ff_end_to_0_end,aad -> ed,ff* -> 0*,mod8_eq_1,512,381,131,0.744140625000,0.255859375000
+12,4096,S2_without_tf_end_to_end,bad -> d,tf* -> *,mod8_eq_5,512,466,46,0.910156250000,0.089843750000
+12,4096,S3_without_t_end_to_2_end,bd -> gd,t* -> 2*,mod4_eq_3,1024,638,386,0.623046875000,0.376953125000
+14,16384,S1_without_ff_end_to_0_end,aad -> ed,ff* -> 0*,mod8_eq_1,2048,1485,563,0.725097656250,0.274902343750
+14,16384,S2_without_tf_end_to_end,bad -> d,tf* -> *,mod8_eq_5,2048,1816,232,0.886718750000,0.113281250000
+14,16384,S3_without_t_end_to_2_end,bd -> gd,t* -> 2*,mod4_eq_3,4096,2510,1586,0.612792968750,0.387207031250
+16,65536,S1_without_ff_end_to_0_end,aad -> ed,ff* -> 0*,mod8_eq_1,8192,7098,1094,0.866455078125,0.133544921875
+16,65536,S2_without_tf_end_to_end,bad -> d,tf* -> *,mod8_eq_5,8192,7814,378,0.953857421875,0.046142578125
+16,65536,S3_without_t_end_to_2_end,bd -> gd,t* -> 2*,mod4_eq_3,16384,12911,3473,0.788024902344,0.211975097656
+18,262144,S1_without_ff_end_to_0_end,aad -> ed,ff* -> 0*,mod8_eq_1,32768,27823,4945,0.849090576172,0.150909423828
+18,262144,S2_without_tf_end_to_end,bad -> d,tf* -> *,mod8_eq_5,32768,30827,1941,0.940765380859,0.059234619141
+18,262144,S3_without_t_end_to_2_end,bd -> gd,t* -> 2*,mod4_eq_3,65536,50643,14893,0.772750854492,0.227249145508
+20,1048576,S1_without_ff_end_to_0_end,aad -> ed,ff* -> 0*,mod8_eq_1,131072,109293,21779,0.833839416504,0.166160583496
+20,1048576,S2_without_tf_end_to_end,bad -> d,tf* -> *,mod8_eq_5,131072,121670,9402,0.928268432617,0.071731567383
+20,1048576,S3_without_t_end_to_2_end,bd -> gd,t* -> 2*,mod4_eq_3,262144,199140,63004,0.759658813477,0.240341186523
