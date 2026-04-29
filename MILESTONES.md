@@ -503,7 +503,7 @@ Recomendacion: cerrar arco de modelos estocasticos (M12-M17). Opciones futuras: 
 
 ## M19 - Auditoria y reproduccion de mixed-base rewriting
 
-Estado: propuesto como reapertura condicionada.
+Estado: instrumental. Reapertura ejecutada; build fuente Matchbox no queda como linea principal.
 
 Objetivo: buscar una posibilidad cientifica de mayor ceiling saliendo del arco estadistico y entrando en sistemas de reescritura / pruebas automaticas de terminacion.
 
@@ -519,18 +519,71 @@ Definition of done:
 - Documentar dependencias y parametros exactos.
 - Auditar si las pruebas existentes son solo reproduccion o si hay espacio para una extension pequena.
 - No afirmar una prueba global de Collatz.
+- Agregar gates que impidan confundir `success` de CI con binario/proof real.
 
 Criterio de exito:
 
 - Reproduccion local limpia de una prueba no trivial, o extension pequena verificable de una clase/debilitamiento no listada.
+- Binario Matchbox/AProVE reproducible que pase gate de artefacto y, para claims matematicos, certificado CPF/CeTA.
 
 Criterio de abandono:
 
 - No reproducible localmente, o solo reproduccion sin posibilidad razonable de extension, o necesidad de busqueda SAT abierta sin principio de parada.
+- Cadena creciente de parches Haskell legacy sin producir `matchbox2015 --help`, `sha256` y `ldd`.
 
 Decision actual:
 
-- Avanzar a M19 paso 1: entorno minimo y reproduccion de prueba existente.
+- M19 queda como linea instrumental.
+- Se agregaron gates: `scripts/m19_matchbox_artifact_gate.py` y `scripts/m19_certificate_gate.py`.
+- Se auditaron fallos de Boolector, `wl-pprint-extras`, `satchmo` y `atto-lisp/base`.
+- Se permite como maximo un parche fuente adicional para `satchmo`; si aparece otro bloqueo, se pivota a binario/container o herramienta alternativa.
+- La linea principal pasa a M22.
+
+## M21 - Probe low-bit/descent inspirado en Angeltveit
+
+Estado: completado como probe independiente inicial.
+
+Objetivo: reproducir una capa pequena y auditable del enfoque low-bit/descent moderno sin copiar codigo externo.
+
+Resultado:
+
+- Probe independiente con auditoria estratificada.
+- Sin falsos positivos observados en los rangos reportados.
+- Artefactos en `reports/m21_angeltveit_lowbit_probe.*`.
+
+Criterio de no sobreinterpretacion:
+
+- No reproduce el algoritmo completo de Angeltveit.
+- No prueba Collatz.
+- Sirve como componente verificable para M22.
+
+## M22 - Puente low-bit/descent hacia guarded rewriting
+
+Estado: linea principal activa.
+
+Objetivo: usar certificados low-bit/descent para reducir familias residuales de rewriting y dejar complementos verificables que herramientas de terminacion puedan atacar.
+
+Resultado actual:
+
+- En S2-k16, de `8192` clases de rama, `7814` quedan descargadas por low-bit/descent.
+- Complemento congelado: `378` residuos.
+- SHA del complemento: `bd04a1c2f65ccda483901f23fdb5f2392b824ac5b2d7ab1011e66f18771bb210`.
+
+Proximos criterios:
+
+- M22-C1: rechecker independiente de S2-k16.
+- M22-C2: validador semantico del puente S2.
+- M22-C3: benchmark guarded S2-k16 contra S2 base solo si C1/C2 pasan.
+
+Criterio de exito:
+
+- C1 y C2 pasan con `0` discrepancias, y C3 obtiene un `YES` nuevo o reduccion robusta pre-registrada.
+
+Criterio de abandono:
+
+- Cualquier falso positivo low-bit.
+- Brecha semantica no cerrable entre residuos y SRS.
+- Complemento residual sin estructura o peor que S2 base para provers.
 
 ## M18 - Ratio por rango de n y cierre del proyecto
 

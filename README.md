@@ -21,6 +21,7 @@ Repositorio de investigacion y experimentacion computacional sobre la conjetura 
 - [InvestigacionSobreCollatzNovenaOla.md](InvestigacionSobreCollatzNovenaOla.md): anti-persistencia entre bloques y condicionamientos por salida.
 - [InvestigacionSobreCollatzDecimaOla.md](InvestigacionSobreCollatzDecimaOla.md): salidas con alta valuacion 2-adica y candidato `exit_v2 = 5`.
 - [CriterioDeRelevancia.md](CriterioDeRelevancia.md): preguntas obligatorias antes y despues de cada iteracion.
+- [InvestigacionSobreCollatzDecimocuartaOla.md](InvestigacionSobreCollatzDecimocuartaOla.md): ola activa sobre rewriting, certificacion y puente low-bit/descent.
 
 ## Flujo recomendado
 
@@ -113,6 +114,40 @@ Probar robustez del residuo M14:
 ```powershell
 python experiments\test_m14_residual_robustness.py --limit 5000000 --max-blocks 256 --permutations 10000 --seed 20260425 --extra-tests 546 --out-dir reports --prefix m14_residual_robustness
 python experiments\test_m14_residual_robustness.py --start 5000001 --limit 10000000 --max-blocks 256 --permutations 10000 --seed 20260425 --extra-tests 546 --out-dir reports --prefix m14_residual_robustness_holdout_5000001_10000000
+```
+
+## Linea actual M19-M22
+
+Gatear artefactos Matchbox:
+
+```powershell
+python scripts\m19_matchbox_artifact_gate.py reports\m19_github_runs\artifacts\<run>\<artifact>
+```
+
+Gatear certificados de terminacion:
+
+```powershell
+python scripts\m19_certificate_gate.py --help
+```
+
+Reproducir el probe low-bit/descent:
+
+```powershell
+python scripts\m21_angeltveit_lowbit_probe.py --out-dir reports
+```
+
+Reproducir el puente low-bit/rewrite:
+
+```powershell
+python scripts\m22_bridge_lowbit_rewriting.py --out-dir reports
+python scripts\m22_freeze_s2_k16.py --out-dir reports
+```
+
+Objeto principal vigente:
+
+```text
+S2-k16 uncovered_count = 378
+uncovered_sha256 = bd04a1c2f65ccda483901f23fdb5f2392b824ac5b2d7ab1011e66f18771bb210
 ```
 
 ## Crear una nueva ola
